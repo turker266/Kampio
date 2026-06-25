@@ -1,0 +1,71 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#084c41"/>
+  
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0f6b5b" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#084c41" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="72" height="72" rx="18" fill="#0f6b5b" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <rect x="91" y="100" width="50" height="34" rx="6" fill="white" opacity="0.15"/>
+  <rect x="91" y="100" width="50" height="34" rx="6" fill="none" stroke="white" stroke-width="2"/>
+  <rect x="91" y="113" width="50" height="8" fill="white" opacity="0.9"/>
+  <rect x="97" y="124" width="16" height="4" rx="2" fill="white" opacity="0.8"/>
+  <circle cx="130" cy="107" r="5" fill="#f59e0b" opacity="0.95"/>
+  <circle cx="139" cy="107" r="5" fill="#fbbf24" opacity="0.75"/>
+
+  <!-- Brand name -->
+  <text x="172" y="128" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="42" fill="white" letter-spacing="-1">Kampio</text>
+
+  <!-- Main headline -->
+  <text x="80" y="270" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="72" fill="white" letter-spacing="-2">Kredi kartı</text>
+  <text x="80" y="355" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="72" letter-spacing="-2">
+    <tspan fill="white">kampanyalarını </tspan>
+    <tspan fill="#34d399">kazanca</tspan>
+  </text>
+  <text x="80" y="440" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="72" fill="white" letter-spacing="-2">çevir.</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="510" font-family="Inter, -apple-system, sans-serif" font-weight="500" font-size="28" fill="rgba(255,255,255,0.65)">12+ bankanın kampanyaları tek ekranda · Ücretsiz</text>
+
+  <!-- Right side - Stats cards -->
+  <rect x="750" y="160" width="380" height="100" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="790" y="205" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="14" fill="rgba(255,255,255,0.5)" letter-spacing="1">TOPLAM FIRSAT</text>
+  <text x="790" y="242" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="36" fill="white" letter-spacing="-1">2.550 TL+</text>
+
+  <rect x="750" y="280" width="175" height="90" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="790" y="315" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="12" fill="rgba(255,255,255,0.5)" letter-spacing="1">KAMPANYA</text>
+  <text x="790" y="352" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="32" fill="white">18+</text>
+
+  <rect x="945" y="280" width="185" height="90" rx="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="985" y="315" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="12" fill="rgba(255,255,255,0.5)" letter-spacing="1">BANKA</text>
+  <text x="985" y="352" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="32" fill="white">12+</text>
+
+  <!-- Campaign mini cards -->
+  <rect x="750" y="390" width="380" height="68" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="768" y="406" width="70" height="36" rx="8" fill="rgba(245,158,11,0.15)"/>
+  <text x="803" y="429" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="11" fill="#f59e0b" text-anchor="middle">+300 TL</text>
+  <text x="855" y="421" font-family="Inter, -apple-system, sans-serif" font-weight="700" font-size="13" fill="white">Market fırsatı</text>
+  <text x="855" y="439" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="11" fill="rgba(255,255,255,0.45)">Garanti BBVA · 15 Tem</text>
+
+  <rect x="750" y="474" width="380" height="68" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="768" y="490" width="70" height="36" rx="8" fill="rgba(245,158,11,0.15)"/>
+  <text x="803" y="513" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="11" fill="#f59e0b" text-anchor="middle">+500 TL</text>
+  <text x="855" y="505" font-family="Inter, -apple-system, sans-serif" font-weight="700" font-size="13" fill="white">Seyahat cashback</text>
+  <text x="855" y="523" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="11" fill="rgba(255,255,255,0.45)">QNB Finansbank · 31 Ağu</text>
+
+  <!-- URL badge -->
+  <rect x="80" y="565" width="220" height="36" rx="18" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <circle cx="104" cy="583" r="5" fill="#34d399"/>
+  <text x="118" y="588" font-family="Inter, -apple-system, sans-serif" font-weight="700" font-size="13" fill="rgba(255,255,255,0.8)">kampio.vercel.app</text>
+</svg>
