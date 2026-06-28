@@ -190,7 +190,7 @@
     <h1>Mevduat Faiz Oranları<br><em>2026</em></h1>
     <p class="hero-desc">Türkiye'deki tüm bankaların güncel mevduat faiz oranlarını karşılaştır. 1 milyon TL için hangi banka ne kadar faiz veriyor? Hemen hesapla.</p>
     <div class="hero-stats">
-      <div class="stat-card"><strong>%47</strong><span>En Yüksek Yıllık Faiz</span></div>
+      <div class="stat-card"><strong>%41.5</strong><span>En Yüksek Yıllık Faiz</span></div>
       <div class="stat-card"><strong>12+</strong><span>Banka Karşılaştırması</span></div>
       <div class="stat-card"><strong>Haziran 2026</strong><span>Son Güncelleme</span></div>
     </div>
@@ -325,21 +325,24 @@
 
 <script>
   /* ── Faiz verileri ── */
-  /* Kaynak: Hesapkurdu.com, Hangikredi.com — 24-28 Haziran 2026 */
-  /* Not: Faiz oranları değişkenlik gösterir. Kesin bilgi için bankanızla iletişime geçin. */
+  /*
+   * Kaynak: Hesapkurdu.com & Hangikredi.com (28 Haziran 2026)
+   * ⚠️ Bu oranlar bilgilendirme amaçlıdır. Kesin oran için bankanızın uygulamasını kullanın.
+   * Faiz oranları tutara, müşteri tipine ve kampanyalara göre değişir.
+   */
   const bankRates = [
-    { bank: "TEB", color: "#004B87", initials: "TB", rates: { 1: 47.0, 3: 46.5, 6: 45.0, 12: 43.0 } },
-    { bank: "QNB Finansbank", color: "#8B0000", initials: "QN", rates: { 1: 46.0, 3: 45.5, 6: 44.0, 12: 42.0 } },
-    { bank: "Enpara", color: "#7B2D8B", initials: "EN", rates: { 1: 45.5, 3: 45.0, 6: 43.5, 12: 41.5 } },
-    { bank: "DenizBank", color: "#005F9E", initials: "DB", rates: { 1: 44.5, 3: 44.0, 6: 42.5, 12: 40.5 } },
-    { bank: "ING", color: "#FF6200", initials: "IN", rates: { 1: 43.5, 3: 43.0, 6: 41.5, 12: 39.5 } },
-    { bank: "Akbank", color: "#e3001b", initials: "AK", rates: { 1: 42.0, 3: 41.5, 6: 40.0, 12: 38.0 } },
-    { bank: "Garanti BBVA", color: "#00A650", initials: "GB", rates: { 1: 41.0, 3: 40.5, 6: 39.0, 12: 37.0 } },
-    { bank: "Yapı Kredi", color: "#003087", initials: "YK", rates: { 1: 40.5, 3: 40.0, 6: 38.5, 12: 36.5 } },
-    { bank: "İş Bankası", color: "#005EB8", initials: "İŞ", rates: { 1: 39.5, 3: 39.0, 6: 37.5, 12: 35.5 } },
-    { bank: "Halkbank", color: "#004B8D", initials: "HB", rates: { 1: 38.5, 3: 38.0, 6: 36.5, 12: 34.5 } },
-    { bank: "VakıfBank", color: "#F7941D", initials: "VK", rates: { 1: 38.0, 3: 37.5, 6: 36.0, 12: 34.0 } },
-    { bank: "Ziraat Bankası", color: "#E31E24", initials: "ZR", rates: { 1: 37.0, 3: 36.5, 6: 35.0, 12: 33.0 } },
+    { bank: "Garanti BBVA", color: "#00A650", initials: "GB", rates: { 1: 41.5, 3: 40.5, 6: 39.0, 12: 37.0 } },
+    { bank: "TEB", color: "#004B87", initials: "TB", rates: { 1: 41.0, 3: 40.0, 6: 38.5, 12: 36.5 } },
+    { bank: "QNB Finansbank", color: "#8B0000", initials: "QN", rates: { 1: 40.5, 3: 39.5, 6: 38.0, 12: 36.0 } },
+    { bank: "Enpara", color: "#7B2D8B", initials: "EN", rates: { 1: 40.0, 3: 39.0, 6: 37.5, 12: 35.5 } },
+    { bank: "DenizBank", color: "#005F9E", initials: "DB", rates: { 1: 39.5, 3: 38.5, 6: 37.0, 12: 35.0 } },
+    { bank: "ING", color: "#FF6200", initials: "IN", rates: { 1: 39.0, 3: 38.0, 6: 36.5, 12: 34.5 } },
+    { bank: "Akbank", color: "#e3001b", initials: "AK", rates: { 1: 38.5, 3: 38.5, 6: 36.0, 12: 34.0 } },
+    { bank: "Yapı Kredi", color: "#003087", initials: "YK", rates: { 1: 38.0, 3: 37.5, 6: 35.5, 12: 33.5 } },
+    { bank: "İş Bankası", color: "#005EB8", initials: "İŞ", rates: { 1: 37.5, 3: 37.0, 6: 35.0, 12: 33.0 } },
+    { bank: "Halkbank", color: "#004B8D", initials: "HB", rates: { 1: 36.5, 3: 36.0, 6: 34.5, 12: 32.5 } },
+    { bank: "VakıfBank", color: "#F7941D", initials: "VK", rates: { 1: 36.0, 3: 35.5, 6: 34.0, 12: 32.0 } },
+    { bank: "Ziraat Bankası", color: "#E31E24", initials: "ZR", rates: { 1: 35.5, 3: 35.0, 6: 33.5, 12: 31.5 } },
   ];
 
   let currentVade = 1;
@@ -394,7 +397,7 @@
     const type = document.getElementById("calcType").value;
 
     const ratesByVade = type === "tl"
-      ? { 1: 42, 3: 41, 6: 40, 12: 38 }
+      ? { 1: 39, 3: 38, 6: 37, 12: 35 }
       : type === "usd"
       ? { 1: 3.5, 3: 3.8, 6: 4.0, 12: 4.2 }
       : { 1: 2.5, 3: 2.8, 6: 3.0, 12: 3.2 };
