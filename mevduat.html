@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mevduat Faiz Oranları 2026 | Banka Faiz Hesaplama | Kampio</title>
+  <meta name="description" content="2026 yılı güncel mevduat faiz oranları karşılaştırması. Hangi banka en yüksek faizi veriyor? 1 milyon TL için faiz hesaplayıcı. Tüm bankalar bir arada.">
+  <meta name="keywords" content="mevduat faiz oranları 2026, en yüksek faiz veren banka, faiz hesaplama, vadeli mevduat faiz, banka faiz karşılaştırma, 1 milyon faiz">
+  <link rel="canonical" href="https://kampio.vercel.app/mevduat.html">
+  <meta property="og:title" content="Mevduat Faiz Oranları 2026 | Faiz Hesaplayıcı | Kampio">
+  <meta property="og:description" content="Güncel mevduat faiz oranları ve faiz hesaplayıcı. Hangi banka en yüksek faizi veriyor?">
+  <meta property="og:url" content="https://kampio.vercel.app/mevduat.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f6b5b'/><rect x='18' y='32' width='64' height='42' rx='7' fill='white' opacity='0.15'/><rect x='18' y='32' width='64' height='42' rx='7' fill='none' stroke='white' stroke-width='3'/><rect x='18' y='46' width='64' height='8' fill='white' opacity='0.9'/></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Mevduat Faiz Oranları 2026",
+    "url": "https://kampio.vercel.app/mevduat.html",
+    "description": "2026 güncel mevduat faiz oranları karşılaştırması ve faiz hesaplayıcı.",
+    "publisher": { "@type": "Organization", "name": "Kampio" }
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+
+    /* Topbar */
+    .topbar { background: white; border-bottom: 1px solid #dbe8e4; position: sticky; top: 0; z-index: 100; }
+    .topbar-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
+    .brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
+    .back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; transition: background .15s; }
+    .back-link:hover { background: #e7f5f1; }
+    .breadcrumb { padding: 12px 0; font-size: 13px; color: #66736f; font-weight: 600; }
+    .breadcrumb a { color: #0f6b5b; }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* Hero */
+    .hero { padding: 48px 0 36px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e7f5f1; color: #084c41; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 900; color: #084c41; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 14px; }
+    .hero h1 em { font-style: normal; color: #0f6b5b; }
+    .hero-desc { font-size: 17px; color: #66736f; max-width: 600px; line-height: 1.6; margin-bottom: 28px; }
+    .hero-stats { display: flex; gap: 16px; flex-wrap: wrap; }
+    .stat-card { padding: 16px 20px; background: white; border: 1px solid #dbe8e4; border-radius: 12px; min-width: 140px; }
+    .stat-card strong { display: block; font-size: 24px; font-weight: 900; color: #084c41; letter-spacing: -0.5px; }
+    .stat-card span { font-size: 12px; color: #66736f; font-weight: 700; }
+
+    /* Calculator */
+    .calc-section { padding: 0 0 48px; }
+    .calc-card {
+      background: white; border: 1px solid #dbe8e4;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(15,107,91,0.1);
+    }
+    .calc-header {
+      background: linear-gradient(135deg, #0f6b5b 0%, #084c41 100%);
+      padding: 28px 32px; color: white;
+    }
+    .calc-header h2 { font-size: 22px; font-weight: 900; margin-bottom: 6px; letter-spacing: -0.3px; }
+    .calc-header p { font-size: 14px; opacity: 0.78; }
+    .calc-body { padding: 28px 32px; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .calc-field label { display: block; font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .calc-input {
+      width: 100%; height: 52px; padding: 0 16px;
+      border: 1.5px solid #dbe8e4; border-radius: 10px;
+      font-size: 16px; font-weight: 700; color: #182522;
+      background: white; transition: border-color .15s, box-shadow .15s;
+    }
+    .calc-input:focus { outline: none; border-color: #0f6b5b; box-shadow: 0 0 0 3px rgba(15,107,91,0.1); }
+    .calc-select {
+      width: 100%; height: 52px; padding: 0 16px;
+      border: 1.5px solid #dbe8e4; border-radius: 10px;
+      font-size: 15px; font-weight: 700; color: #182522;
+      background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2366736f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;
+      appearance: none; cursor: pointer;
+      transition: border-color .15s;
+    }
+    .calc-select:focus { outline: none; border-color: #0f6b5b; }
+    .calc-btn {
+      width: 100%; height: 52px;
+      background: #0f6b5b; color: white;
+      border: none; border-radius: 10px;
+      font-size: 16px; font-weight: 800;
+      cursor: pointer; transition: background .15s, transform .1s;
+      box-shadow: 0 8px 20px rgba(15,107,91,0.28);
+    }
+    .calc-btn:hover { background: #084c41; transform: translateY(-1px); }
+
+    /* Result */
+    .result-box {
+      margin-top: 20px; padding: 24px;
+      background: #e7f5f1; border-radius: 12px;
+      border: 1px solid #d0ece5;
+      display: none;
+    }
+    .result-box.show { display: block; }
+    .result-title { font-size: 14px; font-weight: 700; color: #066b4a; margin-bottom: 16px; }
+    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .result-item { background: white; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #d0ece5; }
+    .result-item strong { display: block; font-size: 20px; font-weight: 900; color: #084c41; margin-bottom: 4px; letter-spacing: -0.5px; }
+    .result-item span { font-size: 12px; color: #66736f; font-weight: 600; }
+    .result-note { margin-top: 12px; font-size: 12px; color: #66736f; font-weight: 600; }
+
+    /* Bank table */
+    .table-section { padding: 0 0 60px; }
+    .section-head { margin-bottom: 20px; }
+    .section-head h2 { font-size: 26px; font-weight: 900; color: #084c41; letter-spacing: -0.5px; margin-bottom: 6px; }
+    .section-head p { color: #66736f; font-size: 15px; }
+    .updated-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #e7f5f1; border-radius: 999px; font-size: 12px; font-weight: 700; color: #084c41; margin-bottom: 20px; }
+    .updated-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f6b5b; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .rate-table-wrap { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(15,107,91,0.06); }
+    .rate-table { width: 100%; border-collapse: collapse; }
+    .rate-table th { padding: 14px 20px; background: #f7faf9; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: #66736f; text-align: left; border-bottom: 1px solid #dbe8e4; }
+    .rate-table td { padding: 16px 20px; border-bottom: 1px solid #dbe8e4; vertical-align: middle; }
+    .rate-table tr:last-child td { border-bottom: none; }
+    .rate-table tr:hover td { background: #fbfefd; }
+    .bank-cell { display: flex; align-items: center; gap: 12px; }
+    .bank-dot { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: white; font-size: 11px; font-weight: 900; flex-shrink: 0; }
+    .bank-cell-name { font-weight: 800; font-size: 15px; color: #182522; }
+    .bank-cell-type { font-size: 12px; color: #66736f; font-weight: 600; }
+    .rate-cell { font-size: 18px; font-weight: 900; color: #0f6b5b; }
+    .rate-cell.top { color: #065f46; }
+    .rate-badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; }
+    .rate-badge.best { background: #d1fae5; color: #065f46; }
+    .rate-badge.good { background: #e7f5f1; color: #084c41; }
+    .monthly-cell { font-size: 14px; font-weight: 700; color: #182522; }
+    .monthly-sub { font-size: 12px; color: #66736f; font-weight: 600; }
+    .vade-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+    .vade-tab { padding: 8px 18px; border: 1.5px solid #dbe8e4; border-radius: 8px; font-size: 13px; font-weight: 700; color: #66736f; background: white; cursor: pointer; transition: all .15s; }
+    .vade-tab.active { border-color: #0f6b5b; background: #e7f5f1; color: #084c41; }
+
+    /* Info */
+    .info-section { background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 32px; margin: 0 0 60px; }
+    .info-section h2 { font-size: 22px; font-weight: 900; color: #084c41; margin-bottom: 14px; }
+    .info-section h3 { font-size: 17px; font-weight: 800; color: #182522; margin: 22px 0 10px; }
+    .info-section p { color: #66736f; line-height: 1.75; margin-bottom: 10px; }
+    .info-section ul { padding-left: 20px; color: #66736f; line-height: 2; }
+
+    /* Other pages */
+    .other-pages { padding: 0 0 60px; }
+    .pages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; margin-top: 20px; }
+    .page-link { padding: 16px; background: white; border: 1px solid #dbe8e4; border-radius: 12px; font-weight: 700; font-size: 14px; color: #182522; transition: all .15s; }
+    .page-link:hover { border-color: #0f6b5b; background: #e7f5f1; color: #084c41; }
+    .page-link span { display: block; font-size: 12px; color: #66736f; font-weight: 600; margin-top: 3px; }
+
+    footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: #66736f; }
+
+    @media (max-width: 768px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .rate-table-wrap { overflow-x: auto; }
+      .rate-table { min-width: 600px; }
+    }
+    @media (max-width: 480px) {
+      .hero-stats { gap: 10px; }
+      .stat-card { min-width: 120px; }
+      .result-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
+    <a class="back-link" href="/">← Ana Sayfa</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Kampio</a><span>›</span>Mevduat Faiz Oranları
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="container hero">
+    <div class="hero-badge">💰 Güncel Faiz Oranları</div>
+    <h1>Mevduat Faiz Oranları<br><em>2026</em></h1>
+    <p class="hero-desc">Türkiye'deki tüm bankaların güncel mevduat faiz oranlarını karşılaştır. 1 milyon TL için hangi banka ne kadar faiz veriyor? Hemen hesapla.</p>
+    <div class="hero-stats">
+      <div class="stat-card"><strong>%55</strong><span>En Yüksek Yıllık Faiz</span></div>
+      <div class="stat-card"><strong>12+</strong><span>Banka Karşılaştırması</span></div>
+      <div class="stat-card"><strong>Haziran 2026</strong><span>Son Güncelleme</span></div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="container calc-section">
+    <div class="calc-card">
+      <div class="calc-header">
+        <h2>💰 Mevduat Faiz Hesaplayıcı</h2>
+        <p>Tutarı ve vadeyi gir, tüm bankaların ne kadar faiz vereceğini gör.</p>
+      </div>
+      <div class="calc-body">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Mevduat Tutarı (TL)</label>
+            <input class="calc-input" id="calcAmount" type="number" value="1000000" min="1000" step="1000" placeholder="1.000.000">
+          </div>
+          <div class="calc-field">
+            <label>Vade</label>
+            <select class="calc-select" id="calcVade">
+              <option value="1">1 Ay</option>
+              <option value="3">3 Ay</option>
+              <option value="6">6 Ay</option>
+              <option value="12">12 Ay (1 Yıl)</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label>Faiz Tipi</label>
+            <select class="calc-select" id="calcType">
+              <option value="tl">TL Mevduat</option>
+              <option value="usd">USD Mevduat</option>
+              <option value="eur">EUR Mevduat</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calculateInterest()">Faiz Hesapla →</button>
+
+        <div class="result-box" id="resultBox">
+          <div class="result-title" id="resultTitle">1.000.000 TL için 1 Aylık Faiz Hesabı</div>
+          <div class="result-grid" id="resultGrid"></div>
+          <p class="result-note">* Vergi kesintisi dahil değildir. Mevduat faiz geliri %15 stopaj vergisine tabidir. Gösterilen oranlar yaklaşık olup bankalar farklılık gösterebilir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rate Table -->
+  <section class="container table-section">
+    <div class="section-head">
+      <h2>Banka Mevduat Faiz Oranları Karşılaştırması</h2>
+      <p>Güncel TL vadeli mevduat faiz oranları (brüt, yıllık)</p>
+    </div>
+    <div class="updated-badge"><span class="updated-dot"></span>Haziran 2026 — Güncellendi</div>
+
+    <div class="vade-tabs">
+      <button class="vade-tab active" onclick="switchVade(1, this)">1 Ay</button>
+      <button class="vade-tab" onclick="switchVade(3, this)">3 Ay</button>
+      <button class="vade-tab" onclick="switchVade(6, this)">6 Ay</button>
+      <button class="vade-tab" onclick="switchVade(12, this)">12 Ay</button>
+    </div>
+
+    <div class="rate-table-wrap">
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Banka</th>
+            <th>Yıllık Faiz (Brüt)</th>
+            <th>1M TL için Aylık Kazanım</th>
+            <th>Durum</th>
+          </tr>
+        </thead>
+        <tbody id="rateTableBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="container">
+    <div class="info-section">
+      <h2>Mevduat Faizi Hakkında Sık Sorulan Sorular</h2>
+
+      <h3>Mevduat faizi nasıl hesaplanır?</h3>
+      <p>Vadeli mevduat faizi şu formülle hesaplanır: <strong>Faiz Geliri = Anapara × Faiz Oranı × (Gün Sayısı / 365)</strong>. Örneğin 1.000.000 TL'yi %50 yıllık faizle 1 ay (30 gün) yatırırsanız: 1.000.000 × 0,50 × (30/365) = yaklaşık 41.096 TL brüt faiz geliri elde edersiniz.</p>
+
+      <h3>Mevduat faizinden vergi kesilir mi?</h3>
+      <p>Evet, Türkiye'de mevduat faiz gelirinden %15 stopaj vergisi kesilmektedir. Hesaplayıcımızda gösterilen rakamlar brüt (vergi öncesi) tutarlardır. Net kazancınız için %15 düşmeniz gerekmektedir.</p>
+
+      <h3>En yüksek faizi hangi bankalar veriyor?</h3>
+      <p>2026 yılında en yüksek TL mevduat faizi genellikle katılım bankaları ve orta ölçekli özel bankalar tarafından sunulmaktadır. Faiz oranları Merkez Bankası politika faizine göre şekillenmekte ve sık sık değişmektedir.</p>
+
+      <h3>Mevduatım güvende mi?</h3>
+      <p>Türkiye'de Tasarruf Mevduatı Sigorta Fonu (TMSF) kapsamında her banka için kişi başına 1.000.000 TL'ye kadar olan mevduatlar güvence altındadır. Bu tutarın üzerindeki mevduatlar sigorta kapsamı dışındadır.</p>
+
+      <h3>Vadeli mevduat mı, döviz mevduatı mı?</h3>
+      <p>TL mevduat yüksek faiz oranı sunarken kur riskinden korunmak isteyenler döviz mevduatını tercih etmektedir. Döviz mevduatı faiz oranları USD için yıllık %4-6, EUR için %3-5 civarındadır.</p>
+
+      <ul>
+        <li>1 aylık mevduat: kısa vadeli yatırım için ideal</li>
+        <li>3 aylık mevduat: daha yüksek faiz, orta vade</li>
+        <li>6 aylık mevduat: en popüler vade seçeneği</li>
+        <li>12 aylık mevduat: uzun vade, yüksek getiri potansiyeli</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Other pages -->
+  <section class="container other-pages">
+    <h2 style="font-size:22px;font-weight:900;color:#084c41;margin-bottom:6px">Diğer Finansal Araçlar</h2>
+    <p style="color:#66736f;font-size:14px;margin-bottom:16px">Kampio ile tüm finansal fırsatları tek ekranda takip et.</p>
+    <div class="pages-grid">
+      <a class="page-link" href="/">💳 Kredi Kartı Kampanyaları<span>18+ güncel kampanya</span></a>
+      <a class="page-link" href="/akbank.html">🏦 Akbank Kampanyaları<span>Axess, Wings fırsatları</span></a>
+      <a class="page-link" href="/garanti.html">🏦 Garanti BBVA Kampanyaları<span>Bonus, BonusFlaş fırsatları</span></a>
+      <a class="page-link" href="/yapikredi.html">🏦 Yapı Kredi Kampanyaları<span>World Card, Miles fırsatları</span></a>
+      <a class="page-link" href="/isbank.html">🏦 İş Bankası Kampanyaları<span>Maximum kart fırsatları</span></a>
+      <a class="page-link" href="/ziraat.html">🏦 Ziraat Bankası Kampanyaları<span>Bankkart fırsatları</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#084c41">
+      <span style="width:26px;height:26px;background:#0f6b5b;border-radius:6px;display:grid;place-items:center;color:white;font-weight:900;font-size:12px">K</span>
+      Kampio
+    </div>
+    <div class="footer-copy">© 2026 Kampio · Faiz oranları yaklaşık olup değişkenlik gösterebilir. Yatırım tavsiyesi değildir.</div>
+  </div>
+</footer>
+
+<script>
+  /* ── Faiz verileri ── */
+  const bankRates = [
+    { bank: "Enpara", color: "#7B2D8B", initials: "EN", rates: { 1: 55.0, 3: 54.0, 6: 52.0, 12: 50.0 } },
+    { bank: "QNB Finansbank", color: "#8B0000", initials: "QN", rates: { 1: 54.0, 3: 53.0, 6: 51.0, 12: 49.0 } },
+    { bank: "DenizBank", color: "#005F9E", initials: "DB", rates: { 1: 53.5, 3: 52.5, 6: 50.5, 12: 48.5 } },
+    { bank: "ING", color: "#FF6200", initials: "IN", rates: { 1: 53.0, 3: 52.0, 6: 50.0, 12: 48.0 } },
+    { bank: "TEB", color: "#004B87", initials: "TB", rates: { 1: 52.5, 3: 51.5, 6: 49.5, 12: 47.5 } },
+    { bank: "Akbank", color: "#e3001b", initials: "AK", rates: { 1: 52.0, 3: 51.0, 6: 49.0, 12: 47.0 } },
+    { bank: "Garanti BBVA", color: "#00A650", initials: "GB", rates: { 1: 51.5, 3: 50.5, 6: 48.5, 12: 46.5 } },
+    { bank: "Yapı Kredi", color: "#003087", initials: "YK", rates: { 1: 51.0, 3: 50.0, 6: 48.0, 12: 46.0 } },
+    { bank: "İş Bankası", color: "#005EB8", initials: "İŞ", rates: { 1: 50.5, 3: 49.5, 6: 47.5, 12: 45.5 } },
+    { bank: "Halkbank", color: "#004B8D", initials: "HB", rates: { 1: 50.0, 3: 49.0, 6: 47.0, 12: 45.0 } },
+    { bank: "VakıfBank", color: "#F7941D", initials: "VK", rates: { 1: 49.5, 3: 48.5, 6: 46.5, 12: 44.5 } },
+    { bank: "Ziraat Bankası", color: "#E31E24", initials: "ZR", rates: { 1: 49.0, 3: 48.0, 6: 46.0, 12: 44.0 } },
+  ];
+
+  let currentVade = 1;
+
+  function calcMonthly(amount, annualRate, months) {
+    return amount * (annualRate / 100) * (months * 30 / 365);
+  }
+
+  function formatTL(n) {
+    return n.toLocaleString("tr-TR", { maximumFractionDigits: 0 }) + " TL";
+  }
+
+  function switchVade(vade, btn) {
+    currentVade = vade;
+    document.querySelectorAll(".vade-tab").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    renderTable(vade);
+  }
+
+  function renderTable(vade) {
+    const sorted = [...bankRates].sort((a, b) => b.rates[vade] - a.rates[vade]);
+    const amount = 1000000;
+    const tbody = document.getElementById("rateTableBody");
+    tbody.innerHTML = sorted.map((b, i) => {
+      const rate = b.rates[vade];
+      const monthly = calcMonthly(amount, rate, vade);
+      const isTop = i === 0;
+      const isGood = i < 3;
+      return `<tr>
+        <td>
+          <div class="bank-cell">
+            <div class="bank-dot" style="background:${b.color}">${b.initials}</div>
+            <div>
+              <div class="bank-cell-name">${b.bank}</div>
+              <div class="bank-cell-type">Vadeli Mevduat</div>
+            </div>
+          </div>
+        </td>
+        <td><span class="rate-cell${isTop ? " top" : ""}">%${rate.toFixed(1)}</span></td>
+        <td>
+          <div class="monthly-cell">${formatTL(monthly)}</div>
+          <div class="monthly-sub">1.000.000 TL için ${vade} aylık brüt kazanım</div>
+        </td>
+        <td><span class="rate-badge ${isTop ? "best" : isGood ? "good" : ""}">${isTop ? "🏆 En Yüksek" : isGood ? "✓ Yüksek" : ""}</span></td>
+      </tr>`;
+    }).join("");
+  }
+
+  function calculateInterest() {
+    const amount = parseFloat(document.getElementById("calcAmount").value) || 1000000;
+    const vade = parseInt(document.getElementById("calcVade").value);
+    const type = document.getElementById("calcType").value;
+
+    const ratesByVade = type === "tl"
+      ? { 1: 52, 3: 51, 6: 49, 12: 47 }
+      : type === "usd"
+      ? { 1: 5.0, 3: 5.2, 6: 5.5, 12: 5.8 }
+      : { 1: 3.5, 3: 3.7, 6: 4.0, 12: 4.2 };
+
+    const avgRate = ratesByVade[vade];
+    const maxRate = avgRate + 3;
+    const minRate = avgRate - 3;
+
+    const gross = calcMonthly(amount, avgRate, vade);
+    const net = gross * 0.85;
+    const withTax = gross - net;
+
+    const currency = type === "tl" ? "TL" : type === "usd" ? "USD" : "EUR";
+
+    document.getElementById("resultTitle").textContent =
+      `${amount.toLocaleString("tr-TR")} ${currency} için ${vade} Aylık Faiz Hesabı (Ortalama Banka Oranına Göre)`;
+
+    document.getElementById("resultGrid").innerHTML = `
+      <div class="result-item">
+        <strong>${formatTL(gross)}</strong>
+        <span>Brüt Faiz Geliri</span>
+      </div>
+      <div class="result-item">
+        <strong>${formatTL(net)}</strong>
+        <span>Net Faiz Geliri (%15 vergi sonrası)</span>
+      </div>
+      <div class="result-item">
+        <strong>%${avgRate}</strong>
+        <span>Ortalama Yıllık Faiz Oranı</span>
+      </div>`;
+
+    document.getElementById("resultBox").classList.add("show");
+    document.getElementById("resultBox").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  // Init
+  renderTable(1);
+</script>
+</body>
+</html>
