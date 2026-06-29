@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Net Maaş Hesaplama 2026 | Brütten Nete Maaş Hesaplayıcı | Kampio</title>
+  <meta name="description" content="2026 güncel parametrelerle net maaş hesaplama. Brütten nete, netten brüte maaş hesaplayıcı. SGK, gelir vergisi, damga vergisi kesintileri. Kıdem ve ihbar tazminatı hesaplama.">
+  <meta name="keywords" content="net maaş hesaplama 2026, brütten nete maaş, netten brüte maaş, SGK kesintisi, gelir vergisi hesaplama, kıdem tazminatı hesaplama, ihbar tazminatı, asgari ücret 2026">
+  <link rel="canonical" href="https://kampio.vercel.app/maas.html">
+  <meta property="og:title" content="Net Maaş Hesaplama 2026 | Brütten Nete | Kampio">
+  <meta property="og:description" content="2026 güncel parametrelerle net maaş hesaplama. SGK, gelir vergisi, damga vergisi kesintileri.">
+  <meta property="og:url" content="https://kampio.vercel.app/maas.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f6b5b'/><rect x='18' y='32' width='64' height='42' rx='7' fill='white' opacity='0.15'/><rect x='18' y='32' width='64' height='42' rx='7' fill='none' stroke='white' stroke-width='3'/><rect x='18' y='46' width='64' height='8' fill='white' opacity='0.9'/></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Net Maaş Hesaplama 2026",
+    "url": "https://kampio.vercel.app/maas.html",
+    "description": "2026 güncel parametrelerle net maaş hesaplama. Brütten nete, netten brüte.",
+    "publisher": { "@type": "Organization", "name": "Kampio" }
+  }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar { background: white; border-bottom: 1px solid #dbe8e4; position: sticky; top: 0; z-index: 100; }
+    .topbar-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
+    .brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
+    .back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; transition: background .15s; }
+    .back-link:hover { background: #e7f5f1; }
+    .breadcrumb { padding: 12px 0; font-size: 13px; color: #66736f; font-weight: 600; }
+    .breadcrumb a { color: #0f6b5b; }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* Hero */
+    .hero { padding: 40px 0 28px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e7f5f1; color: #084c41; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 48px); font-weight: 900; color: #084c41; letter-spacing: -1px; line-height: 1.05; margin-bottom: 12px; }
+    .hero h1 em { font-style: normal; color: #0f6b5b; }
+    .hero-desc { font-size: 16px; color: #66736f; max-width: 580px; line-height: 1.6; margin-bottom: 24px; }
+    .param-bar { display: flex; gap: 12px; flex-wrap: wrap; }
+    .param-chip { padding: 7px 14px; background: white; border: 1px solid #dbe8e4; border-radius: 8px; font-size: 13px; font-weight: 700; color: #182522; }
+    .param-chip strong { color: #0f6b5b; }
+
+    /* Tabs */
+    .calc-tabs { display: flex; gap: 4px; margin: 28px 0 20px; background: var(--petrol-soft, #e7f5f1); border-radius: 10px; padding: 4px; }
+    .calc-tab { flex: 1; padding: 11px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .15s; color: #66736f; background: transparent; }
+    .calc-tab.active { background: white; color: #084c41; box-shadow: 0 2px 8px rgba(15,107,91,0.1); }
+
+    /* Calculator Card */
+    .calc-card { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(15,107,91,0.08); margin-bottom: 20px; }
+    .calc-header { background: linear-gradient(135deg, #0f6b5b 0%, #084c41 100%); padding: 24px 28px; }
+    .calc-header h2 { font-size: 20px; font-weight: 900; color: white; margin-bottom: 4px; }
+    .calc-header p { font-size: 13px; color: rgba(255,255,255,0.75); }
+    .calc-body { padding: 24px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-field label { display: block; font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .form-input { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 16px; font-weight: 700; color: #182522; background: white; transition: border-color .15s, box-shadow .15s; }
+    .form-input:focus { outline: none; border-color: #0f6b5b; box-shadow: 0 0 0 3px rgba(15,107,91,0.1); }
+    .form-select { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 15px; font-weight: 700; color: #182522; background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2366736f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; appearance: none; cursor: pointer; }
+    .form-select:focus { outline: none; border-color: #0f6b5b; }
+    .calc-btn { width: 100%; height: 52px; background: #0f6b5b; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; transition: background .15s, transform .1s; box-shadow: 0 8px 20px rgba(15,107,91,0.28); margin-top: 4px; }
+    .calc-btn:hover { background: #084c41; transform: translateY(-1px); }
+
+    /* Result */
+    .result-section { display: none; }
+    .result-section.show { display: block; }
+    .result-main { background: linear-gradient(135deg, #0f6b5b, #084c41); border-radius: 14px; padding: 24px; margin-bottom: 16px; text-align: center; }
+    .result-main-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
+    .result-main-amount { font-size: clamp(36px, 6vw, 56px); font-weight: 900; color: white; letter-spacing: -1.5px; }
+    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .result-item { background: white; border: 1px solid #dbe8e4; border-radius: 10px; padding: 14px; }
+    .result-item-label { font-size: 11px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .result-item-value { font-size: 18px; font-weight: 900; color: #084c41; }
+    .result-item-value.red { color: #c2410c; }
+    .result-item-sub { font-size: 11px; color: #66736f; font-weight: 600; margin-top: 2px; }
+
+    /* Breakdown table */
+    .breakdown { background: white; border: 1px solid #dbe8e4; border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .breakdown-title { padding: 14px 18px; font-size: 14px; font-weight: 800; color: #084c41; border-bottom: 1px solid #dbe8e4; background: #fbfefd; }
+    .breakdown-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid #f0f4f3; font-size: 14px; }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-row.total { background: #e7f5f1; font-weight: 800; }
+    .breakdown-row .label { color: #66736f; font-weight: 600; }
+    .breakdown-row .value { font-weight: 700; color: #182522; }
+    .breakdown-row .value.minus { color: #c2410c; }
+    .breakdown-row .value.plus { color: #0f6b5b; }
+
+    /* Tazminat section */
+    .tazminat-section { padding: 0 0 48px; }
+    .section-title { font-size: 22px; font-weight: 900; color: #084c41; margin-bottom: 6px; }
+    .section-desc { color: #66736f; font-size: 14px; margin-bottom: 20px; }
+    .tazminat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .taz-card { background: white; border: 1px solid #dbe8e4; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(15,107,91,0.06); }
+    .taz-header { padding: 18px 22px; border-bottom: 1px solid #dbe8e4; }
+    .taz-header h3 { font-size: 17px; font-weight: 800; color: #084c41; margin-bottom: 3px; }
+    .taz-header p { font-size: 13px; color: #66736f; }
+    .taz-body { padding: 18px 22px; }
+    .taz-result { background: #e7f5f1; border-radius: 10px; padding: 16px; text-align: center; margin-top: 14px; }
+    .taz-result strong { display: block; font-size: 26px; font-weight: 900; color: #084c41; letter-spacing: -0.5px; }
+    .taz-result span { font-size: 12px; color: #66736f; font-weight: 600; }
+
+    /* Info */
+    .info-section { background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 28px; margin: 0 0 48px; }
+    .info-section h2 { font-size: 20px; font-weight: 900; color: #084c41; margin-bottom: 12px; }
+    .info-section h3 { font-size: 16px; font-weight: 800; color: #182522; margin: 18px 0 8px; }
+    .info-section p { color: #66736f; line-height: 1.75; font-size: 14px; margin-bottom: 8px; }
+
+    /* Other tools */
+    .other-tools { padding: 0 0 60px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+    .tool-link { padding: 16px; background: white; border: 1px solid #dbe8e4; border-radius: 12px; font-weight: 700; font-size: 14px; color: #182522; transition: all .15s; }
+    .tool-link:hover { border-color: #0f6b5b; background: #e7f5f1; color: #084c41; }
+    .tool-link span { display: block; font-size: 12px; color: #66736f; font-weight: 600; margin-top: 3px; }
+
+    footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: #66736f; }
+
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .tazminat-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .calc-tabs { flex-direction: column; }
+      .param-bar { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
+    <a class="back-link" href="/">← Ana Sayfa</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Kampio</a><span>›</span>Maaş Hesaplama
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="container hero">
+    <div class="hero-badge">💼 2026 Güncel Parametreler</div>
+    <h1>Net Maaş Hesaplama <em>2026</em></h1>
+    <p class="hero-desc">Brütten nete, netten brüte maaş hesaplayıcı. SGK, gelir vergisi ve damga vergisi kesintilerini anında hesapla. Kıdem ve ihbar tazminatı da dahil.</p>
+    <div class="param-bar">
+      <div class="param-chip">Brüt Asgari Ücret: <strong>33.030 TL</strong></div>
+      <div class="param-chip">Net Asgari Ücret: <strong>28.075 TL</strong></div>
+      <div class="param-chip">SGK İşçi Payı: <strong>%14</strong></div>
+      <div class="param-chip">İşsizlik: <strong>%1</strong></div>
+      <div class="param-chip">Damga Vergisi: <strong>‰7,59</strong></div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="container" style="padding-bottom:20px">
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="switchCalcTab('brut', this)">💼 Brütten Nete</button>
+      <button class="calc-tab" onclick="switchCalcTab('net', this)">🔄 Netten Brüte</button>
+    </div>
+
+    <!-- Brütten Nete -->
+    <div id="calcBrut">
+      <div class="calc-card">
+        <div class="calc-header">
+          <h2>💼 Brütten Nete Maaş Hesaplama</h2>
+          <p>Brüt maaşınızı girerek net eline geçen tutarı hesaplayın.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Brüt Maaş (TL)</label>
+              <input class="form-input" id="brutInput" type="number" value="50000" min="33030" step="100" placeholder="50.000">
+            </div>
+            <div class="form-field">
+              <label>Medeni Durum</label>
+              <select class="form-select" id="medeniDurum">
+                <option value="bekar">Bekar</option>
+                <option value="evli">Evli (Eş Çalışmıyor)</option>
+                <option value="evli_calisıyor">Evli (Eş Çalışıyor)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Çocuk Sayısı</label>
+              <select class="form-select" id="cocukSayisi">
+                <option value="0">Çocuk Yok</option>
+                <option value="1">1 Çocuk</option>
+                <option value="2">2 Çocuk</option>
+                <option value="3">3+ Çocuk</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Engelli İndirimi</label>
+              <select class="form-select" id="engelli">
+                <option value="0">Yok</option>
+                <option value="1">1. Derece (%80+)</option>
+                <option value="2">2. Derece (%60-79)</option>
+                <option value="3">3. Derece (%40-59)</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateBrutToNet()">Net Maaşı Hesapla →</button>
+
+          <div class="result-section" id="brutResult" style="margin-top:20px">
+            <div class="result-main">
+              <div class="result-main-label">NET ELE GEÇEN TUTAR</div>
+              <div class="result-main-amount" id="netMaas">0 TL</div>
+            </div>
+            <div class="result-grid" id="brutResultGrid"></div>
+            <div class="breakdown">
+              <div class="breakdown-title">📋 Kesinti Detayları</div>
+              <div id="brutBreakdown"></div>
+            </div>
+            <p style="font-size:12px;color:#66736f;padding:0 4px">⚠️ Bu hesaplama yıl başı (Ocak) bazlı, kümülatif vergi matrahı sıfır varsayımıyla yapılmıştır. Yıl içinde dilim atlandıkça net maaş değişebilir. Kesin hesaplama için muhasebe/İK departmanınıza danışın.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Netten Brüte -->
+    <div id="calcNet" style="display:none">
+      <div class="calc-card">
+        <div class="calc-header">
+          <h2>🔄 Netten Brüte Maaş Hesaplama</h2>
+          <p>Eline geçmesini istediğin net tutarı girerek brüt maaşı hesapla.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>İstenen Net Maaş (TL)</label>
+              <input class="form-input" id="netInput" type="number" value="40000" min="28075" step="100" placeholder="40.000">
+            </div>
+            <div class="form-field">
+              <label>Medeni Durum</label>
+              <select class="form-select" id="medeniDurum2">
+                <option value="bekar">Bekar</option>
+                <option value="evli">Evli (Eş Çalışmıyor)</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateNetToBrut()">Brüt Maaşı Hesapla →</button>
+
+          <div class="result-section" id="netResult" style="margin-top:20px">
+            <div class="result-main">
+              <div class="result-main-label">BRÜT MAAŞ</div>
+              <div class="result-main-amount" id="brutMaas">0 TL</div>
+            </div>
+            <div class="result-grid" id="netResultGrid"></div>
+            <p style="font-size:12px;color:#66736f;padding:0 4px;margin-top:12px">⚠️ Bu hesaplama yaklaşık değer verir. Kesin tutar için muhasebe departmanınıza danışın.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tazminat -->
+  <section class="container tazminat-section">
+    <h2 class="section-title">📋 Tazminat Hesaplama</h2>
+    <p class="section-desc">Kıdem ve ihbar tazminatınızı hesaplayın.</p>
+    <div class="tazminat-grid">
+
+      <!-- Kıdem -->
+      <div class="taz-card">
+        <div class="taz-header">
+          <h3>⚖️ Kıdem Tazminatı</h3>
+          <p>Her tam yıl için 30 günlük brüt maaş</p>
+        </div>
+        <div class="taz-body">
+          <div style="display:grid;gap:12px">
+            <div class="form-field">
+              <label style="font-size:12px;font-weight:700;color:#66736f;text-transform:uppercase;letter-spacing:0.04em;display:block;margin-bottom:6px">Brüt Maaş (TL)</label>
+              <input class="form-input" id="kidemBrut" type="number" placeholder="50.000" value="50000">
+            </div>
+            <div class="form-field">
+              <label style="font-size:12px;font-weight:700;color:#66736f;text-transform:uppercase;letter-spacing:0.04em;display:block;margin-bottom:6px">Çalışma Süresi (Yıl)</label>
+              <input class="form-input" id="kidemYil" type="number" placeholder="5" value="5" min="1">
+            </div>
+            <div class="form-field">
+              <label style="font-size:12px;font-weight:700;color:#66736f;text-transform:uppercase;letter-spacing:0.04em;display:block;margin-bottom:6px">Ek Ay (0-11)</label>
+              <input class="form-input" id="kidemAy" type="number" placeholder="0" value="0" min="0" max="11">
+            </div>
+            <button class="calc-btn" onclick="calculateKidem()">Hesapla</button>
+          </div>
+          <div class="taz-result" id="kidemResult" style="display:none">
+            <strong id="kidemTutar">0 TL</strong>
+            <span id="kidemAciklama"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- İhbar -->
+      <div class="taz-card">
+        <div class="taz-header">
+          <h3>📢 İhbar Tazminatı</h3>
+          <p>Çalışma süresine göre ihbar bildirimi</p>
+        </div>
+        <div class="taz-body">
+          <div style="display:grid;gap:12px">
+            <div class="form-field">
+              <label style="font-size:12px;font-weight:700;color:#66736f;text-transform:uppercase;letter-spacing:0.04em;display:block;margin-bottom:6px">Brüt Maaş (TL)</label>
+              <input class="form-input" id="ihbarBrut" type="number" placeholder="50.000" value="50000">
+            </div>
+            <div class="form-field">
+              <label style="font-size:12px;font-weight:700;color:#66736f;text-transform:uppercase;letter-spacing:0.04em;display:block;margin-bottom:6px">Çalışma Süresi (Yıl)</label>
+              <input class="form-input" id="ihbarYil" type="number" placeholder="5" value="5" min="0">
+            </div>
+            <button class="calc-btn" onclick="calculateIhbar()">Hesapla</button>
+          </div>
+          <div class="taz-result" id="ihbarResult" style="display:none">
+            <strong id="ihbarTutar">0 TL</strong>
+            <span id="ihbarAciklama"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="container">
+    <div class="info-section">
+      <h2>2026 Maaş Hesaplama Rehberi</h2>
+
+      <h3>Brüt Maaş Nedir?</h3>
+      <p>Brüt maaş, işverenin çalışana ödemeyi taahhüt ettiği, yasal kesintiler yapılmadan önceki toplam ücrettir. 2026 yılı brüt asgari ücret 33.030 TL'dir.</p>
+
+      <h3>Net Maaş Nasıl Hesaplanır?</h3>
+      <p>Net Maaş = Brüt Maaş − SGK İşçi Primi (%14) − İşsizlik Sigortası İşçi Payı (%1) − Gelir Vergisi (artan oranlı) − Damga Vergisi (‰7,59). Asgari ücrete isabet eden gelir ve damga vergisi tüm çalışanlar için muaftır.</p>
+
+      <h3>2026 Gelir Vergisi Dilimleri</h3>
+      <p>
+        0 - 190.000 TL → %15<br>
+        190.001 - 400.000 TL → %20<br>
+        400.001 - 1.500.000 TL → %27<br>
+        1.500.001 - 5.000.000 TL → %35<br>
+        5.000.001 TL ve üzeri → %40
+      </p>
+
+      <h3>Kıdem Tazminatı Tavan Ücreti</h3>
+      <p>2026 yılı kıdem tazminatı tavanı güncellenmiştir. Her tam yıl için 30 günlük brüt maaş ödenir, ancak bu tutar tavan miktarı aşamaz. Kıdem tazminatından gelir vergisi ve SGK primi kesilmez.</p>
+    </div>
+  </section>
+
+  <!-- Other tools -->
+  <section class="container other-tools">
+    <h2 style="font-size:20px;font-weight:900;color:#084c41;margin-bottom:6px">Diğer Finansal Araçlar</h2>
+    <p style="color:#66736f;font-size:14px;margin-bottom:16px">Kampio ile tüm finansal hesaplamalarınızı yapın.</p>
+    <div class="tools-grid">
+      <a class="tool-link" href="/mevduat.html">💰 Mevduat Faiz Hesaplama<span>Hangi banka en yüksek faizi veriyor?</span></a>
+      <a class="tool-link" href="/">💳 Kredi Kartı Kampanyaları<span>Güncel banka kampanyaları</span></a>
+      <a class="tool-link" href="/akbank.html">🏦 Akbank Kampanyaları<span>Axess, Wings fırsatları</span></a>
+      <a class="tool-link" href="/garanti.html">🏦 Garanti BBVA Kampanyaları<span>Bonus fırsatları</span></a>
+      <a class="tool-link" href="/isbank.html">🏦 İş Bankası Kampanyaları<span>Maximum kart fırsatları</span></a>
+      <a class="tool-link" href="/ziraat.html">🏦 Ziraat Bankası Kampanyaları<span>Emekli promosyon</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#084c41">
+      <span style="width:26px;height:26px;background:#0f6b5b;border-radius:6px;display:grid;place-items:center;color:white;font-weight:900;font-size:12px">K</span>
+      Kampio
+    </div>
+    <div class="footer-copy">© 2026 Kampio · Hesaplamalar bilgilendirme amaçlıdır. Kesin tutar için muhasebe uzmanına danışın.</div>
+  </div>
+</footer>
+
+<script>
+  /* ── 2026 Parametreleri ── */
+  const P = {
+    brutAsgarUcret: 33030,
+    netAsgarUcret: 28075.5,
+    sgkIsci: 0.14,
+    issizlik: 0.01,
+    damgaOrani: 0.00759,
+    // Asgari ücret vergi istisnası (aylık)
+    gvIstisnasi: 4124.7, // Asgari ücret üzerinden hesaplanan aylık GV
+    // Gelir vergisi dilimleri (aylık matrah eşdeğerleri - yıllık/12)
+    gvDilimler: [
+      { limit: 190000/12, oran: 0.15 },
+      { limit: 400000/12, oran: 0.20 },
+      { limit: 1500000/12, oran: 0.27 },
+      { limit: 5000000/12, oran: 0.35 },
+      { limit: Infinity, oran: 0.40 }
+    ],
+    kidemTavan: 35058.58 // 2026 kıdem tazminatı tavanı (yaklaşık)
+  };
+
+  function formatTL(n) {
+    return n.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " TL";
+  }
+
+  function calcGelirVergisi(matrah) {
+    let vergi = 0;
+    let kalan = matrah;
+    let oncekiLimit = 0;
+    for (const dilim of P.gvDilimler) {
+      if (kalan <= 0) break;
+      const dilimBuyuklugu = dilim.limit - oncekiLimit;
+      const vergilenenKisim = Math.min(kalan, dilimBuyuklugu);
+      vergi += vergilenenKisim * dilim.oran;
+      kalan -= vergilenenKisim;
+      oncekiLimit = dilim.limit;
+    }
+    return vergi;
+  }
+
+  function calculateBrutToNet() {
+    const brut = parseFloat(document.getElementById("brutInput").value) || 50000;
+
+    const sgk = brut * P.sgkIsci;
+    const issizlik = brut * P.issizlik;
+    const gvMatrah = brut - sgk - issizlik;
+    const damga = brut * P.damgaOrani;
+
+    // Asgari ücrete isabet eden asgari ücret matrahının GV'si
+    const asgarUcretMatrah = P.brutAsgarUcret * (1 - P.sgkIsci - P.issizlik);
+    const asgarUcretGV = calcGelirVergisi(asgarUcretMatrah);
+
+    let gv = Math.max(0, calcGelirVergisi(gvMatrah) - asgarUcretGV);
+
+    // Asgari ücret damga vergisi istisnası
+    const damgaIstisna = P.brutAsgarUcret * P.damgaOrani;
+    const netDamga = Math.max(0, damga - damgaIstisna);
+
+    const toplamKesinti = sgk + issizlik + gv + netDamga;
+    const net = brut - toplamKesinti;
+
+    document.getElementById("netMaas").textContent = formatTL(net);
+    document.getElementById("brutResultGrid").innerHTML = `
+      <div class="result-item"><div class="result-item-label">SGK Primi</div><div class="result-item-value red">${formatTL(sgk)}</div><div class="result-item-sub">Brütün %14'ü</div></div>
+      <div class="result-item"><div class="result-item-label">Gelir Vergisi</div><div class="result-item-value red">${formatTL(gv)}</div><div class="result-item-sub">İstisna sonrası</div></div>
+      <div class="result-item"><div class="result-item-label">Toplam Kesinti</div><div class="result-item-value red">${formatTL(toplamKesinti)}</div><div class="result-item-sub">İşçi payı</div></div>`;
+
+    document.getElementById("brutBreakdown").innerHTML = `
+      <div class="breakdown-row"><span class="label">Brüt Maaş</span><span class="value plus">${formatTL(brut)}</span></div>
+      <div class="breakdown-row"><span class="label">SGK İşçi Primi (%14)</span><span class="value minus">-${formatTL(sgk)}</span></div>
+      <div class="breakdown-row"><span class="label">İşsizlik Sigortası İşçi Payı (%1)</span><span class="value minus">-${formatTL(issizlik)}</span></div>
+      <div class="breakdown-row"><span class="label">Gelir Vergisi Matrahı</span><span class="value">${formatTL(gvMatrah)}</span></div>
+      <div class="breakdown-row"><span class="label">Gelir Vergisi (İstisna sonrası)</span><span class="value minus">-${formatTL(gv)}</span></div>
+      <div class="breakdown-row"><span class="label">Damga Vergisi (‰7,59, istisna sonrası)</span><span class="value minus">-${formatTL(netDamga)}</span></div>
+      <div class="breakdown-row total"><span class="label">NET ELE GEÇEN TUTAR</span><span class="value plus">${formatTL(net)}</span></div>`;
+
+    document.getElementById("brutResult").classList.add("show");
+    document.getElementById("brutResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function calculateNetToBrut() {
+    const net = parseFloat(document.getElementById("netInput").value) || 40000;
+    // Approximation: brut ≈ net / (1 - 0.14 - 0.01 - ~0.12) — iterative
+    let brut = net / 0.73;
+    for (let i = 0; i < 20; i++) {
+      const sgk = brut * P.sgkIsci;
+      const issizlik = brut * P.issizlik;
+      const gvMatrah = brut - sgk - issizlik;
+      const asgarUcretMatrah = P.brutAsgarUcret * (1 - P.sgkIsci - P.issizlik);
+      const asgarUcretGV = calcGelirVergisi(asgarUcretMatrah);
+      const gv = Math.max(0, calcGelirVergisi(gvMatrah) - asgarUcretGV);
+      const damga = Math.max(0, brut * P.damgaOrani - P.brutAsgarUcret * P.damgaOrani);
+      const hesapNet = brut - sgk - issizlik - gv - damga;
+      brut = brut + (net - hesapNet) * 0.8;
+    }
+
+    const isverenSgk = brut * 0.205;
+    const isverenIssizlik = brut * 0.02;
+    const isverenMaliyet = brut + isverenSgk + isverenIssizlik;
+
+    document.getElementById("brutMaas").textContent = formatTL(brut);
+    document.getElementById("netResultGrid").innerHTML = `
+      <div class="result-item"><div class="result-item-label">Brüt Maaş</div><div class="result-item-value">${formatTL(brut)}</div></div>
+      <div class="result-item"><div class="result-item-label">İşveren SGK Payı</div><div class="result-item-value red">${formatTL(isverenSgk)}</div><div class="result-item-sub">%20,5</div></div>
+      <div class="result-item"><div class="result-item-label">İşverene Toplam Maliyet</div><div class="result-item-value red">${formatTL(isverenMaliyet)}</div></div>`;
+
+    document.getElementById("netResult").classList.add("show");
+    document.getElementById("netResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function calculateKidem() {
+    const brut = parseFloat(document.getElementById("kidemBrut").value) || 50000;
+    const yil = parseInt(document.getElementById("kidemYil").value) || 1;
+    const ay = parseInt(document.getElementById("kidemAy").value) || 0;
+    const gunlukBrut = brut / 30;
+    const toplamGun = (yil * 365) + (ay * 30);
+    const toplamYil = toplamGun / 365;
+    let tazminat = Math.min(gunlukBrut, P.kidemTavan / 30) * 30 * toplamYil;
+    document.getElementById("kidemTutar").textContent = formatTL(tazminat);
+    document.getElementById("kidemAciklama").textContent = `${yil} yıl ${ay} ay çalışma · Günlük brüt: ${formatTL(gunlukBrut)}`;
+    document.getElementById("kidemResult").style.display = "block";
+  }
+
+  function calculateIhbar() {
+    const brut = parseFloat(document.getElementById("ihbarBrut").value) || 50000;
+    const yil = parseInt(document.getElementById("ihbarYil").value) || 1;
+    let gun = 0;
+    let aciklama = "";
+    if (yil < 0.5) { gun = 14; aciklama = "6 aydan az → 14 iş günü"; }
+    else if (yil < 1.5) { gun = 28; aciklama = "6 ay - 1.5 yıl → 4 hafta"; }
+    else if (yil < 3) { gun = 42; aciklama = "1.5 - 3 yıl → 6 hafta"; }
+    else if (yil < 5) { gun = 56; aciklama = "3 - 5 yıl → 8 hafta"; }
+    else { gun = 70; aciklama = "5 yıl ve üzeri → 10 hafta"; }
+    const tazminat = (brut / 30) * gun;
+    document.getElementById("ihbarTutar").textContent = formatTL(tazminat);
+    document.getElementById("ihbarAciklama").textContent = `${gun} gün · ${aciklama}`;
+    document.getElementById("ihbarResult").style.display = "block";
+  }
+
+  function switchCalcTab(tab, btn) {
+    document.querySelectorAll(".calc-tab").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("calcBrut").style.display = tab === "brut" ? "" : "none";
+    document.getElementById("calcNet").style.display = tab === "net" ? "" : "none";
+  }
+</script>
+</body>
+</html>
