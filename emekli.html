@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emeklilik Hesaplama 2026 | Ne Zaman Emekli Olurum? Emekli Maaşı | Kampio</title>
+  <meta name="description" content="2026 güncel emeklilik hesaplama. Ne zaman emekli olurum? Emekli maaşı tahmini, emeklilik yaşı şartları. SSK 4A, Bağ-Kur 4B, Memur 4C. Banka emekli promosyonları.">
+  <meta name="keywords" content="emeklilik hesaplama 2026, ne zaman emekli olurum, emekli maaşı hesaplama, emeklilik yaşı, prim günü hesaplama, emekli promosyon, SSK emeklilik, Bağkur emeklilik">
+  <link rel="canonical" href="https://kampio.vercel.app/emekli.html">
+  <meta property="og:title" content="Emeklilik Hesaplama 2026 | Ne Zaman Emekli Olurum? | Kampio">
+  <meta property="og:description" content="2026 güncel emeklilik yaşı ve prim günü hesaplama. Emekli maaşı tahmini ve banka promosyon karşılaştırması.">
+  <meta property="og:url" content="https://kampio.vercel.app/emekli.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f6b5b'/><rect x='18' y='32' width='64' height='42' rx='7' fill='white' opacity='0.15'/><rect x='18' y='32' width='64' height='42' rx='7' fill='none' stroke='white' stroke-width='3'/><rect x='18' y='46' width='64' height='8' fill='white' opacity='0.9'/></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar { background: white; border-bottom: 1px solid #dbe8e4; position: sticky; top: 0; z-index: 100; }
+    .topbar-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
+    .brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
+    .back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; }
+    .back-link:hover { background: #e7f5f1; }
+    .breadcrumb { padding: 12px 0; font-size: 13px; color: #66736f; font-weight: 600; }
+    .breadcrumb a { color: #0f6b5b; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .hero { padding: 40px 0 28px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e7f5f1; color: #084c41; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 48px); font-weight: 900; color: #084c41; letter-spacing: -1px; line-height: 1.05; margin-bottom: 12px; }
+    .hero h1 em { font-style: normal; color: #0f6b5b; }
+    .hero-desc { font-size: 16px; color: #66736f; max-width: 580px; line-height: 1.6; margin-bottom: 24px; }
+    .stat-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .stat-chip { padding: 10px 16px; background: white; border: 1px solid #dbe8e4; border-radius: 10px; font-size: 13px; font-weight: 700; }
+    .stat-chip strong { color: #0f6b5b; display: block; font-size: 18px; font-weight: 900; }
+    .stat-chip span { color: #66736f; font-size: 12px; }
+
+    /* Tabs */
+    .page-tabs { display: flex; gap: 4px; margin: 28px 0 20px; background: #e7f5f1; border-radius: 10px; padding: 4px; overflow-x: auto; }
+    .page-tab { flex: 1; min-width: 120px; padding: 11px 8px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .15s; color: #66736f; background: transparent; white-space: nowrap; }
+    .page-tab.active { background: white; color: #084c41; box-shadow: 0 2px 8px rgba(15,107,91,0.1); }
+
+    /* Cards */
+    .calc-card { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(15,107,91,0.08); margin-bottom: 20px; }
+    .calc-header { background: linear-gradient(135deg, #0f6b5b 0%, #084c41 100%); padding: 24px 28px; }
+    .calc-header h2 { font-size: 20px; font-weight: 900; color: white; margin-bottom: 4px; }
+    .calc-header p { font-size: 13px; color: rgba(255,255,255,0.75); }
+    .calc-body { padding: 24px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+    .form-field label { display: block; font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .form-input { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 15px; font-weight: 700; color: #182522; background: white; transition: border-color .15s, box-shadow .15s; }
+    .form-input:focus { outline: none; border-color: #0f6b5b; box-shadow: 0 0 0 3px rgba(15,107,91,0.1); }
+    .form-select { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 15px; font-weight: 700; color: #182522; background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2366736f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; appearance: none; cursor: pointer; }
+    .form-select:focus { outline: none; border-color: #0f6b5b; }
+    .calc-btn { width: 100%; height: 52px; background: #0f6b5b; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgba(15,107,91,0.28); transition: background .15s, transform .1s; margin-top: 4px; }
+    .calc-btn:hover { background: #084c41; transform: translateY(-1px); }
+
+    /* Result */
+    .result-box { display: none; margin-top: 20px; }
+    .result-box.show { display: block; }
+    .result-main { background: linear-gradient(135deg, #0f6b5b, #084c41); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+    .result-main-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.75); margin-bottom: 6px; }
+    .result-main-value { font-size: clamp(28px, 5vw, 44px); font-weight: 900; color: white; letter-spacing: -1px; }
+    .result-main-sub { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .result-item { background: white; border: 1px solid #dbe8e4; border-radius: 10px; padding: 14px; }
+    .result-item-label { font-size: 11px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .result-item-value { font-size: 17px; font-weight: 900; color: #084c41; }
+    .result-note { font-size: 12px; color: #66736f; padding: 10px 14px; background: #fff7e6; border-radius: 8px; border-left: 3px solid #f59e0b; }
+
+    /* Promosyon tablosu */
+    .promo-table-wrap { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(15,107,91,0.06); }
+    .promo-table { width: 100%; border-collapse: collapse; }
+    .promo-table th { padding: 14px 20px; background: #f7faf9; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: #66736f; text-align: left; border-bottom: 1px solid #dbe8e4; }
+    .promo-table td { padding: 16px 20px; border-bottom: 1px solid #dbe8e4; vertical-align: middle; font-size: 14px; font-weight: 600; }
+    .promo-table tr:last-child td { border-bottom: none; }
+    .promo-table tr:hover td { background: #fbfefd; }
+    .bank-cell { display: flex; align-items: center; gap: 12px; }
+    .bank-dot { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: white; font-size: 11px; font-weight: 900; flex-shrink: 0; }
+    .promo-amount { font-size: 17px; font-weight: 900; color: #084c41; }
+    .promo-badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; }
+    .promo-badge.top { background: #d1fae5; color: #065f46; }
+    .promo-badge.good { background: #e7f5f1; color: #084c41; }
+    .section-head { margin-bottom: 20px; }
+    .section-head h2 { font-size: 22px; font-weight: 900; color: #084c41; margin-bottom: 6px; }
+    .section-head p { color: #66736f; font-size: 14px; }
+    .updated-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #e7f5f1; border-radius: 999px; font-size: 12px; font-weight: 700; color: #084c41; margin-bottom: 16px; }
+    .updated-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f6b5b; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* Info */
+    .info-section { background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 28px; margin: 0 0 48px; }
+    .info-section h2 { font-size: 20px; font-weight: 900; color: #084c41; margin-bottom: 12px; }
+    .info-section h3 { font-size: 16px; font-weight: 800; color: #182522; margin: 18px 0 8px; }
+    .info-section p { color: #66736f; line-height: 1.75; font-size: 14px; margin-bottom: 8px; }
+    .info-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+    .info-table th { padding: 10px 14px; background: #f7faf9; font-size: 12px; font-weight: 700; color: #66736f; text-align: left; border: 1px solid #dbe8e4; }
+    .info-table td { padding: 10px 14px; font-size: 13px; border: 1px solid #dbe8e4; color: #182522; }
+    .info-table tr:nth-child(even) td { background: #fbfefd; }
+
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; margin-top: 16px; }
+    .tool-link { padding: 16px; background: white; border: 1px solid #dbe8e4; border-radius: 12px; font-weight: 700; font-size: 14px; color: #182522; transition: all .15s; display: block; }
+    .tool-link:hover { border-color: #0f6b5b; background: #e7f5f1; color: #084c41; }
+    .tool-link span { display: block; font-size: 12px; color: #66736f; font-weight: 600; margin-top: 3px; }
+
+    footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: #66736f; }
+
+    @media (max-width: 768px) {
+      .form-row, .form-row.three { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .promo-table-wrap { overflow-x: auto; }
+      .promo-table { min-width: 580px; }
+    }
+    @media (max-width: 480px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .stat-row { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
+    <a class="back-link" href="/">← Ana Sayfa</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Kampio</a><span>›</span>Emeklilik Hesaplama
+    </div>
+  </div>
+
+  <section class="container hero">
+    <div class="hero-badge">👴 2026 Güncel Veriler</div>
+    <h1>Emeklilik Hesaplama <em>2026</em></h1>
+    <p class="hero-desc">Ne zaman emekli olurum? Emekli maaşım ne kadar olur? Hangi banka en yüksek promosyonu veriyor? Tüm sorularını burada yanıtla.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><strong>20.000 TL</strong><span>En Düşük Emekli Maaşı</span></div>
+      <div class="stat-chip"><strong>7.200 Gün</strong><span>2008+ Sigorta Prim Günü</span></div>
+      <div class="stat-chip"><strong>65 Yaş</strong><span>2008+ Sigorta Emeklilik Yaşı</span></div>
+      <div class="stat-chip"><strong>30.000 TL</strong><span>En Yüksek Banka Promosyonu</span></div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:20px">
+    <div class="page-tabs">
+      <button class="page-tab active" onclick="switchTab('yas', this)">⏰ Ne Zaman Emekli Olurum?</button>
+      <button class="page-tab" onclick="switchTab('maas', this)">💰 Emekli Maaşı Tahmini</button>
+      <button class="page-tab" onclick="switchTab('promo', this)">🏦 Banka Promosyonları</button>
+    </div>
+
+    <!-- TAB 1: Emeklilik Yaşı -->
+    <div id="tabYas">
+      <div class="calc-card">
+        <div class="calc-header">
+          <h2>⏰ Ne Zaman Emekli Olurum?</h2>
+          <p>Sigorta başlangıç tarihinize ve bilgilerinize göre tahmini emeklilik tarihinizi hesaplayın.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Doğum Yılı</label>
+              <input class="form-input" id="dogumYil" type="number" value="1985" min="1950" max="2005" placeholder="1985">
+            </div>
+            <div class="form-field">
+              <label>Cinsiyet</label>
+              <select class="form-select" id="cinsiyet">
+                <option value="erkek">Erkek</option>
+                <option value="kadin">Kadın</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Sigorta Başlangıç Yılı</label>
+              <input class="form-input" id="sigortaBaslangic" type="number" value="2005" min="1970" max="2025" placeholder="2005">
+            </div>
+            <div class="form-field">
+              <label>Sigorta Türü</label>
+              <select class="form-select" id="sigortaTur">
+                <option value="4a">4A — SSK (İşçi)</option>
+                <option value="4b">4B — Bağ-Kur (Esnaf)</option>
+                <option value="4c">4C — Emekli Sandığı (Memur)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Mevcut Prim Günü</label>
+              <input class="form-input" id="primGun" type="number" value="3600" min="0" max="15000" placeholder="3600">
+            </div>
+            <div class="form-field">
+              <label>Aylık Çalışma Günü</label>
+              <select class="form-select" id="aylikGun">
+                <option value="30">30 gün (tam zamanlı)</option>
+                <option value="20">20 gün (part-time)</option>
+                <option value="15">15 gün (yarı zamanlı)</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateEmeklilik()">Emeklilik Tarihimi Hesapla →</button>
+
+          <div class="result-box" id="yasResult">
+            <div class="result-main">
+              <div class="result-main-label">TAHMİNİ EMEKLİLİK TARİHİ</div>
+              <div class="result-main-value" id="emekliYil">—</div>
+              <div class="result-main-sub" id="emekliDetay">—</div>
+            </div>
+            <div class="result-grid" id="yasResultGrid"></div>
+            <div class="result-note">⚠️ Bu hesaplama sigorta başlangıç tarihinize göre genel bir tahmindir. Kesin emeklilik tarihinizi e-Devlet üzerinden (sgk.gov.tr/nezaman) veya SGK şubelerinden öğrenebilirsiniz.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emeklilik Şartları Tablosu -->
+      <div class="info-section">
+        <h2>2026 Emeklilik Şartları Tablosu</h2>
+        <p>Sigorta başlangıç yılına göre emeklilik yaşı ve prim günü şartları:</p>
+        <table class="info-table">
+          <thead>
+            <tr><th>Sigorta Başlangıcı</th><th>Erkek — Yaş / Prim Günü</th><th>Kadın — Yaş / Prim Günü</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>8 Eylül 1999 öncesi</td><td>44-60 yaş / 5.000-7.000 gün</td><td>40-58 yaş / 5.000-7.000 gün</td></tr>
+            <tr><td>1999 - 2008 arası</td><td>kademeli / 6.300-7.200 gün</td><td>kademeli / 5.975-7.200 gün</td></tr>
+            <tr><td>1 Mayıs 2008 sonrası</td><td>65 yaş / 7.200 gün</td><td>65 yaş / 7.200 gün</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px">3.600 prim günü ile kısmi (yaştan) emeklilik mümkündür. Tam emeklilik için şartlar daha yüksektir.</p>
+      </div>
+    </div>
+
+    <!-- TAB 2: Emekli Maaşı -->
+    <div id="tabMaas" style="display:none">
+      <div class="calc-card">
+        <div class="calc-header">
+          <h2>💰 Emekli Maaşı Tahmini</h2>
+          <p>2008 sonrası sigortalılar için ortalama maaş tahmini. Kesin hesaplama için SGK'ya başvurun.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Toplam Prim Günü</label>
+              <input class="form-input" id="maasGun" type="number" value="7200" min="3600" placeholder="7200">
+            </div>
+            <div class="form-field">
+              <label>Ortalama Aylık Brüt Maaş (TL)</label>
+              <input class="form-input" id="maasBrut" type="number" value="50000" min="33030" placeholder="50000">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Sigorta Türü</label>
+              <select class="form-select" id="maasSigortaTur">
+                <option value="4a">4A — SSK (İşçi)</option>
+                <option value="4b">4B — Bağ-Kur (Esnaf)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Sigorta Dönemi</label>
+              <select class="form-select" id="maasDonemi">
+                <option value="2008sonrasi">2008 sonrası (tamamı)</option>
+                <option value="karisik">1999-2008 arası giriş</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateMaas()">Maaş Tahmini Hesapla →</button>
+
+          <div class="result-box" id="maasResult">
+            <div class="result-main">
+              <div class="result-main-label">TAHMİNİ EMEKLİ MAAŞI</div>
+              <div class="result-main-value" id="tahminiMaas">—</div>
+              <div class="result-main-sub" id="maasDetay">—</div>
+            </div>
+            <div class="result-grid" id="maasResultGrid"></div>
+            <div class="result-note">⚠️ Bu hesaplama 2008 sonrası dönem için basitleştirilmiş formülle yapılmıştır. Gerçek maaşınız prim ödeme dönemlerinize, kazançlarınıza ve güncelleme katsayılarına göre değişir. Kesin hesaplama için e-Devlet → SGK → Emekli Maaşı Sorgulama bölümünü kullanın.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Banka Promosyonları -->
+    <div id="tabPromo" style="display:none">
+      <div class="section-head">
+        <h2>🏦 Emekli Maaşı Banka Promosyonları 2026</h2>
+        <p>SGK emekli maaşını hangi bankaya taşırsanız ne kadar promosyon alırsınız?</p>
+      </div>
+      <div class="updated-badge"><span class="updated-dot"></span>Haziran 2026 — Güncellendi · Kaynak: Banka resmi siteleri</div>
+      <div class="promo-table-wrap">
+        <table class="promo-table">
+          <thead>
+            <tr><th>Banka</th><th>Promosyon Tutarı</th><th>Taahhüt Süresi</th><th>Ek Avantajlar</th><th>Durum</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#003087">YK</div><div><b>Yapı Kredi</b><div style="font-size:12px;color:#66736f">World Card</div></div></div></td>
+              <td><div class="promo-amount">30.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Yıllık ücretsiz kart, ücretsiz ATM</td>
+              <td><span class="promo-badge top">🏆 En Yüksek</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#00A650">GB</div><div><b>Garanti BBVA</b><div style="font-size:12px;color:#66736f">Bonus Kart</div></div></div></td>
+              <td><div class="promo-amount">25.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Bonus puan, ücretsiz havale</td>
+              <td><span class="promo-badge top">✓ Yüksek</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#e3001b">AK</div><div><b>Akbank</b><div style="font-size:12px;color:#66736f">Axess Kart</div></div></div></td>
+              <td><div class="promo-amount">15.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Chip-para, ücretsiz ATM</td>
+              <td><span class="promo-badge good">✓ İyi</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#005EB8">İŞ</div><div><b>İş Bankası</b><div style="font-size:12px;color:#66736f">Maximum Kart</div></div></div></td>
+              <td><div class="promo-amount">15.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>MaxiPuan, ücretsiz kart</td>
+              <td><span class="promo-badge good">✓ İyi</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#E31E24">ZR</div><div><b>Ziraat Bankası</b><div style="font-size:12px;color:#66736f">Bankkart</div></div></div></td>
+              <td><div class="promo-amount">12.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Ücretsiz ATM, şube avantajı</td>
+              <td><span class="promo-badge good">✓ İyi</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#F7941D">VK</div><div><b>VakıfBank</b><div style="font-size:12px;color:#66736f">World Kart</div></div></div></td>
+              <td><div class="promo-amount">10.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Ücretsiz ATM, geniş şube ağı</td>
+              <td><span class="promo-badge good">✓ İyi</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#004B8D">HB</div><div><b>Halkbank</b><div style="font-size:12px;color:#66736f">Paraf Kart</div></div></div></td>
+              <td><div class="promo-amount">10.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Ücretsiz kart, şube avantajı</td>
+              <td><span class="promo-badge good">✓ İyi</span></td>
+            </tr>
+            <tr>
+              <td><div class="bank-cell"><div class="bank-dot" style="background:#8B0000">QN</div><div><b>QNB Finansbank</b><div style="font-size:12px;color:#66736f">CardFinans</div></div></div></td>
+              <td><div class="promo-amount">8.000 TL</div></td>
+              <td>3 yıl</td>
+              <td>Puan avantajı</td>
+              <td><span class="promo-badge"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:12px;color:#66736f;margin-top:12px;padding:10px 14px;background:#fff7e6;border-radius:8px;border-left:3px solid #f59e0b">⚠️ Promosyon tutarları maaş miktarına ve taahhüt süresine göre değişir. Kesin teklif için bankayla iletişime geçin. Promosyon almak için genellikle 3 yıl taahhüt zorunludur.</p>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="container">
+    <div class="info-section">
+      <h2>Emeklilik Hakkında Sık Sorulan Sorular</h2>
+
+      <h3>Kaç gün prim ödersem emekli olurum?</h3>
+      <p>2008 sonrası ilk defa sigortalı olanlar için <strong>7.200 prim günü</strong> ve 65 yaş şartı aranmaktadır. 1999 öncesi sigortalılar ise 5.000 gün ile çok daha erken emekli olabilmektedir. 3.600 prim günü ile yaştan (kısmi) emeklilik de mümkündür.</p>
+
+      <h3>Emekli maaşım nasıl hesaplanır?</h3>
+      <p>2008 sonrası dönem için: <strong>Ortalama Aylık Kazanç × Aylık Bağlama Oranı</strong> formülü kullanılır. ABO, her 360 günlük çalışma için artış gösterir. 7.200 gün prim ödeyenler için ABO yaklaşık %40 civarındadır.</p>
+
+      <h3>Emekli maaşı ne zaman yatar?</h3>
+      <p>SSK (4A) emeklileri için her ayın <strong>17-26'sı</strong>, Bağ-Kur (4B) emeklileri için <strong>25-28'i</strong>, Emekli Sandığı (4C) emeklileri için ise <strong>ay başı ile 5'i</strong> arasında ödeme yapılmaktadır.</p>
+
+      <h3>Emekli promosyonu alırken nelere dikkat etmeliyim?</h3>
+      <p>Promosyon için genellikle <strong>3 yıl taahhüt</strong> zorunludur. Taahhüt süresinden önce ayrılırsanız promosyonun bir kısmını iade etmeniz gerekebilir. Promosyon tutarı maaş miktarına göre değişir; yüksek maaş alan emekliler daha yüksek promosyon alabilir.</p>
+
+      <h3>Askerlik borçlanması prim gününü artırır mı?</h3>
+      <p>Evet, askerlik sürenizi SGK'ya borçlanarak prim gününüze ekleyebilirsiniz. Bu hem prim gün sayınızı artırır hem de emeklilik tarihini öne çekebilir. Başvuru için en yakın SGK şubesine gitmeniz gerekir.</p>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:60px">
+    <h2 style="font-size:20px;font-weight:900;color:#084c41;margin-bottom:6px">Diğer Finansal Araçlar</h2>
+    <p style="color:#66736f;font-size:14px;margin-bottom:16px">Kampio ile tüm finansal hesaplamalarınızı yapın.</p>
+    <div class="tools-grid">
+      <a class="tool-link" href="/maas.html">💼 Net Maaş Hesaplama<span>Brütten nete, kıdem tazminatı</span></a>
+      <a class="tool-link" href="/mevduat.html">💰 Mevduat Faiz Hesaplama<span>En yüksek faizi bul</span></a>
+      <a class="tool-link" href="/">💳 Kredi Kartı Kampanyaları<span>Güncel banka kampanyaları</span></a>
+      <a class="tool-link" href="/ziraat.html">🏦 Ziraat Bankası Kampanyaları<span>Emekli promosyon detayları</span></a>
+      <a class="tool-link" href="/isbank.html">🏦 İş Bankası Kampanyaları<span>Maximum kart fırsatları</span></a>
+      <a class="tool-link" href="/garanti.html">🏦 Garanti BBVA Kampanyaları<span>Bonus fırsatları</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#084c41">
+      <span style="width:26px;height:26px;background:#0f6b5b;border-radius:6px;display:grid;place-items:center;color:white;font-weight:900;font-size:12px">K</span>
+      Kampio
+    </div>
+    <div class="footer-copy">© 2026 Kampio · Bilgilendirme amaçlıdır. Kesin hesaplama için SGK'ya başvurun.</div>
+  </div>
+</footer>
+
+<script>
+  function switchTab(tab, btn) {
+    document.querySelectorAll(".page-tab").forEach(t => t.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tabYas").style.display = tab === "yas" ? "" : "none";
+    document.getElementById("tabMaas").style.display = tab === "maas" ? "" : "none";
+    document.getElementById("tabPromo").style.display = tab === "promo" ? "" : "none";
+  }
+
+  function formatTL(n) {
+    return Math.round(n).toLocaleString("tr-TR") + " TL";
+  }
+
+  function calculateEmeklilik() {
+    const dogumYil = parseInt(document.getElementById("dogumYil").value);
+    const cinsiyet = document.getElementById("cinsiyet").value;
+    const sigortaBaslangic = parseInt(document.getElementById("sigortaBaslangic").value);
+    const sigortaTur = document.getElementById("sigortaTur").value;
+    const mevcutGun = parseInt(document.getElementById("primGun").value) || 0;
+    const aylikGun = parseInt(document.getElementById("aylikGun").value);
+
+    // Emeklilik şartları
+    let gerekliYas, gerekliGun;
+    if (sigortaBaslangic < 1999) {
+      gerekliYas = cinsiyet === "erkek" ? 55 : 50;
+      gerekliGun = 5000;
+    } else if (sigortaBaslangic < 2008) {
+      gerekliYas = cinsiyet === "erkek" ? 60 : 58;
+      gerekliGun = 6300;
+    } else {
+      gerekliYas = 65;
+      gerekliGun = 7200;
+    }
+
+    const bugun = 2026;
+    const simdikiYas = bugun - dogumYil;
+    const eksikGun = Math.max(0, gerekliGun - mevcutGun);
+    const eksikAy = Math.ceil(eksikGun / aylikGun);
+    const primDolmaYil = bugun + Math.ceil(eksikAy / 12);
+    const yasEmekliYil = dogumYil + gerekliYas;
+    const emekliYil = Math.max(primDolmaYil, yasEmekliYil);
+    const kalanYil = emekliYil - bugun;
+
+    document.getElementById("emekliYil").textContent = emekliYil + " yılı";
+    document.getElementById("emekliDetay").textContent =
+      `${emekliYil - dogumYil} yaşında · ${kalanYil > 0 ? kalanYil + " yıl kaldı" : "Emekli olabilirsiniz!"}`;
+
+    document.getElementById("yasResultGrid").innerHTML = `
+      <div class="result-item"><div class="result-item-label">Şu Anki Yaş</div><div class="result-item-value">${simdikiYas}</div></div>
+      <div class="result-item"><div class="result-item-label">Gereken Yaş</div><div class="result-item-value">${gerekliYas}</div></div>
+      <div class="result-item"><div class="result-item-label">Gereken Prim Günü</div><div class="result-item-value">${gerekliGun.toLocaleString("tr-TR")}</div></div>
+      <div class="result-item"><div class="result-item-label">Mevcut Prim Günü</div><div class="result-item-value">${mevcutGun.toLocaleString("tr-TR")}</div></div>
+      <div class="result-item"><div class="result-item-label">Eksik Prim Günü</div><div class="result-item-value">${eksikGun.toLocaleString("tr-TR")}</div></div>
+      <div class="result-item"><div class="result-item-label">Kalan Süre</div><div class="result-item-value">${kalanYil > 0 ? kalanYil + " yıl" : "Hazır!"}</div></div>`;
+
+    document.getElementById("yasResult").classList.add("show");
+    document.getElementById("yasResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function calculateMaas() {
+    const gun = parseInt(document.getElementById("maasGun").value) || 7200;
+    const brut = parseFloat(document.getElementById("maasBrut").value) || 50000;
+    const donemi = document.getElementById("maasDonemi").value;
+
+    // ABO hesaplama (2008 sonrası dönem için)
+    // Her 360 gün için %2 ABO (2008 sonrası)
+    const yil = gun / 360;
+    let abo = yil * 0.02; // 2008 sonrası %2/yıl
+    if (donemi === "karisik") abo = yil * 0.025; // ortalama
+    abo = Math.min(abo, 0.90); // maksimum %90
+
+    // Ortalama kazanç (güncelleme katsayısı ile - yaklaşık %60 artış)
+    const guncellenmisKazanc = brut * 0.6; // yaklaşık güncelleme
+    let tahminiMaas = guncellenmisKazanc * abo;
+
+    // Taban maaş kontrolü
+    tahminiMaas = Math.max(tahminiMaas, 20000);
+
+    document.getElementById("tahminiMaas").textContent = formatTL(tahminiMaas);
+    document.getElementById("maasDetay").textContent =
+      `ABO: %${(abo*100).toFixed(1)} · ${(gun/360).toFixed(1)} yıl çalışma`;
+
+    document.getElementById("maasResultGrid").innerHTML = `
+      <div class="result-item"><div class="result-item-label">Prim Günü</div><div class="result-item-value">${gun.toLocaleString("tr-TR")}</div></div>
+      <div class="result-item"><div class="result-item-label">Aylık Bağlama Oranı</div><div class="result-item-value">%${(abo*100).toFixed(1)}</div></div>
+      <div class="result-item"><div class="result-item-label">Taban Maaş</div><div class="result-item-value">20.000 TL</div></div>`;
+
+    document.getElementById("maasResult").classList.add("show");
+    document.getElementById("maasResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+</script>
+</body>
+</html>
