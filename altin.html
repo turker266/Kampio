@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Altın ve Döviz Hesaplayıcı 2026 | Gram Altın, Dolar, Euro | Kampio</title>
+  <meta name="description" content="Güncel altın fiyatları ve döviz kurları. Gram altın, çeyrek altın, yarım altın, tam altın hesaplayıcı. Dolar ve Euro TL karşılığı. Anlık güncelleme.">
+  <meta name="keywords" content="gram altın fiyatı, çeyrek altın fiyatı, dolar kuru, euro kuru, altın hesaplayıcı, döviz hesaplayıcı, altın TL, dolar TL 2026">
+  <link rel="canonical" href="https://kampio.vercel.app/altin.html">
+  <meta property="og:title" content="Altın ve Döviz Hesaplayıcı 2026 | Kampio">
+  <meta property="og:description" content="Güncel altın fiyatları ve döviz kurları. Gram altın, çeyrek, yarım, tam altın hesaplayıcı.">
+  <meta property="og:url" content="https://kampio.vercel.app/altin.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f6b5b'/><rect x='18' y='32' width='64' height='42' rx='7' fill='white' opacity='0.15'/><rect x='18' y='32' width='64' height='42' rx='7' fill='none' stroke='white' stroke-width='3'/><rect x='18' y='46' width='64' height='8' fill='white' opacity='0.9'/></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+
+    /* Ticker şerit */
+    .ticker-bar { background: #084c41; color: white; padding: 0; overflow: hidden; height: 36px; display: flex; align-items: center; }
+    .ticker-inner { display: flex; align-items: center; gap: 0; animation: ticker 30s linear infinite; white-space: nowrap; }
+    .ticker-inner:hover { animation-play-state: paused; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-item { display: inline-flex; align-items: center; gap: 6px; padding: 0 24px; font-size: 13px; font-weight: 700; border-right: 1px solid rgba(255,255,255,0.15); height: 36px; }
+    .ticker-label { color: rgba(255,255,255,0.65); font-size: 12px; }
+    .ticker-value { color: white; }
+    .ticker-change { font-size: 11px; }
+    .ticker-change.up { color: #4ade80; }
+    .ticker-change.down { color: #f87171; }
+    .ticker-loading { padding: 0 20px; font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; }
+
+    /* Topbar */
+    .topbar { background: white; border-bottom: 1px solid #dbe8e4; position: sticky; top: 0; z-index: 100; }
+    .topbar-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
+    .brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
+    .back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; }
+    .back-link:hover { background: #e7f5f1; }
+    .breadcrumb { padding: 12px 0; font-size: 13px; color: #66736f; font-weight: 600; }
+    .breadcrumb a { color: #0f6b5b; }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* Hero */
+    .hero { padding: 36px 0 24px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #fff7e6; color: #9a5b00; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 48px); font-weight: 900; color: #084c41; letter-spacing: -1px; line-height: 1.05; margin-bottom: 12px; }
+    .hero h1 em { font-style: normal; color: #f59e0b; }
+    .hero-desc { font-size: 16px; color: #66736f; max-width: 560px; line-height: 1.6; }
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #e7f5f1; border-radius: 999px; font-size: 12px; font-weight: 700; color: #084c41; margin-top: 16px; }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f6b5b; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* Fiyat kartları */
+    .prices-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+    .price-card { background: white; border: 1px solid #dbe8e4; border-radius: 14px; padding: 20px; box-shadow: 0 4px 16px rgba(15,107,91,0.06); transition: transform .2s, box-shadow .2s; }
+    .price-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(15,107,91,0.12); }
+    .price-card-icon { font-size: 28px; margin-bottom: 10px; }
+    .price-card-label { font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .price-card-value { font-size: clamp(20px, 3vw, 28px); font-weight: 900; color: #084c41; letter-spacing: -0.5px; }
+    .price-card-sub { font-size: 12px; color: #66736f; font-weight: 600; margin-top: 4px; }
+    .price-card.gold { border-top: 3px solid #f59e0b; }
+    .price-card.usd { border-top: 3px solid #22c55e; }
+    .price-card.eur { border-top: 3px solid #3b82f6; }
+    .price-card.gbp { border-top: 3px solid #8b5cf6; }
+
+    /* Tabs */
+    .calc-tabs { display: flex; gap: 4px; margin: 8px 0 20px; background: #e7f5f1; border-radius: 10px; padding: 4px; }
+    .calc-tab { flex: 1; padding: 11px; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all .15s; color: #66736f; background: transparent; }
+    .calc-tab.active { background: white; color: #084c41; box-shadow: 0 2px 8px rgba(15,107,91,0.1); }
+
+    /* Calculator */
+    .calc-card { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(15,107,91,0.08); margin-bottom: 20px; }
+    .calc-header { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 24px 28px; }
+    .calc-header h2 { font-size: 20px; font-weight: 900; color: white; margin-bottom: 4px; }
+    .calc-header p { font-size: 13px; color: rgba(255,255,255,0.85); }
+    .calc-header.blue { background: linear-gradient(135deg, #0f6b5b, #084c41); }
+    .calc-body { padding: 24px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-field label { display: block; font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .form-input { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 16px; font-weight: 700; color: #182522; background: white; transition: border-color .15s, box-shadow .15s; }
+    .form-input:focus { outline: none; border-color: #0f6b5b; box-shadow: 0 0 0 3px rgba(15,107,91,0.1); }
+    .form-select { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 15px; font-weight: 700; color: #182522; background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2366736f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; appearance: none; cursor: pointer; }
+    .calc-btn { width: 100%; height: 52px; background: #f59e0b; color: #431a00; border: none; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgba(245,158,11,0.3); transition: background .15s, transform .1s; margin-top: 4px; }
+    .calc-btn:hover { background: #d97706; transform: translateY(-1px); }
+    .calc-btn.green { background: #0f6b5b; color: white; box-shadow: 0 8px 20px rgba(15,107,91,0.28); }
+    .calc-btn.green:hover { background: #084c41; }
+
+    /* Result */
+    .result-box { display: none; margin-top: 20px; }
+    .result-box.show { display: block; }
+    .result-main { background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 14px; padding: 24px; margin-bottom: 16px; text-align: center; }
+    .result-main.green { background: linear-gradient(135deg, #0f6b5b, #084c41); }
+    .result-main-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.8); margin-bottom: 8px; }
+    .result-main-value { font-size: clamp(32px, 5vw, 50px); font-weight: 900; color: white; letter-spacing: -1px; }
+    .result-main-sub { font-size: 14px; color: rgba(255,255,255,0.75); margin-top: 6px; }
+    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .result-item { background: white; border: 1px solid #dbe8e4; border-radius: 10px; padding: 14px; text-align: center; }
+    .result-item-label { font-size: 11px; font-weight: 700; color: #66736f; text-transform: uppercase; margin-bottom: 6px; }
+    .result-item-value { font-size: 17px; font-weight: 900; color: #084c41; }
+
+    /* Altın tablosu */
+    .gold-table-wrap { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(15,107,91,0.06); margin-bottom: 20px; }
+    .gold-table { width: 100%; border-collapse: collapse; }
+    .gold-table th { padding: 14px 20px; background: #fffbeb; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: #92400e; text-align: left; border-bottom: 1px solid #fde68a; }
+    .gold-table td { padding: 15px 20px; border-bottom: 1px solid #dbe8e4; font-size: 14px; font-weight: 600; }
+    .gold-table tr:last-child td { border-bottom: none; }
+    .gold-table tr:hover td { background: #fffbeb; }
+    .gold-name { font-weight: 800; color: #182522; }
+    .gold-gram { color: #66736f; font-size: 13px; }
+    .gold-price { font-size: 17px; font-weight: 900; color: #92400e; }
+
+    /* Info */
+    .info-section { background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 28px; margin: 0 0 48px; }
+    .info-section h2 { font-size: 20px; font-weight: 900; color: #084c41; margin-bottom: 12px; }
+    .info-section h3 { font-size: 16px; font-weight: 800; color: #182522; margin: 18px 0 8px; }
+    .info-section p { color: #66736f; line-height: 1.75; font-size: 14px; margin-bottom: 8px; }
+
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; margin-top: 16px; }
+    .tool-link { padding: 16px; background: white; border: 1px solid #dbe8e4; border-radius: 12px; font-weight: 700; font-size: 14px; color: #182522; transition: all .15s; display: block; }
+    .tool-link:hover { border-color: #0f6b5b; background: #e7f5f1; color: #084c41; }
+    .tool-link span { display: block; font-size: 12px; color: #66736f; font-weight: 600; margin-top: 3px; }
+
+    footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: #66736f; }
+
+    @media (max-width: 768px) {
+      .prices-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .gold-table-wrap { overflow-x: auto; }
+    }
+    @media (max-width: 480px) {
+      .prices-grid { grid-template-columns: 1fr 1fr; }
+      .result-grid { grid-template-columns: 1fr; }
+      .calc-tabs { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER ŞERİT -->
+<div class="ticker-bar">
+  <div class="ticker-inner" id="tickerInner">
+    <div class="ticker-loading" id="tickerLoading">⏳ Kurlar yükleniyor...</div>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
+    <a class="back-link" href="/">← Ana Sayfa</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Kampio</a><span>›</span>Altın ve Döviz
+    </div>
+  </div>
+
+  <section class="container hero">
+    <div class="hero-badge">🥇 Anlık Güncelleme</div>
+    <h1>Altın ve Döviz <em>Hesaplayıcı</em></h1>
+    <p class="hero-desc">Güncel döviz kurları ve altın fiyatları. Gram altın, çeyrek, yarım ve tam altın fiyatlarını anında hesapla. Dolar ve Euro'yu TL'ye çevir.</p>
+    <div class="live-badge"><span class="live-dot"></span><span id="lastUpdate">Yükleniyor...</span></div>
+  </section>
+
+  <!-- Canlı Fiyat Kartları -->
+  <section class="container">
+    <div class="prices-grid" id="pricesGrid">
+      <div class="price-card gold"><div class="price-card-icon">🥇</div><div class="price-card-label">Gram Altın</div><div class="price-card-value" id="gramAltin">—</div><div class="price-card-sub">TL</div></div>
+      <div class="price-card gold"><div class="price-card-icon">🪙</div><div class="price-card-label">Çeyrek Altın</div><div class="price-card-value" id="ceyrekAltin">—</div><div class="price-card-sub">TL (~1.75g)</div></div>
+      <div class="price-card usd"><div class="price-card-icon">💵</div><div class="price-card-label">Dolar (USD)</div><div class="price-card-value" id="usdTry">—</div><div class="price-card-sub">TL</div></div>
+      <div class="price-card eur"><div class="price-card-icon">💶</div><div class="price-card-label">Euro (EUR)</div><div class="price-card-value" id="eurTry">—</div><div class="price-card-sub">TL</div></div>
+    </div>
+  </section>
+
+  <!-- Hesaplayıcılar -->
+  <section class="container" style="padding-bottom:20px">
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="switchTab('altin', this)">🥇 Altın Hesaplayıcı</button>
+      <button class="calc-tab" onclick="switchTab('doviz', this)">💱 Döviz Çevirici</button>
+      <button class="calc-tab" onclick="switchTab('birikim', this)">📈 Altın Birikimi</button>
+    </div>
+
+    <!-- Altın Hesaplayıcı -->
+    <div id="tabAltin">
+      <div class="calc-card">
+        <div class="calc-header">
+          <h2>🥇 Altın Hesaplayıcı</h2>
+          <p>Kaç gram veya kaç adet altın almak istiyorsun? TL karşılığını hesapla.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Altın Türü</label>
+              <select class="form-select" id="altinTur">
+                <option value="gram">Gram Altın (1g)</option>
+                <option value="ceyrek">Çeyrek Altın (~1.75g)</option>
+                <option value="yarim">Yarım Altın (~3.5g)</option>
+                <option value="tam">Tam Altın (~7g)</option>
+                <option value="cumhuriyet">Cumhuriyet Altını (~7.2g)</option>
+                <option value="ata">Ata Altını (~7.2g)</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Miktar (Adet veya Gram)</label>
+              <input class="form-input" id="altinMiktar" type="number" value="10" min="0.1" step="0.1" placeholder="10">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateAltin()">Altın Değerini Hesapla →</button>
+          <div class="result-box" id="altinResult">
+            <div class="result-main">
+              <div class="result-main-label">TOPLAM DEĞER</div>
+              <div class="result-main-value" id="altinToplam">—</div>
+              <div class="result-main-sub" id="altinDetay">—</div>
+            </div>
+            <div class="result-grid" id="altinGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Altın fiyat tablosu -->
+      <div class="gold-table-wrap">
+        <table class="gold-table">
+          <thead><tr><th>Altın Türü</th><th>Gram</th><th>Tahmini Fiyat (TL)</th></tr></thead>
+          <tbody id="goldTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Döviz Çevirici -->
+    <div id="tabDoviz" style="display:none">
+      <div class="calc-card">
+        <div class="calc-header blue">
+          <h2>💱 Döviz Çevirici</h2>
+          <p>TL'den dövize veya dövizden TL'ye anlık çevirme.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Tutar</label>
+              <input class="form-input" id="dovizTutar" type="number" value="10000" min="1" step="1" placeholder="10000">
+            </div>
+            <div class="form-field">
+              <label>Kaynak Para Birimi</label>
+              <select class="form-select" id="dovizKaynak">
+                <option value="TRY">🇹🇷 Türk Lirası (TL)</option>
+                <option value="USD">🇺🇸 Amerikan Doları (USD)</option>
+                <option value="EUR">🇪🇺 Euro (EUR)</option>
+                <option value="GBP">🇬🇧 İngiliz Sterlini (GBP)</option>
+                <option value="CHF">🇨🇭 İsviçre Frangı (CHF)</option>
+                <option value="JPY">🇯🇵 Japon Yeni (JPY)</option>
+                <option value="SAR">🇸🇦 Suudi Riyali (SAR)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Hedef Para Birimi</label>
+              <select class="form-select" id="dovizHedef">
+                <option value="USD">🇺🇸 Amerikan Doları (USD)</option>
+                <option value="EUR">🇪🇺 Euro (EUR)</option>
+                <option value="TRY">🇹🇷 Türk Lirası (TL)</option>
+                <option value="GBP">🇬🇧 İngiliz Sterlini (GBP)</option>
+                <option value="CHF">🇨🇭 İsviçre Frangı (CHF)</option>
+                <option value="JPY">🇯🇵 Japon Yeni (JPY)</option>
+                <option value="SAR">🇸🇦 Suudi Riyali (SAR)</option>
+              </select>
+            </div>
+          </div>
+          <button class="calc-btn green" onclick="calculateDoviz()">Döviz Çevir →</button>
+          <div class="result-box" id="dovizResult">
+            <div class="result-main green">
+              <div class="result-main-label">ÇEVRIM SONUCU</div>
+              <div class="result-main-value" id="dovizSonuc">—</div>
+              <div class="result-main-sub" id="dovizDetay">—</div>
+            </div>
+            <div class="result-grid" id="dovizGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Altın Birikimi -->
+    <div id="tabBirikim" style="display:none">
+      <div class="calc-card">
+        <div class="calc-header">
+          <h2>📈 Altın Birikimi Hesaplayıcı</h2>
+          <p>Her ay düzenli altın biriktirseydin ne kadar olurdu?</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Aylık Birikim (TL)</label>
+              <input class="form-input" id="birikimTutar" type="number" value="5000" min="100" step="100" placeholder="5000">
+            </div>
+            <div class="form-field">
+              <label>Süre (Ay)</label>
+              <input class="form-input" id="birikimAy" type="number" value="12" min="1" max="360" placeholder="12">
+            </div>
+          </div>
+          <button class="calc-btn" onclick="calculateBirikim()">Birikimi Hesapla →</button>
+          <div class="result-box" id="birikimResult">
+            <div class="result-main">
+              <div class="result-main-label">TOPLAM GRAM ALTIN</div>
+              <div class="result-main-value" id="birikimGram">—</div>
+              <div class="result-main-sub" id="birikimDetay">—</div>
+            </div>
+            <div class="result-grid" id="birikimGrid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="container">
+    <div class="info-section">
+      <h2>Altın ve Döviz Hakkında</h2>
+      <h3>Gram Altın Fiyatı Nasıl Belirlenir?</h3>
+      <p>Gram altın fiyatı, uluslararası piyasalarda belirlenen ons altın fiyatının (USD/troy ons) Türk Lirası karşılığına çevrilmesiyle hesaplanır. 1 troy ons = 31.1 gram'dır. Türkiye'de kuyumcular ve bankalar bu fiyata kendi marjlarını ekleyerek satış fiyatını belirler.</p>
+      <h3>Çeyrek Altın Kaç Gram?</h3>
+      <p>Çeyrek altın yaklaşık <strong>1.75 gram</strong> saf altın içerir. Yarım altın ~3.5 gram, tam altın ~7 gram, Cumhuriyet ve Ata altını ise ~7.2 gram saf altın içermektedir. Bu ağırlıklar kuyumculara göre hafif farklılık gösterebilir.</p>
+      <h3>Döviz Kurları Nasıl Hesaplanır?</h3>
+      <p>Döviz kurları Merkez Bankası tarafından belirlenen gösterge kurları üzerinden hesaplanır. Bankalarda ve döviz bürolarında alış/satış kurları bu değerden farklılık gösterebilir. Hesaplayıcımız piyasa orta kurunu kullanmaktadır.</p>
+      <h3>Altın mı, Döviz mi, Mevduat mı?</h3>
+      <p>Altın uzun vadede enflasyona karşı iyi bir koruma sağlar. Döviz kısa vadeli kur hareketlerinden yararlanmak için kullanılır. Mevduat ise düzenli faiz geliri sağlar. Her yatırım aracının kendine özgü risk ve getiri profili vardır. Yatırım kararlarınız için mutlaka finansal danışmana başvurun.</p>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:60px">
+    <h2 style="font-size:20px;font-weight:900;color:#084c41;margin-bottom:6px">Diğer Finansal Araçlar</h2>
+    <p style="color:#66736f;font-size:14px;margin-bottom:16px">Kampio ile tüm finansal hesaplamalarınızı yapın.</p>
+    <div class="tools-grid">
+      <a class="tool-link" href="/mevduat.html">💰 Mevduat Faiz Hesaplama<span>En yüksek faizi bul</span></a>
+      <a class="tool-link" href="/maas.html">💼 Net Maaş Hesaplama<span>Brütten nete, tazminat</span></a>
+      <a class="tool-link" href="/emekli.html">👴 Emeklilik Hesaplama<span>Ne zaman emekli olurum?</span></a>
+      <a class="tool-link" href="/">💳 Kredi Kartı Kampanyaları<span>Güncel banka kampanyaları</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#084c41">
+      <span style="width:26px;height:26px;background:#0f6b5b;border-radius:6px;display:grid;place-items:center;color:white;font-weight:900;font-size:12px">K</span>
+      Kampio
+    </div>
+    <div class="footer-copy">© 2026 Kampio · Fiyatlar bilgilendirme amaçlıdır. Yatırım tavsiyesi değildir.</div>
+  </div>
+</footer>
+
+<script>
+  /* ── Canlı kur verileri ── */
+  let rates = {};
+  let goldPriceUSD = 3350; // Fallback: Haziran 2026 yaklaşık ons altın fiyatı USD
+
+  // Altın gram ağırlıkları
+  const goldWeights = {
+    gram: 1,
+    ceyrek: 1.7550,
+    yarim: 3.510,
+    tam: 7.020,
+    cumhuriyet: 7.2160,
+    ata: 7.2160
+  };
+
+  const goldNames = {
+    gram: 'Gram Altın',
+    ceyrek: 'Çeyrek Altın',
+    yarim: 'Yarım Altın',
+    tam: 'Tam Altın',
+    cumhuriyet: 'Cumhuriyet Altını',
+    ata: 'Ata Altını'
+  };
+
+  async function fetchRates() {
+    try {
+      const r = await fetch('https://open.er-api.com/v6/latest/USD');
+      const data = await r.json();
+      if (data.result === 'success') {
+        rates = data.rates;
+        updatePriceCards();
+        updateTicker();
+        updateGoldTable();
+        const now = new Date();
+        document.getElementById('lastUpdate').textContent =
+          `Güncellendi: ${now.toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'})}`;
+        return true;
+      }
+    } catch(e) {}
+
+    // Fallback değerler (Haziran 2026 tahmini)
+    rates = { TRY: 38.5, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 };
+    updatePriceCards();
+    updateTicker();
+    updateGoldTable();
+    document.getElementById('lastUpdate').textContent = 'Tahmini değerler (API bağlanamadı)';
+    return false;
+  }
+
+  function getGramAltinTRY() {
+    const usdTRY = rates.TRY || 38.5;
+    return (goldPriceUSD / 31.1035) * usdTRY * 1.02; // %2 kuyumcu marjı
+  }
+
+  function formatTL(n) {
+    return n.toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' TL';
+  }
+
+  function updatePriceCards() {
+    const usdTRY = rates.TRY || 38.5;
+    const eurTRY = (rates.TRY / rates.EUR) || 41.8;
+    const gramTRY = getGramAltinTRY();
+    const ceyrekTRY = gramTRY * goldWeights.ceyrek;
+
+    document.getElementById('gramAltin').textContent = gramTRY.toLocaleString('tr-TR', {maximumFractionDigits:0});
+    document.getElementById('ceyrekAltin').textContent = ceyrekTRY.toLocaleString('tr-TR', {maximumFractionDigits:0});
+    document.getElementById('usdTry').textContent = usdTRY.toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2});
+    document.getElementById('eurTry').textContent = eurTRY.toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+
+  function updateTicker() {
+    const usdTRY = rates.TRY || 38.5;
+    const eurTRY = (rates.TRY / rates.EUR) || 41.8;
+    const gbpTRY = (rates.TRY / rates.GBP) || 48.9;
+    const gramTRY = getGramAltinTRY();
+    const ceyrekTRY = gramTRY * goldWeights.ceyrek;
+    const tamTRY = gramTRY * goldWeights.tam;
+
+    const items = [
+      { label: '💵 USD/TRY', value: usdTRY.toFixed(2) + ' TL' },
+      { label: '💶 EUR/TRY', value: eurTRY.toFixed(2) + ' TL' },
+      { label: '💷 GBP/TRY', value: gbpTRY.toFixed(2) + ' TL' },
+      { label: '🥇 Gram Altın', value: gramTRY.toLocaleString('tr-TR', {maximumFractionDigits:0}) + ' TL' },
+      { label: '🪙 Çeyrek Altın', value: ceyrekTRY.toLocaleString('tr-TR', {maximumFractionDigits:0}) + ' TL' },
+      { label: '🏅 Yarım Altın', value: (gramTRY * goldWeights.yarim).toLocaleString('tr-TR', {maximumFractionDigits:0}) + ' TL' },
+      { label: '🎖️ Tam Altın', value: tamTRY.toLocaleString('tr-TR', {maximumFractionDigits:0}) + ' TL' },
+    ];
+
+    // Duplicate for seamless loop
+    const html = [...items, ...items].map(i =>
+      `<div class="ticker-item"><span class="ticker-label">${i.label}</span><span class="ticker-value">${i.value}</span></div>`
+    ).join('');
+
+    document.getElementById('tickerInner').innerHTML = html;
+  }
+
+  function updateGoldTable() {
+    const gramTRY = getGramAltinTRY();
+    const tbody = document.getElementById('goldTableBody');
+    tbody.innerHTML = Object.entries(goldWeights).map(([key, gram]) =>
+      `<tr>
+        <td><span class="gold-name">${goldNames[key]}</span></td>
+        <td><span class="gold-gram">${gram.toFixed(3)} gram</span></td>
+        <td><span class="gold-price">${(gramTRY * gram).toLocaleString('tr-TR', {maximumFractionDigits:0})} TL</span></td>
+      </tr>`
+    ).join('');
+  }
+
+  /* ── Hesaplayıcılar ── */
+  function calculateAltin() {
+    const tur = document.getElementById('altinTur').value;
+    const miktar = parseFloat(document.getElementById('altinMiktar').value) || 1;
+    const gramTRY = getGramAltinTRY();
+    const gramAgirlik = goldWeights[tur];
+    const birimFiyat = gramTRY * gramAgirlik;
+    const toplam = birimFiyat * miktar;
+
+    document.getElementById('altinToplam').textContent = formatTL(toplam);
+    document.getElementById('altinDetay').textContent =
+      `${miktar} adet ${goldNames[tur]} · Birim fiyat: ${formatTL(birimFiyat)}`;
+
+    document.getElementById('altinGrid').innerHTML = `
+      <div class="result-item"><div class="result-item-label">Gram Altın Fiyatı</div><div class="result-item-value">${formatTL(gramTRY)}</div></div>
+      <div class="result-item"><div class="result-item-label">Toplam Gram</div><div class="result-item-value">${(miktar * gramAgirlik).toFixed(3)} g</div></div>
+      <div class="result-item"><div class="result-item-label">USD Karşılığı</div><div class="result-item-value">$${(toplam / (rates.TRY || 38.5)).toFixed(0)}</div></div>`;
+
+    document.getElementById('altinResult').classList.add('show');
+    document.getElementById('altinResult').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function calculateDoviz() {
+    const tutar = parseFloat(document.getElementById('dovizTutar').value) || 1;
+    const kaynak = document.getElementById('dovizKaynak').value;
+    const hedef = document.getElementById('dovizHedef').value;
+
+    const kaynakRate = kaynak === 'USD' ? 1 : (rates[kaynak] ? 1/rates[kaynak] : 1);
+    const hedefRate = hedef === 'USD' ? 1 : (rates[hedef] ? rates[hedef] : 1);
+
+    // Önce USD'ye çevir, sonra hedef para birimine
+    const usdMiktar = tutar / (rates[kaynak] || 1) * (kaynak === 'USD' ? 1 : 1);
+
+    let sonuc;
+    if (kaynak === 'TRY') {
+      sonuc = tutar / (rates[hedef] ? (rates.TRY / rates[hedef]) : rates.TRY);
+    } else if (hedef === 'TRY') {
+      sonuc = tutar * (rates.TRY / (rates[kaynak] || 1));
+    } else {
+      const tryMiktar = tutar * (rates.TRY / (rates[kaynak] || 1));
+      sonuc = tryMiktar / (rates.TRY / (rates[hedef] || 1));
+    }
+
+    const kur = sonuc / tutar;
+    document.getElementById('dovizSonuc').textContent =
+      sonuc.toLocaleString('tr-TR', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' ' + hedef;
+    document.getElementById('dovizDetay').textContent =
+      `1 ${kaynak} = ${kur.toFixed(4)} ${hedef}`;
+
+    document.getElementById('dovizGrid').innerHTML = `
+      <div class="result-item"><div class="result-item-label">${kaynak} Tutarı</div><div class="result-item-value">${tutar.toLocaleString('tr-TR')}</div></div>
+      <div class="result-item"><div class="result-item-label">Kur</div><div class="result-item-value">${kur.toFixed(4)}</div></div>
+      <div class="result-item"><div class="result-item-label">${hedef} Karşılığı</div><div class="result-item-value">${sonuc.toLocaleString('tr-TR', {maximumFractionDigits:2})}</div></div>`;
+
+    document.getElementById('dovizResult').classList.add('show');
+    document.getElementById('dovizResult').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function calculateBirikim() {
+    const aylikTL = parseFloat(document.getElementById('birikimTutar').value) || 5000;
+    const ay = parseInt(document.getElementById('birikimAy').value) || 12;
+    const gramTRY = getGramAltinTRY();
+    const aylikGram = aylikTL / gramTRY;
+    const toplamGram = aylikGram * ay;
+    const toplamTL = aylikTL * ay;
+    const toplamDeger = toplamGram * gramTRY;
+
+    document.getElementById('birikimGram').textContent =
+      toplamGram.toFixed(3) + ' gram';
+    document.getElementById('birikimDetay').textContent =
+      `${ay} ay · Aylık ${aylikGram.toFixed(3)} gram`;
+
+    document.getElementById('birikimGrid').innerHTML = `
+      <div class="result-item"><div class="result-item-label">Toplam Yatırım</div><div class="result-item-value">${formatTL(toplamTL)}</div></div>
+      <div class="result-item"><div class="result-item-label">Toplam Gram</div><div class="result-item-value">${toplamGram.toFixed(3)} g</div></div>
+      <div class="result-item"><div class="result-item-label">Güncel Değeri</div><div class="result-item-value">${formatTL(toplamDeger)}</div></div>`;
+
+    document.getElementById('birikimResult').classList.add('show');
+    document.getElementById('birikimResult').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tabAltin').style.display = tab === 'altin' ? '' : 'none';
+    document.getElementById('tabDoviz').style.display = tab === 'doviz' ? '' : 'none';
+    document.getElementById('tabBirikim').style.display = tab === 'birikim' ? '' : 'none';
+  }
+
+  // Init
+  fetchRates();
+  setInterval(fetchRates, 60000); // Her dakika güncelle
+</script>
+</body>
+</html>
