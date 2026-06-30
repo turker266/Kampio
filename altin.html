@@ -167,7 +167,8 @@
     <h1>Altın ve Döviz <em>Hesaplayıcı</em></h1>
     <p class="hero-desc">Güncel döviz kurları ve altın fiyatları. Gram altın, çeyrek, yarım ve tam altın fiyatlarını anında hesapla. Dolar ve Euro'yu TL'ye çevir.</p>
     <div class="live-badge"><span class="live-dot"></span><span id="lastUpdate">Yükleniyor...</span></div>
-    <p style="font-size:12px;color:#66736f;margin-top:10px">⚠️ Döviz kurları canlı API'den, altın fiyatı yaklaşık piyasa marjıyla hesaplanmaktadır. Kesin fiyat için kuyumcunuzla teyit edin.</p>
+    <p style="font-size:12px;color:#66736f;margin-top:10px">⚠️ Döviz kurları canlı API'den, altın fiyatı Türkiye piyasasından çekilmektedir. Kesin fiyat için kuyumcunuzla teyit edin.</p>
+    <p id="debugInfo" style="font-size:11px;color:#9ca3af;margin-top:6px;font-family:monospace"></p>
   </section>
 
   <!-- Canlı Fiyat Kartları -->
@@ -399,22 +400,48 @@
       rates = { TRY: 41.6, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 };
     }
 
-    // 2) Türkiye'ye özel GERÇEK gram altın fiyatını çek (Truncgil Finans API - Türk piyasası, ücretsiz, anahtarsız)
+    // 2) Türkiye'ye özel GERÇEK gram altın fiyatını çek (Truncgil Finans API)
     try {
       const tr = await fetch('https://finans.truncgil.com/v3/today.json');
       const tdata = await tr.json();
-      if (tdata && tdata['GRA'] && tdata['GRA'].Selling) {
-        directGramTRY = parseFloat(String(tdata['GRA'].Selling).replace(',', '.'));
-        truncgilOk = true;
-      } else if (tdata && tdata['gram-altin']) {
-        directGramTRY = parseFloat(String(tdata['gram-altin'].Satış || tdata['gram-altin'].Selling).replace(',', '.'));
-        truncgilOk = true;
+
+      // Olası tüm anahtar varyasyonlarını dene (Türkçe/İngilizce, boşluklu/boşluksuz)
+      function parseNum(v) {
+        if (v === undefined || v === null) return null;
+        const n = parseFloat(String(v).replace(/\./g, '').replace(',', '.'));
+        return isNaN(n) ? null : n;
       }
-      // USD/TRY'yi de Truncgil'den almaya çalış (daha tutarlı olması için)
-      if (tdata && tdata['USD'] && tdata['USD'].Selling) {
-        rates.TRY = parseFloat(String(tdata['USD'].Selling).replace(',', '.'));
+      function findGoldEntry(obj) {
+        const keys = ['Gram Altın', 'GRA', 'gram-altin', 'GramAltin', 'gram_altin', 'GRAM-ALTIN'];
+        for (const k of keys) {
+          if (obj[k]) return obj[k];
+        }
+        // Anahtar isimlerinde "gram" geçen ilk altın objesini bul
+        for (const k in obj) {
+          if (k.toLowerCase().includes('gram') && obj[k] && typeof obj[k] === 'object') {
+            return obj[k];
+          }
+        }
+        return null;
       }
-    } catch(e) {}
+
+      const goldEntry = findGoldEntry(tdata);
+      if (goldEntry) {
+        const sellField = goldEntry.Satış ?? goldEntry.Selling ?? goldEntry.satis ?? goldEntry.sell ?? goldEntry.Sell;
+        const parsed = parseNum(sellField);
+        if (parsed && parsed > 1000 && parsed < 50000) {
+          directGramTRY = parsed;
+          truncgilOk = true;
+        }
+      }
+
+      // USD/TRY'yi de Truncgil'den almaya çalış
+      const usdEntry = tdata['USD'] || tdata['Amerikan Doları'];
+      if (usdEntry) {
+        const usdSell = parseNum(usdEntry.Satış ?? usdEntry.Selling ?? usdEntry.sell);
+        if (usdSell && usdSell > 10 && usdSell < 100) rates.TRY = usdSell;
+      }
+    } catch(e) { console.error('Truncgil API hatası:', e); }
 
     updatePriceCards();
     updateTicker();
@@ -429,6 +456,8 @@
     } else {
       document.getElementById('lastUpdate').textContent = `Tahmini değerler · ${timeStr}`;
     }
+    const dbg = document.getElementById('debugInfo');
+    if (dbg) dbg.textContent = `[Debug] truncgilOk: ${truncgilOk} | directGram: ${directGramTRY} | usdTRY: ${rates.TRY}`;
     return truncgilOk;
   }
 
