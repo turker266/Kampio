@@ -382,28 +382,45 @@
   };
 
   async function fetchRates() {
+    let ratesOk = false, goldOk = false;
+
+    // 1) Döviz kurlarını çek
     try {
       const r = await fetch('https://open.er-api.com/v6/latest/USD');
       const data = await r.json();
       if (data.result === 'success') {
         rates = data.rates;
-        updatePriceCards();
-        updateTicker();
-        updateGoldTable();
-        const now = new Date();
-        document.getElementById('lastUpdate').textContent =
-          `Güncellendi: ${now.toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'})}`;
-        return true;
+        ratesOk = true;
+      }
+    } catch(e) {}
+    if (!ratesOk) {
+      rates = { TRY: 41.6, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 };
+    }
+
+    // 2) Gerçek zamanlı ons altın fiyatını çek (gold-api.com - ücretsiz, anahtar gerektirmez)
+    try {
+      const gr = await fetch('https://api.gold-api.com/price/XAU');
+      const gdata = await gr.json();
+      if (gdata && gdata.price) {
+        goldPriceUSD = gdata.price;
+        goldOk = true;
       }
     } catch(e) {}
 
-    // Fallback değerler (Haziran 2026 tahmini)
-    rates = { TRY: 41.6, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 }; // 30 Haziran 2026 gerçek piyasa kuru
     updatePriceCards();
     updateTicker();
     updateGoldTable();
-    document.getElementById('lastUpdate').textContent = 'Tahmini değerler (API bağlanamadı)';
-    return false;
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'});
+    if (ratesOk && goldOk) {
+      document.getElementById('lastUpdate').textContent = `Canlı veri · Güncellendi: ${timeStr}`;
+    } else if (goldOk) {
+      document.getElementById('lastUpdate').textContent = `Altın canlı, döviz tahmini · ${timeStr}`;
+    } else {
+      document.getElementById('lastUpdate').textContent = `Tahmini değerler · ${timeStr}`;
+    }
+    return ratesOk && goldOk;
   }
 
   function getGramAltinTRY() {
@@ -562,7 +579,7 @@
 
   // Init
   fetchRates();
-  setInterval(fetchRates, 60000); // Her dakika güncelle
+  setInterval(fetchRates, 3600000); // Her saat güncelle (gold-api.com ve döviz API'leri için nazik kullanım)
 </script>
 </body>
 </html>
