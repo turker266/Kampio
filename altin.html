@@ -381,10 +381,12 @@
     ata: 'Ata Altını'
   };
 
-  async function fetchRates() {
-    let ratesOk = false, goldOk = false;
+  let directGramTRY = null; // Truncgil'den direkt gelen gerçek gram altın TL fiyatı
 
-    // 1) Döviz kurlarını çek
+  async function fetchRates() {
+    let ratesOk = false, truncgilOk = false;
+
+    // 1) Döviz kurlarını çek (open.er-api.com - genel döviz çiftleri için)
     try {
       const r = await fetch('https://open.er-api.com/v6/latest/USD');
       const data = await r.json();
@@ -397,13 +399,20 @@
       rates = { TRY: 41.6, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 };
     }
 
-    // 2) Gerçek zamanlı ons altın fiyatını çek (gold-api.com - ücretsiz, anahtar gerektirmez)
+    // 2) Türkiye'ye özel GERÇEK gram altın fiyatını çek (Truncgil Finans API - Türk piyasası, ücretsiz, anahtarsız)
     try {
-      const gr = await fetch('https://api.gold-api.com/price/XAU');
-      const gdata = await gr.json();
-      if (gdata && gdata.price) {
-        goldPriceUSD = gdata.price;
-        goldOk = true;
+      const tr = await fetch('https://finans.truncgil.com/v3/today.json');
+      const tdata = await tr.json();
+      if (tdata && tdata['GRA'] && tdata['GRA'].Selling) {
+        directGramTRY = parseFloat(String(tdata['GRA'].Selling).replace(',', '.'));
+        truncgilOk = true;
+      } else if (tdata && tdata['gram-altin']) {
+        directGramTRY = parseFloat(String(tdata['gram-altin'].Satış || tdata['gram-altin'].Selling).replace(',', '.'));
+        truncgilOk = true;
+      }
+      // USD/TRY'yi de Truncgil'den almaya çalış (daha tutarlı olması için)
+      if (tdata && tdata['USD'] && tdata['USD'].Selling) {
+        rates.TRY = parseFloat(String(tdata['USD'].Selling).replace(',', '.'));
       }
     } catch(e) {}
 
@@ -413,22 +422,23 @@
 
     const now = new Date();
     const timeStr = now.toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'});
-    if (ratesOk && goldOk) {
-      document.getElementById('lastUpdate').textContent = `Canlı veri · Güncellendi: ${timeStr}`;
-    } else if (goldOk) {
-      document.getElementById('lastUpdate').textContent = `Altın canlı, döviz tahmini · ${timeStr}`;
+    if (truncgilOk) {
+      document.getElementById('lastUpdate').textContent = `Canlı Türkiye piyasası verisi · Güncellendi: ${timeStr}`;
+    } else if (ratesOk) {
+      document.getElementById('lastUpdate').textContent = `Döviz canlı, altın tahmini · ${timeStr}`;
     } else {
       document.getElementById('lastUpdate').textContent = `Tahmini değerler · ${timeStr}`;
     }
-    return ratesOk && goldOk;
+    return truncgilOk;
   }
 
   function getGramAltinTRY() {
-    const usdTRY = rates.TRY || 38.5;
-    // Gerçek piyasa verisiyle kalibrasyon (30 Haziran 2026: gram=6037 TL, ons=4030 USD)
-    // Sabit referans kur üzerinden hesaplama yapıyoruz, API kurunun sapmasını telafi etmek için
-    const referansUsdTry = 41.6; // 30 Haziran 2026 gerçek piyasa kuru
-    const referansGram = 6037; // TL
+    // Öncelik: Truncgil'den gelen GERÇEK Türkiye piyasası gram altın fiyatı
+    if (directGramTRY && directGramTRY > 1000) return directGramTRY;
+    // Yedek: formülle hesapla (Truncgil erişilemezse)
+    const usdTRY = rates.TRY || 41.6;
+    const referansUsdTry = 41.6;
+    const referansGram = 6037;
     const kuYuzuMarji = referansGram / ((goldPriceUSD / 31.1035) * referansUsdTry);
     return (goldPriceUSD / 31.1035) * usdTRY * kuYuzuMarji;
   }
