@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kredi Hesaplama 2026 | Konut, Taşıt, İhtiyaç Kredisi Faiz Oranları | Kampio</title>
+  <meta name="description" content="2026 güncel kredi hesaplama. Konut kredisi, taşıt kredisi ve ihtiyaç kredisi taksit hesaplayıcı. Tüm bankaların faiz oranlarını karşılaştır.">
+  <meta name="keywords" content="kredi hesaplama 2026, konut kredisi hesaplama, taşıt kredisi hesaplama, ihtiyaç kredisi hesaplama, kredi faiz oranları, en uygun konut kredisi, ev kredisi hesaplama">
+  <link rel="canonical" href="https://kampio.vercel.app/kredi.html">
+  <meta property="og:title" content="Kredi Hesaplama 2026 | Konut, Taşıt, İhtiyaç | Kampio">
+  <meta property="og:description" content="2026 güncel kredi hesaplama. Konut, taşıt ve ihtiyaç kredisi taksit hesaplayıcı.">
+  <meta property="og:url" content="https://kampio.vercel.app/kredi.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f6b5b'/><rect x='18' y='32' width='64' height='42' rx='7' fill='white' opacity='0.15'/><rect x='18' y='32' width='64' height='42' rx='7' fill='none' stroke='white' stroke-width='3'/><rect x='18' y='46' width='64' height='8' fill='white' opacity='0.9'/></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar { background: white; border-bottom: 1px solid #dbe8e4; position: sticky; top: 0; z-index: 100; }
+    .topbar-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
+    .brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
+    .back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; }
+    .back-link:hover { background: #e7f5f1; }
+    .breadcrumb { padding: 12px 0; font-size: 13px; color: #66736f; font-weight: 600; }
+    .breadcrumb a { color: #0f6b5b; }
+    .breadcrumb span { margin: 0 6px; }
+
+    .hero { padding: 40px 0 28px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e7f5f1; color: #084c41; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 48px); font-weight: 900; color: #084c41; letter-spacing: -1px; line-height: 1.05; margin-bottom: 12px; }
+    .hero h1 em { font-style: normal; color: #0f6b5b; }
+    .hero-desc { font-size: 16px; color: #66736f; max-width: 580px; line-height: 1.6; margin-bottom: 20px; }
+    .stat-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .stat-chip { padding: 10px 16px; background: white; border: 1px solid #dbe8e4; border-radius: 10px; font-size: 13px; font-weight: 700; }
+    .stat-chip strong { color: #0f6b5b; display: block; font-size: 18px; font-weight: 900; }
+    .stat-chip span { color: #66736f; font-size: 12px; }
+
+    .page-tabs { display: flex; gap: 4px; margin: 28px 0 20px; background: #e7f5f1; border-radius: 10px; padding: 4px; overflow-x: auto; }
+    .page-tab { flex: 1; min-width: 110px; padding: 11px 8px; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .15s; color: #66736f; background: transparent; white-space: nowrap; }
+    .page-tab.active { background: white; color: #084c41; box-shadow: 0 2px 8px rgba(15,107,91,0.1); }
+
+    .calc-card { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(15,107,91,0.08); margin-bottom: 20px; }
+    .calc-header { padding: 24px 28px; }
+    .calc-header.konut { background: linear-gradient(135deg, #0f6b5b, #084c41); }
+    .calc-header.tasit { background: linear-gradient(135deg, #1e3a5f, #0f2240); }
+    .calc-header.ihtiyac { background: linear-gradient(135deg, #d97706, #92400e); }
+    .calc-header h2 { font-size: 20px; font-weight: 900; color: white; margin-bottom: 4px; }
+    .calc-header p { font-size: 13px; color: rgba(255,255,255,0.78); }
+    .calc-body { padding: 24px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-field label { display: block; font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .form-input { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 16px; font-weight: 700; color: #182522; background: white; transition: border-color .15s, box-shadow .15s; }
+    .form-input:focus { outline: none; border-color: #0f6b5b; box-shadow: 0 0 0 3px rgba(15,107,91,0.1); }
+    .form-select { width: 100%; height: 50px; padding: 0 16px; border: 1.5px solid #dbe8e4; border-radius: 10px; font-size: 15px; font-weight: 700; color: #182522; background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2366736f' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; appearance: none; cursor: pointer; }
+    .slider-row { margin-bottom: 16px; }
+    .slider-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: #66736f; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 10px; }
+    .slider-value { color: #084c41; font-size: 14px; }
+    input[type="range"] { width: 100%; height: 6px; border-radius: 3px; background: #dbe8e4; outline: none; -webkit-appearance: none; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #0f6b5b; cursor: pointer; box-shadow: 0 2px 8px rgba(15,107,91,0.4); }
+    .calc-btn { width: 100%; height: 52px; background: #0f6b5b; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 8px 20px rgba(15,107,91,0.28); transition: background .15s, transform .1s; margin-top: 4px; }
+    .calc-btn:hover { background: #084c41; transform: translateY(-1px); }
+
+    .result-box { display: none; margin-top: 20px; }
+    .result-box.show { display: block; }
+    .result-main { background: linear-gradient(135deg, #0f6b5b, #084c41); border-radius: 14px; padding: 24px; margin-bottom: 16px; text-align: center; }
+    .result-main-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.78); margin-bottom: 8px; }
+    .result-main-value { font-size: clamp(30px, 5vw, 46px); font-weight: 900; color: white; letter-spacing: -1px; }
+    .result-main-sub { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 6px; }
+    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .result-item { background: white; border: 1px solid #dbe8e4; border-radius: 10px; padding: 14px; text-align: center; }
+    .result-item-label { font-size: 11px; font-weight: 700; color: #66736f; text-transform: uppercase; margin-bottom: 6px; }
+    .result-item-value { font-size: 17px; font-weight: 900; color: #084c41; }
+
+    /* Banka tablosu */
+    .bank-table-wrap { background: white; border: 1px solid #dbe8e4; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(15,107,91,0.06); margin-bottom: 20px; }
+    .bank-table { width: 100%; border-collapse: collapse; }
+    .bank-table th { padding: 14px 20px; background: #f7faf9; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; color: #66736f; text-align: left; border-bottom: 1px solid #dbe8e4; }
+    .bank-table td { padding: 15px 20px; border-bottom: 1px solid #dbe8e4; font-size: 14px; font-weight: 600; }
+    .bank-table tr:last-child td { border-bottom: none; }
+    .bank-table tr:hover td { background: #fbfefd; }
+    .bank-cell { display: flex; align-items: center; gap: 12px; }
+    .bank-dot { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; color: white; font-size: 10px; font-weight: 900; flex-shrink: 0; }
+    .rate-value { font-size: 16px; font-weight: 900; color: #084c41; }
+    .rate-badge { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 800; background: #d1fae5; color: #065f46; }
+    .updated-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: #e7f5f1; border-radius: 999px; font-size: 12px; font-weight: 700; color: #084c41; margin-bottom: 16px; }
+    .updated-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f6b5b; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    .info-section { background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 28px; margin: 0 0 48px; }
+    .info-section h2 { font-size: 20px; font-weight: 900; color: #084c41; margin-bottom: 12px; }
+    .info-section h3 { font-size: 16px; font-weight: 800; color: #182522; margin: 18px 0 8px; }
+    .info-section p { color: #66736f; line-height: 1.75; font-size: 14px; margin-bottom: 8px; }
+
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 12px; margin-top: 16px; }
+    .tool-link { padding: 16px; background: white; border: 1px solid #dbe8e4; border-radius: 12px; font-weight: 700; font-size: 14px; color: #182522; transition: all .15s; display: block; }
+    .tool-link:hover { border-color: #0f6b5b; background: #e7f5f1; color: #084c41; }
+    .tool-link span { display: block; font-size: 12px; color: #66736f; font-weight: 600; margin-top: 3px; }
+
+    footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: #66736f; }
+
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .bank-table-wrap { overflow-x: auto; }
+      .bank-table { min-width: 540px; }
+    }
+    @media (max-width: 480px) {
+      .result-grid { grid-template-columns: 1fr; }
+      .stat-row { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
+    <a class="back-link" href="/">← Ana Sayfa</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/">Kampio</a><span>›</span>Kredi Hesaplama
+    </div>
+  </div>
+
+  <section class="container hero">
+    <div class="hero-badge">🏠 2026 Güncel Faiz Oranları</div>
+    <h1>Kredi Hesaplama <em>2026</em></h1>
+    <p class="hero-desc">Konut, taşıt ve ihtiyaç kredisi taksitlerini anında hesapla. Tüm bankaların güncel faiz oranlarını karşılaştır, en uygun krediyi bul.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><strong>%2,49</strong><span>En Düşük Konut Kredisi</span></div>
+      <div class="stat-chip"><strong>%2,69</strong><span>En Düşük İhtiyaç Kredisi</span></div>
+      <div class="stat-chip"><strong>%3,09</strong><span>En Düşük Taşıt Kredisi</span></div>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:20px">
+    <div class="page-tabs">
+      <button class="page-tab active" onclick="switchTab('konut', this)">🏠 Konut Kredisi</button>
+      <button class="page-tab" onclick="switchTab('tasit', this)">🚗 Taşıt Kredisi</button>
+      <button class="page-tab" onclick="switchTab('ihtiyac', this)">💳 İhtiyaç Kredisi</button>
+    </div>
+
+    <!-- KONUT KREDİSİ -->
+    <div id="tabKonut">
+      <div class="calc-card">
+        <div class="calc-header konut">
+          <h2>🏠 Konut Kredisi Hesaplama</h2>
+          <p>Hayalinizdeki eve ulaşmak için aylık taksitinizi hesaplayın.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Kredi Tutarı (TL)</label>
+              <input class="form-input" id="konutTutar" type="number" value="2000000" min="50000" step="10000">
+            </div>
+            <div class="form-field">
+              <label>Vade (Ay)</label>
+              <select class="form-select" id="konutVade">
+                <option value="36">36 Ay (3 Yıl)</option>
+                <option value="60">60 Ay (5 Yıl)</option>
+                <option value="120" selected>120 Ay (10 Yıl)</option>
+                <option value="180">180 Ay (15 Yıl)</option>
+              </select>
+            </div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label"><span>Aylık Faiz Oranı</span><span class="slider-value" id="konutFaizLabel">%2,80</span></div>
+            <input type="range" id="konutFaiz" min="2.49" max="4.5" step="0.01" value="2.80" oninput="document.getElementById('konutFaizLabel').textContent='%'+parseFloat(this.value).toFixed(2).replace('.',',')">
+          </div>
+          <button class="calc-btn" onclick="calculateKredi('konut')">Taksiti Hesapla →</button>
+          <div class="result-box" id="konutResult">
+            <div class="result-main">
+              <div class="result-main-label">AYLIK TAKSİT</div>
+              <div class="result-main-value" id="konutTaksit">—</div>
+              <div class="result-main-sub" id="konutDetay">—</div>
+            </div>
+            <div class="result-grid" id="konutGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-table-wrap">
+        <table class="bank-table">
+          <thead><tr><th>Banka</th><th>Aylık Faiz / Kâr Payı</th><th>120 Ay / 1M TL Taksit</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#E31E24">ZR</div><b>Ziraat Bankası</b></div></td><td><span class="rate-value">%2,49</span></td><td>26.273 TL</td><td><span class="rate-badge">🏆 En Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#16a34a">VK</div><b>Vakıf Katılım</b></div></td><td><span class="rate-value">%2,69</span></td><td>27.150 TL</td><td><span class="rate-badge">✓ Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#8B0000">QN</div><b>QNB Finansbank</b></div></td><td><span class="rate-value">%2,79</span></td><td>27.590 TL</td><td><span class="rate-badge">✓ Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#F7941D">VB</div><b>VakıfBank</b></div></td><td><span class="rate-value">%2,85</span></td><td>27.860 TL</td><td></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#00A650">GB</div><b>Garanti BBVA</b></div></td><td><span class="rate-value">%2,95</span></td><td>28.320 TL</td><td></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#e3001b">AK</div><b>Akbank</b></div></td><td><span class="rate-value">%2,99</span></td><td>28.500 TL</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAŞIT KREDİSİ -->
+    <div id="tabTasit" style="display:none">
+      <div class="calc-card">
+        <div class="calc-header tasit">
+          <h2>🚗 Taşıt Kredisi Hesaplama</h2>
+          <p>Sıfır veya ikinci el araç almak için aylık taksitinizi hesaplayın.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Kredi Tutarı (TL)</label>
+              <input class="form-input" id="tasitTutar" type="number" value="500000" min="20000" step="5000">
+            </div>
+            <div class="form-field">
+              <label>Vade (Ay)</label>
+              <select class="form-select" id="tasitVade">
+                <option value="12">12 Ay</option>
+                <option value="24">24 Ay</option>
+                <option value="36" selected>36 Ay</option>
+                <option value="48">48 Ay</option>
+              </select>
+            </div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label"><span>Aylık Faiz Oranı</span><span class="slider-value" id="tasitFaizLabel">%3,30</span></div>
+            <input type="range" id="tasitFaiz" min="3.09" max="5" step="0.01" value="3.30" oninput="document.getElementById('tasitFaizLabel').textContent='%'+parseFloat(this.value).toFixed(2).replace('.',',')">
+          </div>
+          <button class="calc-btn" onclick="calculateKredi('tasit')">Taksiti Hesapla →</button>
+          <div class="result-box" id="tasitResult">
+            <div class="result-main">
+              <div class="result-main-label">AYLIK TAKSİT</div>
+              <div class="result-main-value" id="tasitTaksit">—</div>
+              <div class="result-main-sub" id="tasitDetay">—</div>
+            </div>
+            <div class="result-grid" id="tasitGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-table-wrap">
+        <table class="bank-table">
+          <thead><tr><th>Banka</th><th>Aylık Faiz / Kâr Payı</th><th>36 Ay / 200K TL Taksit</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#16a34a">VK</div><b>Vakıf Katılım</b></div></td><td><span class="rate-value">%3,09</span></td><td>9.150 TL</td><td><span class="rate-badge">🏆 En Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#8B0000">QN</div><b>QNB Finansbank</b></div></td><td><span class="rate-value">%3,19</span></td><td>9.280 TL</td><td><span class="rate-badge">✓ Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#E31E24">ZR</div><b>Ziraat Bankası</b></div></td><td><span class="rate-value">%3,25</span></td><td>9.360 TL</td><td></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#005F9E">DB</div><b>DenizBank</b></div></td><td><span class="rate-value">%3,35</span></td><td>9.480 TL</td><td></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#003087">YK</div><b>Yapı Kredi</b></div></td><td><span class="rate-value">%3,45</span></td><td>9.620 TL</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- İHTİYAÇ KREDİSİ -->
+    <div id="tabIhtiyac" style="display:none">
+      <div class="calc-card">
+        <div class="calc-header ihtiyac">
+          <h2>💳 İhtiyaç Kredisi Hesaplama</h2>
+          <p>Acil nakit ihtiyaçlarınız için aylık taksitinizi hesaplayın.</p>
+        </div>
+        <div class="calc-body">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Kredi Tutarı (TL)</label>
+              <input class="form-input" id="ihtiyacTutar" type="number" value="50000" min="1000" step="1000">
+            </div>
+            <div class="form-field">
+              <label>Vade (Ay)</label>
+              <select class="form-select" id="ihtiyacVade">
+                <option value="6">6 Ay</option>
+                <option value="12" selected>12 Ay</option>
+                <option value="24">24 Ay</option>
+                <option value="36">36 Ay</option>
+              </select>
+            </div>
+          </div>
+          <div class="slider-row">
+            <div class="slider-label"><span>Aylık Faiz Oranı</span><span class="slider-value" id="ihtiyacFaizLabel">%2,90</span></div>
+            <input type="range" id="ihtiyacFaiz" min="2.69" max="5" step="0.01" value="2.90" oninput="document.getElementById('ihtiyacFaizLabel').textContent='%'+parseFloat(this.value).toFixed(2).replace('.',',')">
+          </div>
+          <button class="calc-btn" onclick="calculateKredi('ihtiyac')">Taksiti Hesapla →</button>
+          <div class="result-box" id="ihtiyacResult">
+            <div class="result-main">
+              <div class="result-main-label">AYLIK TAKSİT</div>
+              <div class="result-main-value" id="ihtiyacTaksit">—</div>
+              <div class="result-main-sub" id="ihtiyacDetay">—</div>
+            </div>
+            <div class="result-grid" id="ihtiyacGrid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bank-table-wrap">
+        <table class="bank-table">
+          <thead><tr><th>Banka</th><th>Aylık Faiz / Kâr Payı</th><th>12 Ay / 50K TL Taksit</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#8B0000">QN</div><b>QNB Finansbank</b></div></td><td><span class="rate-value">%2,69</span></td><td>5.173 TL</td><td><span class="rate-badge">🏆 En Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#7B2D8B">OD</div><b>Odeabank</b></div></td><td><span class="rate-value">%2,79</span></td><td>5.220 TL</td><td><span class="rate-badge">✓ Uygun</span></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#FF6200">GF</div><b>GetirFinans</b></div></td><td><span class="rate-value">%2,89</span></td><td>5.267 TL</td><td></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#FF6200">IN</div><b>ING</b></div></td><td><span class="rate-value">%2,99</span></td><td>5.315 TL</td><td></td></tr>
+            <tr><td><div class="bank-cell"><div class="bank-dot" style="background:#005F9E">DB</div><b>DenizBank</b></div></td><td><span class="rate-value">%2,99</span></td><td>5.315 TL</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="updated-badge"><span class="updated-dot"></span>29 Haziran 2026 — Güncellendi · Kaynak: Hesapkurdu, HangiKredi</div>
+  </section>
+
+  <section class="container">
+    <div class="info-section">
+      <h2>Kredi Hesaplama Hakkında Sık Sorulan Sorular</h2>
+      <h3>Kredi taksiti nasıl hesaplanır?</h3>
+      <p>Kredi taksiti, eşit taksitli (annüite) yöntemiyle hesaplanır: <strong>Taksit = Kredi Tutarı × [Faiz Oranı × (1+Faiz Oranı)^Vade] / [(1+Faiz Oranı)^Vade − 1]</strong>. Bu formülde faiz oranı aylık olarak kullanılır.</p>
+      <h3>Konut kredisinde hangi vergiler var?</h3>
+      <p>Konut kredisi KKDF (Kaynak Kullanımını Destekleme Fonu) ve BSMV'den (Banka Sigorta Muameleleri Vergisi) muaf tutulmaktadır. İhtiyaç ve taşıt kredilerinde ise faiz tutarı üzerinden KKDF ve BSMV kesintisi uygulanır.</p>
+      <h3>Kredi notu faiz oranını etkiler mi?</h3>
+      <p>Evet, kredi notunuz hem onay sürecinde hem de uygulanacak faiz oranında belirleyicidir. Yüksek kredi notuna sahip kişilere bankalar daha düşük faiz oranı sunarken, düşük kredi notu olanlar daha yüksek faiz oranıyla karşılaşabilir veya kredi alamayabilir.</p>
+      <h3>Erken kapama indirim sağlar mı?</h3>
+      <p>İhtiyaç ve taşıt kredilerinde erken ödeme yapıldığında kalan vadenin faizi silinir, sadece anapara ödenir. Konut kredisinde ise erken ödeme cezası uygulanabilir, bu yüzden sözleşme şartlarını kontrol etmek önemlidir.</p>
+    </div>
+  </section>
+
+  <section class="container" style="padding-bottom:60px">
+    <h2 style="font-size:20px;font-weight:900;color:#084c41;margin-bottom:6px">Diğer Finansal Araçlar</h2>
+    <p style="color:#66736f;font-size:14px;margin-bottom:16px">Kampio ile tüm finansal hesaplamalarınızı yapın.</p>
+    <div class="tools-grid">
+      <a class="tool-link" href="/mevduat.html">💰 Mevduat Faiz Hesaplama<span>En yüksek faizi bul</span></a>
+      <a class="tool-link" href="/maas.html">💼 Net Maaş Hesaplama<span>Brütten nete, tazminat</span></a>
+      <a class="tool-link" href="/emekli.html">👴 Emeklilik Hesaplama<span>Ne zaman emekli olurum?</span></a>
+      <a class="tool-link" href="/altin.html">🥇 Altın & Döviz<span>Canlı kur ve altın fiyatları</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#084c41">
+      <span style="width:26px;height:26px;background:#0f6b5b;border-radius:6px;display:grid;place-items:center;color:white;font-weight:900;font-size:12px">K</span>
+      Kampio
+    </div>
+    <div class="footer-copy">© 2026 Kampio · Bilgilendirme amaçlıdır. Kesin teklif için bankanızla görüşün.</div>
+  </div>
+</footer>
+
+<script>
+  function formatTL(n) {
+    return Math.round(n).toLocaleString('tr-TR') + ' TL';
+  }
+
+  function calculateKredi(tip) {
+    const tutar = parseFloat(document.getElementById(tip + 'Tutar').value) || 0;
+    const vade = parseInt(document.getElementById(tip + 'Vade').value);
+    const faizYuzde = parseFloat(document.getElementById(tip + 'Faiz').value);
+    const faiz = faizYuzde / 100;
+
+    // Annüite formülü
+    const taksit = tutar * (faiz * Math.pow(1+faiz, vade)) / (Math.pow(1+faiz, vade) - 1);
+    const toplamOdeme = taksit * vade;
+    const toplamFaiz = toplamOdeme - tutar;
+
+    document.getElementById(tip + 'Taksit').textContent = formatTL(taksit);
+    document.getElementById(tip + 'Detay').textContent = `${vade} ay vade · Aylık %${faizYuzde.toFixed(2).replace('.',',')} faiz`;
+
+    document.getElementById(tip + 'Grid').innerHTML = `
+      <div class="result-item"><div class="result-item-label">Kredi Tutarı</div><div class="result-item-value">${formatTL(tutar)}</div></div>
+      <div class="result-item"><div class="result-item-label">Toplam Faiz</div><div class="result-item-value">${formatTL(toplamFaiz)}</div></div>
+      <div class="result-item"><div class="result-item-label">Toplam Geri Ödeme</div><div class="result-item-value">${formatTL(toplamOdeme)}</div></div>`;
+
+    document.getElementById(tip + 'Result').classList.add('show');
+    document.getElementById(tip + 'Result').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tabKonut').style.display = tab === 'konut' ? '' : 'none';
+    document.getElementById('tabTasit').style.display = tab === 'tasit' ? '' : 'none';
+    document.getElementById('tabIhtiyac').style.display = tab === 'ihtiyac' ? '' : 'none';
+  }
+</script>
+</body>
+</html>
