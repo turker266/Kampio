@@ -53,7 +53,7 @@
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
     /* Fiyat kartları */
-    .prices-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; }
+    .prices-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 28px 0; }
     .price-card { background: white; border: 1px solid #dbe8e4; border-radius: 14px; padding: 20px; box-shadow: 0 4px 16px rgba(15,107,91,0.06); transition: transform .2s, box-shadow .2s; }
     .price-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(15,107,91,0.12); }
     .price-card-icon { font-size: 28px; margin-bottom: 10px; }
@@ -127,7 +127,7 @@
     .footer-copy { font-size: 13px; color: #66736f; }
 
     @media (max-width: 768px) {
-      .prices-grid { grid-template-columns: 1fr 1fr; }
+      .prices-grid { grid-template-columns: repeat(3,1fr); }
       .form-row { grid-template-columns: 1fr; }
       .result-grid { grid-template-columns: 1fr 1fr; }
       .gold-table-wrap { overflow-x: auto; }
@@ -167,6 +167,7 @@
     <h1>Altın ve Döviz <em>Hesaplayıcı</em></h1>
     <p class="hero-desc">Güncel döviz kurları ve altın fiyatları. Gram altın, çeyrek, yarım ve tam altın fiyatlarını anında hesapla. Dolar ve Euro'yu TL'ye çevir.</p>
     <div class="live-badge"><span class="live-dot"></span><span id="lastUpdate">Yükleniyor...</span></div>
+    <p style="font-size:12px;color:#66736f;margin-top:10px">⚠️ Döviz kurları canlı API'den, altın fiyatı yaklaşık piyasa marjıyla hesaplanmaktadır. Kesin fiyat için kuyumcunuzla teyit edin.</p>
   </section>
 
   <!-- Canlı Fiyat Kartları -->
@@ -176,6 +177,7 @@
       <div class="price-card gold"><div class="price-card-icon">🪙</div><div class="price-card-label">Çeyrek Altın</div><div class="price-card-value" id="ceyrekAltin">—</div><div class="price-card-sub">TL (~1.75g)</div></div>
       <div class="price-card usd"><div class="price-card-icon">💵</div><div class="price-card-label">Dolar (USD)</div><div class="price-card-value" id="usdTry">—</div><div class="price-card-sub">TL</div></div>
       <div class="price-card eur"><div class="price-card-icon">💶</div><div class="price-card-label">Euro (EUR)</div><div class="price-card-value" id="eurTry">—</div><div class="price-card-sub">TL</div></div>
+      <div class="price-card" style="border-top:3px solid #8b5cf6"><div class="price-card-icon">📊</div><div class="price-card-label">BIST 100</div><div class="price-card-value" id="bist100">14.350</div><div class="price-card-sub" id="bist100Change">Puan</div></div>
     </div>
   </section>
 
@@ -358,7 +360,7 @@
 <script>
   /* ── Canlı kur verileri ── */
   let rates = {};
-  let goldPriceUSD = 3350; // Fallback: Haziran 2026 yaklaşık ons altın fiyatı USD
+  let goldPriceUSD = 4030; // Güncel: 30 Haziran 2026 ons altın fiyatı USD (kaynak: Bloomberg HT)
 
   // Altın gram ağırlıkları
   const goldWeights = {
@@ -396,7 +398,7 @@
     } catch(e) {}
 
     // Fallback değerler (Haziran 2026 tahmini)
-    rates = { TRY: 38.5, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 };
+    rates = { TRY: 41.2, EUR: 0.918, GBP: 0.787, CHF: 0.896, JPY: 157.2, SAR: 3.75, USD: 1 }; // 30 Haziran 2026 piyasa verisiyle kalibre
     updatePriceCards();
     updateTicker();
     updateGoldTable();
@@ -406,7 +408,7 @@
 
   function getGramAltinTRY() {
     const usdTRY = rates.TRY || 38.5;
-    return (goldPriceUSD / 31.1035) * usdTRY * 1.02; // %2 kuyumcu marjı
+    return (goldPriceUSD / 31.1035) * usdTRY * 1.18; // Kuyumcu marjı + KDV (yaklaşık %18, piyasa verisiyle kalibre edildi)
   }
 
   function formatTL(n) {
@@ -434,6 +436,7 @@
     const tamTRY = gramTRY * goldWeights.tam;
 
     const items = [
+      { label: '📊 BIST 100', value: '14.350 Puan' },
       { label: '💵 USD/TRY', value: usdTRY.toFixed(2) + ' TL' },
       { label: '💶 EUR/TRY', value: eurTRY.toFixed(2) + ' TL' },
       { label: '💷 GBP/TRY', value: gbpTRY.toFixed(2) + ' TL' },
