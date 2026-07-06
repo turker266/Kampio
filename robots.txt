@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kampio.vercel.app/sitemap.xml
+Sitemap: https://www.kampio.com.tr/sitemap.xml
