@@ -559,11 +559,21 @@
       display: flex; align-items: flex-end;
       flex-shrink: 0;
     }
+    .slide-bg-market      { background: linear-gradient(135deg, #0f6b5b 0%, #084c41 100%); }
+    .slide-bg-akaryakit   { background: linear-gradient(135deg, #14806d 0%, #0a3d34 100%); }
+    .slide-bg-restoran    { background: linear-gradient(135deg, #b8791f 0%, #6b4310 100%); }
+    .slide-bg-eticaret    { background: linear-gradient(135deg, #0f6b5b 0%, #123a5e 100%); }
+    .slide-bg-seyahat     { background: linear-gradient(135deg, #106b8a 0%, #083548 100%); }
+    .slide-bg-giyim       { background: linear-gradient(135deg, #6b4fa0 0%, #3a2860 100%); }
+    .slide-bg-teknoloji   { background: linear-gradient(135deg, #1b7a8c 0%, #0d3b45 100%); }
+    .slide-bg-saglik      { background: linear-gradient(135deg, #178f6e 0%, #0a4a3a 100%); }
+    .slide-bg-egitim      { background: linear-gradient(135deg, #2f7a5e 0%, #143d2c 100%); }
+    .slide-bg-diger       { background: linear-gradient(135deg, #0f6b5b 0%, #084c41 100%); }
     .slide-img {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      filter: brightness(0.55);
+      filter: saturate(1.08) brightness(0.92);
       transition: transform 8s ease;
     }
     .slide.active .slide-img { transform: scale(1.05); }
@@ -571,7 +581,7 @@
       position: relative; z-index: 2;
       padding: 48px 56px;
       width: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(4,20,17,0.72) 0%, rgba(4,20,17,0.25) 45%, transparent 78%);
     }
     .slide-bank {
       display: inline-flex; align-items: center; gap: 8px;
@@ -2365,16 +2375,16 @@
 
   /* ── Hero Slider ── */
   const sliderImages = {
-    'Market':          'https://images.pexels.com/photos/1005638/pexels-photo-1005638.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Akaryakıt':       'https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Restoran & Kafe': 'https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'E-ticaret':       'https://images.pexels.com/photos/5632371/pexels-photo-5632371.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Seyahat':         'https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Giyim':           'https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Teknoloji':       'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Sağlık':          'https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Eğitim':          'https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
-    'Diğer':           'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
+    'Market':          'https://images.pexels.com/photos/5380919/pexels-photo-5380919.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Akaryakıt':       'https://images.pexels.com/photos/188024/pexels-photo-188024.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Restoran & Kafe': 'https://images.pexels.com/photos/34896773/pexels-photo-34896773.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'E-ticaret':       'https://images.pexels.com/photos/35765435/pexels-photo-35765435.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Seyahat':         'https://images.pexels.com/photos/17772547/pexels-photo-17772547.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Giyim':           'https://images.pexels.com/photos/5709631/pexels-photo-5709631.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Teknoloji':       'https://images.pexels.com/photos/35220245/pexels-photo-35220245.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Sağlık':          'https://images.pexels.com/photos/35438269/pexels-photo-35438269.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Eğitim':          'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop',
+    'Diğer':           'https://images.pexels.com/photos/9122014/pexels-photo-9122014.jpeg?auto=compress&cs=tinysrgb&w=1200&h=500&fit=crop'
   };
 
   let sliderIndex = 0;
