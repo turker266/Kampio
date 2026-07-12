@@ -551,7 +551,6 @@
     .slider-track {
       display: flex;
       transition: transform .6s cubic-bezier(.77,0,.175,1);
-      will-change: transform;
     }
     .slide {
       min-width: 100%; height: 480px;
@@ -2491,6 +2490,29 @@
     clearInterval(sliderTimer);
     sliderTimer = setInterval(() => goToSlide(sliderIndex + 1), SLIDE_DURATION);
   }
+
+  // Guvenlik mekanizmasi: bazi mobil tarayicilarda GPU katmani "donuk" kalabiliyor.
+  // Sayfa tekrar gorunur olunca veya boyut degisince, transform'u gecissiz olarak
+  // dogru konuma zorla sabitleyip olasi donuk/yarim kalmis gorunumu duzeltir.
+  function snapSliderToCurrent() {
+    ["sliderTrack","sliderTrackLanding"].forEach(tid => {
+      const t = document.getElementById(tid);
+      if (!t) return;
+      t.style.transition = "none";
+      t.style.transform = `translateX(-${sliderIndex * 100}%)`;
+      // reflow'u tetikleyip transition'i bir sonraki frame'de geri ac
+      void t.offsetHeight;
+      requestAnimationFrame(() => { t.style.transition = ""; });
+    });
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) snapSliderToCurrent();
+  });
+  window.addEventListener("pageshow", snapSliderToCurrent);
+  window.addEventListener("resize", () => {
+    clearTimeout(window.__sliderResizeT);
+    window.__sliderResizeT = setTimeout(snapSliderToCurrent, 150);
+  });
 
   ["sliderPrev","sliderPrevLanding"].forEach(id => {
     document.getElementById(id)?.addEventListener("click", () => { goToSlide(sliderIndex-1); startSliderTimer(); });
