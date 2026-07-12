@@ -2510,10 +2510,12 @@
   ["heroSlider","heroSliderLanding"].forEach(id => {
     document.getElementById(id)?.addEventListener("touchstart", e => {
       touchStartX = e.touches[0].clientX;
+      clearInterval(sliderTimer); // mobilde autoplay ile swipe çakışmasını (görsel yırtılma) önler
     }, { passive: true });
     document.getElementById(id)?.addEventListener("touchend", e => {
       const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) { goToSlide(diff > 0 ? sliderIndex+1 : sliderIndex-1); startSliderTimer(); }
+      if (Math.abs(diff) > 50) { goToSlide(diff > 0 ? sliderIndex+1 : sliderIndex-1); }
+      startSliderTimer();
     }, { passive: true });
   });
 
