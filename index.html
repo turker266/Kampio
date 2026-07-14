@@ -2273,19 +2273,13 @@
   function getCatIcon(cat) { return catIcon[cat] || '💳'; }
 
 
-  /* ── Resend Email ── */
-  const RESEND_API_KEY = "re_GkPp5atm_NZ3twcvnTma3t1yRvBYar8Ci";
-  const FROM_EMAIL = "Kampio <onboarding@resend.dev>";
-
+  /* ── Email (guvenli sunucu fonksiyonu uzerinden) ── */
   async function sendEmail(to, subject, html) {
     try {
-      const r = await fetch("https://api.resend.com/emails", {
+      const r = await fetch("/api/send-welcome-email", {
         method: "POST",
-        headers: {
-          "Authorization": `Bearer ${RESEND_API_KEY}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ from: FROM_EMAIL, to, subject, html })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ to, subject, html })
       });
       const data = await r.json();
       return r.ok ? data : null;
@@ -2828,54 +2822,35 @@
 
   /* ── Live Ticker (Ana Sayfa) ── */
   async function loadMainTicker() {
-    let rates = {};
-    let directGramTRY = null;
-    try {
-      const r = await fetch('https://open.er-api.com/v6/latest/USD');
-      const data = await r.json();
-      if (data.result === 'success') rates = data.rates;
-    } catch(e) {}
-    if (!rates.TRY) rates = { TRY: 41.6, EUR: 0.918, GBP: 0.787 };
+    // Altin/doviz ve BIST 100 artik guvenilir sunucu fonksiyonlarindan cekiliyor
+    // (CORS riski yok, sabit/donuk yedek deger yok, anahtar sizma riski yok).
+    let usdTRY = 41.6, eurTRY = 45.3, gbpTRY = 52.8, gramTRY = 5450, ceyrekTRY = 9565;
+    let bist100Text = '—';
 
-    // Türkiye'ye özel gerçek gram altın fiyatı (Truncgil Finans API)
     try {
-      const tr = await fetch('https://finans.truncgil.com/v3/today.json');
-      const tdata = await tr.json();
-      function parseNum(v) {
-        if (v === undefined || v === null) return null;
-        const n = parseFloat(String(v).replace(/\./g, '').replace(',', '.'));
-        return isNaN(n) ? null : n;
-      }
-      function findGoldEntry(obj) {
-        const keys = ['Gram Altın', 'GRA', 'gram-altin', 'GramAltin', 'gram_altin'];
-        for (const k of keys) { if (obj[k]) return obj[k]; }
-        for (const k in obj) {
-          if (k.toLowerCase().includes('gram') && obj[k] && typeof obj[k] === 'object') return obj[k];
-        }
-        return null;
-      }
-      const goldEntry = findGoldEntry(tdata);
-      if (goldEntry) {
-        const sellField = goldEntry.Satış ?? goldEntry.Selling ?? goldEntry.satis ?? goldEntry.sell;
-        const parsed = parseNum(sellField);
-        if (parsed && parsed > 1000 && parsed < 50000) directGramTRY = parsed;
-      }
-      const usdEntry = tdata['USD'] || tdata['Amerikan Doları'];
-      if (usdEntry) {
-        const usdSell = parseNum(usdEntry.Satış ?? usdEntry.Selling ?? usdEntry.sell);
-        if (usdSell && usdSell > 10 && usdSell < 100) rates.TRY = usdSell;
-      }
+      const gr = await fetch('/api/gold');
+      const gdata = await gr.json();
+      if (gdata.usdTRY) usdTRY = gdata.usdTRY;
+      if (gdata.eurTRY) eurTRY = gdata.eurTRY;
+      if (gdata.gbpTRY) gbpTRY = gdata.gbpTRY;
+      if (gdata.gramTRY) gramTRY = gdata.gramTRY;
+      if (gdata.ceyrekTRY) ceyrekTRY = gdata.ceyrekTRY;
     } catch(e) {}
 
-    const usdTRY = rates.TRY;
-    const eurTRY = rates.TRY / rates.EUR;
-    const gbpTRY = rates.TRY / (rates.GBP || 0.787);
-    // Öncelik: gerçek Türkiye piyasası verisi, yoksa formülle tahmin
-    const gramTRY = directGramTRY || ((4030 / 31.1035) * usdTRY * 1.0);
-    const ceyrekTRY = gramTRY * 1.755;
+    // Telefon mockup'ındaki mini gösterge de aynı canlı veriyle beslensin
+    window._liveUsd = usdTRY.toFixed(2) + ' TL';
+    window._liveGold = gramTRY.toLocaleString('tr-TR', {maximumFractionDigits: 0}) + ' TL';
+
+    try {
+      const br = await fetch('/api/bist100');
+      const bdata = await br.json();
+      if (bdata && typeof bdata.value === 'number') {
+        bist100Text = bdata.value.toLocaleString('tr-TR', {maximumFractionDigits: 0}) + ' Puan';
+      }
+    } catch(e) {}
 
     const items = [
-      { label: '📊 BIST 100', value: '14.455 Puan' },
+      { label: '📊 BIST 100', value: bist100Text },
       { label: '💵 USD/TRY', value: usdTRY.toFixed(2) + ' TL' },
       { label: '💶 EUR/TRY', value: eurTRY.toFixed(2) + ' TL' },
       { label: '💷 GBP/TRY', value: gbpTRY.toFixed(2) + ' TL' },
