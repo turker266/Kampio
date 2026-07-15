@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Cache-Control", "s-maxage=90, stale-while-revalidate=180");
 
-  let usdTRY = null, eurTRY = null, gbpTRY = null, gramTRY = null, source = "";
+  let usdTRY = null, eurTRY = null, gbpTRY = null, gramTRY = null, ceyrekTRYDirect = null, source = "";
 
   try {
     const r = await fetch("https://open.er-api.com/v6/latest/USD");
@@ -45,6 +45,13 @@ module.exports = async (req, res) => {
       if (parsed && parsed > 1000 && parsed < 50000) { gramTRY = parsed; source = "truncgil"; }
     }
 
+    const ceyrekEntry = findEntry(tdata, ["Çeyrek Altın", "CEYREK", "ceyrek-altin", "CeyrekAltin", "ceyrek_altin", "ceyrek"]);
+    if (ceyrekEntry) {
+      const sell = ceyrekEntry["Satış"] ?? ceyrekEntry.Selling ?? ceyrekEntry.satis ?? ceyrekEntry.sell ?? ceyrekEntry.Sell;
+      const parsed = parseNum(sell);
+      if (parsed && parsed > 1000 && parsed < 100000) { ceyrekTRYDirect = parsed; }
+    }
+
     const usdEntry = tdata["USD"] || tdata["Amerikan Doları"];
     if (usdEntry) {
       const sell = parseNum(usdEntry["Satış"] ?? usdEntry.Selling ?? usdEntry.sell);
@@ -69,7 +76,7 @@ module.exports = async (req, res) => {
   if (!usdTRY) usdTRY = null;
   if (!gramTRY) gramTRY = null;
 
-  const ceyrekTRY = gramTRY ? gramTRY * 1.755 : null;
+  const ceyrekTRY = ceyrekTRYDirect || (gramTRY ? gramTRY * 1.755 : null);
 
   return res.status(200).json({
     usdTRY, eurTRY, gbpTRY, gramTRY, ceyrekTRY,
