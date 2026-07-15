@@ -2,6 +2,11 @@
 <html lang="tr">
 <head>
 
+  <!-- ═══ Performans: yazı tipini erken ve paralel yükle ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+
   <!-- ═══ SEO & Meta ═══ -->
   <meta name="description" content="Kampio — Türkiye'nin finansal karşılaştırma platformu. Kredi kartı kampanya ve promosyonlar, emekli promosyonu, mevduat faiz oranları, altın fiyatı, net maaş hesaplama, %0 faizli kredi. 2026 güncel.">
   <meta name="keywords" content="kredi kartı kampanya, banka kampanya, bonus kampanya, chip para, cashback, kredi kartı avantaj, Garanti kampanya, Akbank kampanya">
@@ -77,7 +82,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kampio — Kredi Kartı Kampanya ve Promosyon 2026 | Mevduat Faiz, Emekli Promosyonu, Altın | Türkiye Finans Platformu</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    /* Yazı tipi artık <head> içinde preconnect+link ile erken yükleniyor */
 
     :root {
       --petrol: #0f6b5b;
@@ -2770,23 +2775,41 @@
       currentUser = { email: stored.email, id: stored.id };
     }
     updateAuthUI();
-    try {
-      const rows = await dbFetch("select=*");
-      if (rows.length === 0) {
-        for (const c of seedCampaigns) await dbInsert(toDB(c));
-        campaigns = [...seedCampaigns];
-        showToast("Başlangıç kampanyaları yüklendi ✓","success");
-      } else {
-        campaigns = rows.map(fromDB);
-      }
-    } catch(err) {
-      showToast("Veritabanı bağlantısı başarısız: "+err.message,"error");
-      campaigns = [];
-    }
-    renderHome(); renderHeroPanel(); buildSlider();
+
     const ls = document.getElementById("loadingScreen");
-    ls.classList.add("fade");
-    setTimeout(()=>ls.style.display="none", 400);
+    const hideLoading = () => {
+      if (ls && ls.style.display !== "none") {
+        ls.classList.add("fade");
+        setTimeout(()=>ls.style.display="none", 400);
+      }
+    };
+
+    // Kampanya verisi Supabase'den cekiliyor ama sayfa artik bunun icin
+    // sinirsiz beklemiyor: en fazla 900ms, sonra sayfa iskeleti gosterilir,
+    // veri gelince arka planda sessizce guncellenir. Boylece kullanici
+    // her zaman h1zli bir ilk goruntu gorur, "donen simge" suresi kisalir.
+    const dataPromise = (async () => {
+      try {
+        const rows = await dbFetch("select=*");
+        if (rows.length === 0) {
+          for (const c of seedCampaigns) await dbInsert(toDB(c));
+          campaigns = [...seedCampaigns];
+          showToast("Başlangıç kampanyaları yüklendi ✓","success");
+        } else {
+          campaigns = rows.map(fromDB);
+        }
+      } catch(err) {
+        showToast("Veritabanı bağlantısı başarısız: "+err.message,"error");
+        campaigns = [];
+      }
+      renderHome(); renderHeroPanel(); buildSlider();
+      hideLoading();
+    })();
+
+    const timeoutPromise = new Promise(resolve => setTimeout(resolve, 900));
+    await Promise.race([dataPromise, timeoutPromise]);
+    renderHome(); renderHeroPanel(); buildSlider();
+    hideLoading();
   }
 
 
