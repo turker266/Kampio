@@ -6,8 +6,9 @@ module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Cache-Control", "s-maxage=90, stale-while-revalidate=180");
 
-  let usdTRY = null, eurTRY = null, gbpTRY = null, gramTRY = null, ceyrekTRYDirect = null, source = "";
+  let usdTRY = null, eurTRY = null, gbpTRY = null, gramTRY = null, ceyrekTRYDirect = null, yarimTRYDirect = null, tamTRYDirect = null, source = "";
 
+  // 1) Doviz kurlari (ucretsiz, anahtarsiz)
   try {
     const r = await fetch("https://open.er-api.com/v6/latest/USD");
     const data = await r.json();
@@ -18,6 +19,7 @@ module.exports = async (req, res) => {
     }
   } catch (e) {}
 
+  // 2) Turkiye gercek piyasa altin fiyati (Truncgil)
   try {
     const tr = await fetch("https://finans.truncgil.com/v3/today.json");
     const tdata = await tr.json();
@@ -52,6 +54,21 @@ module.exports = async (req, res) => {
       if (parsed && parsed > 1000 && parsed < 100000) { ceyrekTRYDirect = parsed; }
     }
 
+    const yarimEntry = findEntry(tdata, ["Yarım Altın", "YARIM", "yarim-altin", "YarimAltin", "yarim_altin", "yarim"]);
+    if (yarimEntry) {
+      const sell = yarimEntry["Satış"] ?? yarimEntry.Selling ?? yarimEntry.satis ?? yarimEntry.sell ?? yarimEntry.Sell;
+      const parsed = parseNum(sell);
+      if (parsed && parsed > 2000 && parsed < 200000) { yarimTRYDirect = parsed; }
+    }
+
+    const tamEntry = findEntry(tdata, ["Tam Altın", "TAM", "tam-altin", "TamAltin", "tam_altin", "Cumhuriyet Altını", "cumhuriyet"]);
+    if (tamEntry) {
+      const sell = tamEntry["Satış"] ?? tamEntry.Selling ?? tamEntry.satis ?? tamEntry.sell ?? tamEntry.Sell;
+      const parsed = parseNum(sell);
+      if (parsed && parsed > 5000 && parsed < 500000) { tamTRYDirect = parsed; }
+    }
+
+    // Truncgil'den USD kuru da alinabiliyorsa (daha isabetli olabilir), onu tercih et
     const usdEntry = tdata["USD"] || tdata["Amerikan Doları"];
     if (usdEntry) {
       const sell = parseNum(usdEntry["Satış"] ?? usdEntry.Selling ?? usdEntry.sell);
@@ -59,6 +76,7 @@ module.exports = async (req, res) => {
     }
   } catch (e) {}
 
+  // 3) Truncgil basarisiz olduysa: SABİT sayi yerine CANLI yedek (Yahoo Finance ons altin)
   if (!gramTRY) {
     try {
       const gr = await fetch("https://query1.finance.yahoo.com/v8/finance/chart/GC=F", {
@@ -73,13 +91,17 @@ module.exports = async (req, res) => {
     } catch (e) {}
   }
 
+  // Her iki kaynak da basarisiz olursa (cok nadir), en azindan hata donduralim, sessizce yanlis rakam vermeyelim
   if (!usdTRY) usdTRY = null;
   if (!gramTRY) gramTRY = null;
 
   const ceyrekTRY = ceyrekTRYDirect || (gramTRY ? gramTRY * 1.755 : null);
+  const yarimTRY = yarimTRYDirect || (gramTRY ? gramTRY * 3.51 : null);
+  const tamTRY = tamTRYDirect || (gramTRY ? gramTRY * 7.02 : null);
+  const onsUSD = (gramTRY && usdTRY) ? (gramTRY / usdTRY) * 31.1035 : null;
 
   return res.status(200).json({
-    usdTRY, eurTRY, gbpTRY, gramTRY, ceyrekTRY,
+    usdTRY, eurTRY, gbpTRY, gramTRY, ceyrekTRY, yarimTRY, tamTRY, onsUSD,
     source, updatedAt: new Date().toISOString()
   });
 }
