@@ -559,6 +559,9 @@
     .slider-track {
       display: flex;
       transition: transform .6s cubic-bezier(.77,0,.175,1);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translate3d(0,0,0);
     }
     .slide {
       min-width: 100%; height: 480px;
@@ -2437,7 +2440,7 @@
     // Update both sliders in sync
     ["sliderTrack","sliderTrackLanding"].forEach(tid => {
       const t = document.getElementById(tid);
-      if (t) t.style.transform = `translateX(-${sliderIndex * 100}%)`;
+      if (t) t.style.transform = `translate3d(-${sliderIndex * 100}%,0,0)`;
     });
     ["sliderDots","sliderDotsLanding"].forEach(did => {
       document.getElementById(did)?.querySelectorAll(".slider-dot").forEach((d,i) => {
@@ -2470,7 +2473,7 @@
       const t = document.getElementById(tid);
       if (!t) return;
       t.style.transition = "none";
-      t.style.transform = `translateX(-${sliderIndex * 100}%)`;
+      t.style.transform = `translate3d(-${sliderIndex * 100}%,0,0)`;
       // reflow'u tetikleyip transition'i bir sonraki frame'de geri ac
       void t.offsetHeight;
       requestAnimationFrame(() => { t.style.transition = ""; });
@@ -2484,6 +2487,16 @@
     clearTimeout(window.__sliderResizeT);
     window.__sliderResizeT = setTimeout(snapSliderToCurrent, 150);
   });
+  // iOS Safari'de adres cubugu gizlenip/gorununce viewport boyutu degisiyor;
+  // normal "resize" olayi bunu bazen gec/eksik yakaliyor. visualViewport API'si
+  // bu degisimi daha dogru yakalar, swipe sirasindaki "bolunmus gorunum" hatasini
+  // hedefliyor.
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", () => {
+      clearTimeout(window.__sliderVVResizeT);
+      window.__sliderVVResizeT = setTimeout(snapSliderToCurrent, 100);
+    });
+  }
 
   ["sliderPrev","sliderPrevLanding"].forEach(id => {
     document.getElementById(id)?.addEventListener("click", () => { goToSlide(sliderIndex-1); startSliderTimer(); });
