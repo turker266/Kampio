@@ -2437,7 +2437,15 @@
     buildSliderIn("sliderTrackLanding", "sliderDotsLanding", "sliderProgressLanding", "sliderPrevLanding", "sliderNextLanding", "heroSliderLanding");
   }
 
+  let sliderAnimating = false;
+
   function goToSlide(idx, trackId="sliderTrack", dotsId="sliderDots", progressId="sliderProgress") {
+    // Bir gecis (transition) hala suruyorken ikinci bir cagri gelirse, transform
+    // iki hedef arasinda yarim kalabiliyordu (bolunmus/saplanmis gorunum hatasi).
+    // Devam eden bir animasyon varken yeni cagriyi yok sayarak bunu engelliyoruz.
+    if (sliderAnimating) return;
+    sliderAnimating = true;
+    setTimeout(() => { sliderAnimating = false; }, 650); // gecis suresi (.6s) + kucuk pay
     sliderIndex = (idx + sliderItems.length) % sliderItems.length;
     // Update both sliders in sync
     ["sliderTrack","sliderTrackLanding"].forEach(tid => {
@@ -2521,6 +2529,11 @@
       clearInterval(sliderTimer); // mobilde autoplay ile swipe çakışmasını (görsel yırtılma) önler
     }, { passive: true });
     document.getElementById(id)?.addEventListener("touchend", e => {
+      // Eger parmak bir slider-prev/next butonunun ustunde birakildiysa, o butonun
+      // kendi click olayi zaten tetiklenecek — burada AYRICA swipe mantigiyla da
+      // goToSlide cagirmak, tek jesti CIFT sayip transform'u iki nokta arasinda
+      // yarim kalmis (bolunmus gorunum) durumuna dusurebiliyordu. Bu yuzden atla.
+      if (e.target.closest(".slider-prev, .slider-next")) { startSliderTimer(); return; }
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) { goToSlide(diff > 0 ? sliderIndex+1 : sliderIndex-1); }
       startSliderTimer();
