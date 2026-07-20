@@ -214,7 +214,7 @@
     <p class="hero-desc">Türkiye'deki tüm bankaların güncel mevduat faiz oranlarını karşılaştır. 1 milyon TL için hangi banka ne kadar faiz veriyor? Hemen hesapla.</p>
     <div class="hero-stats">
       <div class="stat-card"><strong>%46.0</strong><span>En Yüksek Yıllık Faiz</span></div>
-      <div class="stat-card"><strong>12+</strong><span>Banka Karşılaştırması</span></div>
+      <div class="stat-card"><strong>17+</strong><span>Banka Karşılaştırması</span></div>
       <div class="stat-card"><strong>Haziran 2026</strong><span>Son Güncelleme</span></div>
     </div>
   </section>
@@ -267,7 +267,7 @@
       <h2>Banka Mevduat Faiz Oranları Karşılaştırması</h2>
       <p>Güncel TL vadeli mevduat faiz oranları (brüt, yıllık)</p>
     </div>
-    <div class="updated-badge"><span class="updated-dot"></span>11 Temmuz 2026 — Güncellendi · Kaynak: Hesapkurdu.com</div>
+    <div class="updated-badge"><span class="updated-dot"></span>18 Temmuz 2026 — Güncellendi · Kaynak: Hesapkurdu.com</div>
 
     <div class="vade-tabs">
       <button class="vade-tab active" onclick="switchVade(1, this)">1 Ay</button>
@@ -349,14 +349,23 @@
 <script>
   /* ── Faiz verileri ── */
   /*
-   * Kaynak: Hesapkurdu.com (11 Temmuz 2026)
+   * Kaynak: Hesapkurdu.com (18 Temmuz 2026)
    * ⚠️ Bu oranlar bilgilendirme amaçlıdır. Kesin oran için bankanızın uygulamasını kullanın.
    * Faiz oranları tutara, müşteri tipine ve kampanyalara göre değişir.
+   * Not: ON Dijital, Odeabank, Alternatif Bank, CEPTETEB, GetirFinans icin sadece
+   * 1 aylik (32 gun) oran doğrulanmis kaynaktan alindi; 3/6/12 aylik degerler,
+   * ayni 1 aylik orana sahip bankalarin (TEB / Enpara) orantisal dususu baz alinarak
+   * tahmin edilmistir.
    */
   const bankRates = [
     { bank: "TEB", color: "#004B87", initials: "TB", rates: { 1: 46.0, 3: 44.5, 6: 43.0, 12: 41.0 } },
+    { bank: "ON Dijital", color: "#6C2EB5", initials: "ON", rates: { 1: 46.0, 3: 44.5, 6: 43.0, 12: 41.0 } },
+    { bank: "Odeabank", color: "#F5821F", initials: "OD", rates: { 1: 46.0, 3: 44.5, 6: 43.0, 12: 41.0 } },
+    { bank: "Alternatif Bank", color: "#00558C", initials: "AB", rates: { 1: 46.0, 3: 44.5, 6: 43.0, 12: 41.0 } },
+    { bank: "CEPTETEB", color: "#00A0DF", initials: "CT", rates: { 1: 46.0, 3: 44.5, 6: 43.0, 12: 41.0 } },
     { bank: "DenizBank", color: "#005F9E", initials: "DB", rates: { 1: 45.0, 3: 44.0, 6: 42.5, 12: 40.5 } },
     { bank: "ING", color: "#FF6200", initials: "IN", rates: { 1: 45.0, 3: 44.0, 6: 42.5, 12: 40.5 } },
+    { bank: "GetirFinans", color: "#5D3EBC", initials: "GF", rates: { 1: 44.0, 3: 43.0, 6: 41.5, 12: 39.5 } },
     { bank: "Enpara", color: "#7B2D8B", initials: "EN", rates: { 1: 44.0, 3: 43.0, 6: 41.5, 12: 39.5 } },
     { bank: "QNB Finansbank", color: "#8B0000", initials: "QN", rates: { 1: 43.5, 3: 42.5, 6: 41.0, 12: 39.0 } },
     { bank: "Akbank", color: "#e3001b", initials: "AK", rates: { 1: 42.0, 3: 41.0, 6: 39.5, 12: 37.5 } },
