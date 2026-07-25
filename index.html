@@ -886,9 +886,11 @@
       padding: 4px 8px; border-radius: 6px;
       font-size: 10px; font-weight: 800;
       white-space: nowrap; flex-shrink: 0;
+      max-width: 92px; overflow: hidden; text-overflow: ellipsis;
     }
+    .phone-camp-info { flex: 1; min-width: 0; overflow: hidden; }
     .phone-camp-bank { font-size: 11px; font-weight: 700; color: #66736f; }
-    .phone-camp-title { font-size: 12px; font-weight: 800; color: #182522; line-height: 1.3; }
+    .phone-camp-title { font-size: 12px; font-weight: 800; color: #182522; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .phone-bottom-bar {
       margin: 10px; padding: 10px 12px;
       background: #f7faf9; border-radius: 10px;
@@ -1165,7 +1167,7 @@
           </div>
           <!-- Alt bar -->
           <div class="phone-bottom-bar">
-            <span>📊 BIST</span><strong>14.455</strong>
+            <span>📊 BIST</span><strong id="phonBist">—</strong>
             <span style="margin-left:10px">💹 Canlı</span>
           </div>
         </div>
@@ -2558,14 +2560,17 @@
         {bg:'#ede9fe',color:'#5b21b6'},
         {bg:'#fee2e2',color:'#991b1b'}
       ];
-      phonCamp.innerHTML = top4.map((c,i) => `
+      phonCamp.innerHTML = top4.map((c,i) => {
+        const label = c.rewardLabel.length > 13 ? c.rewardLabel.substring(0,12) + '…' : c.rewardLabel;
+        return `
         <div class="phone-camp-item">
-          <div class="phone-camp-badge" style="background:${colors[i].bg};color:${colors[i].color}">${c.rewardLabel}</div>
+          <div class="phone-camp-badge" style="background:${colors[i].bg};color:${colors[i].color}">${label}</div>
           <div class="phone-camp-info">
             <div class="phone-camp-bank">${c.bank}</div>
             <div class="phone-camp-title">${c.title.substring(0,22)}${c.title.length>22?'…':''}</div>
           </div>
-        </div>`).join('');
+        </div>`;
+      }).join('');
     }
   }
 
@@ -2594,8 +2599,10 @@
     setTimeout(() => {
       const usdEl = document.getElementById('phonUsd');
       const goldEl = document.getElementById('phonGold');
+      const bistEl = document.getElementById('phonBist');
       if (usdEl && window._liveUsd) usdEl.textContent = window._liveUsd;
       if (goldEl && window._liveGold) goldEl.textContent = window._liveGold;
+      if (bistEl && window._liveBist) bistEl.textContent = window._liveBist;
     }, 2000);
   };
 
@@ -2867,6 +2874,7 @@
       const bdata = await br.json();
       if (bdata && typeof bdata.value === 'number') {
         bist100Text = bdata.value.toLocaleString('tr-TR', {maximumFractionDigits: 0}) + ' Puan';
+        window._liveBist = bdata.value.toLocaleString('tr-TR', {maximumFractionDigits: 0});
       }
     } catch(e) {}
 
