@@ -116,7 +116,7 @@
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 22px; color: var(--petrol-dark); background: none; border: none; letter-spacing: -0.5px; }
     .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 9px; background: var(--petrol); color: white; font-weight: 900; font-size: 18px; box-shadow: 0 8px 20px rgba(15,107,91,0.28); }
     .nav { display: flex; align-items: center; gap: 4px; }
-    .nav-link { padding: 8px 14px; border-radius: 8px; color: var(--muted); font-weight: 600; font-size: 14px; background: none; border: none; transition: color .15s, background .15s; }
+    .nav-link { padding: 8px 14px; border-radius: 8px; color: var(--muted); font-weight: 600; font-size: 14px; background: none; border: none; transition: color .15s, background .15s; white-space: nowrap; flex-shrink: 0; }
     .nav-link:hover { color: var(--text); background: var(--petrol-soft); }
     .nav-link.active { color: var(--petrol-dark); background: var(--petrol-soft); font-weight: 700; }
     .nav-cta { margin-left: 8px; padding: 8px 18px; background: var(--petrol); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; box-shadow: 0 6px 18px rgba(15,107,91,0.28); transition: background .15s, transform .1s; white-space: nowrap; flex-shrink: 0; }
@@ -1006,7 +1006,7 @@
     </button>
     <nav class="nav">
       <button class="nav-link active" type="button" data-nav="landing">Ana Sayfa</button>
-      <button class="nav-link" type="button" data-nav="app">💳 Kredi Kartı Kampanyaları</button>
+      <button class="nav-link" type="button" data-nav="app">💳 Kredi Kartı</button>
       <div class="nav-dropdown">
         <button class="nav-link nav-dropdown-btn" type="button">🧮 Hesaplayıcılar ▾</button>
         <div class="nav-dropdown-menu">
@@ -1033,7 +1033,7 @@
       <a class="nav-link" href="/sifir-faiz.html" style="text-decoration:none">✅ %0 Faiz</a>
       <a class="nav-link" href="/blog.html" style="text-decoration:none">📚 Blog</a>
       <button class="nav-link" type="button" id="adminNavBtn" data-nav="admin" style="display:none">Admin</button>
-      <button class="nav-link" type="button" id="loginNavBtn" data-nav="login">Giriş Yap / Kayıt Ol</button>
+      <button class="nav-link" type="button" id="loginNavBtn" data-nav="login">Giriş Yap</button>
       <span id="userEmail" style="display:none;font-size:13px;font-weight:700;color:var(--petrol-dark);padding:0 8px"></span>
       <button class="nav-link" type="button" id="logoutBtn" style="display:none;color:var(--danger)">Çıkış</button>
       <button class="nav-cta" type="button" data-nav="app">Ücretsiz Dene</button>
