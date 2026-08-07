@@ -119,7 +119,7 @@
     .nav-link { padding: 8px 14px; border-radius: 8px; color: var(--muted); font-weight: 600; font-size: 14px; background: none; border: none; transition: color .15s, background .15s; }
     .nav-link:hover { color: var(--text); background: var(--petrol-soft); }
     .nav-link.active { color: var(--petrol-dark); background: var(--petrol-soft); font-weight: 700; }
-    .nav-cta { margin-left: 8px; padding: 8px 18px; background: var(--petrol); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; box-shadow: 0 6px 18px rgba(15,107,91,0.28); transition: background .15s, transform .1s; }
+    .nav-cta { margin-left: 8px; padding: 8px 18px; background: var(--petrol); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; box-shadow: 0 6px 18px rgba(15,107,91,0.28); transition: background .15s, transform .1s; white-space: nowrap; flex-shrink: 0; }
     .nav-cta:hover { background: var(--petrol-dark); transform: translateY(-1px); }
 
     /* SHARED */
@@ -1006,7 +1006,7 @@
     </button>
     <nav class="nav">
       <button class="nav-link active" type="button" data-nav="landing">Ana Sayfa</button>
-      <button class="nav-link" type="button" data-nav="app">💳 Kredi Kartı</button>
+      <button class="nav-link" type="button" data-nav="app">💳 Kredi Kartı Kampanyaları</button>
       <div class="nav-dropdown">
         <button class="nav-link nav-dropdown-btn" type="button">🧮 Hesaplayıcılar ▾</button>
         <div class="nav-dropdown-menu">
