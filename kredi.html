@@ -408,6 +408,16 @@
     document.getElementById('tabTasit').style.display = tab === 'tasit' ? '' : 'none';
     document.getElementById('tabIhtiyac').style.display = tab === 'ihtiyac' ? '' : 'none';
   }
+
+  // Ana sayfadaki "Tüm Finansal Araçlar" kartlarından #tasit veya #ihtiyac ile
+  // gelindiyse, dogru sekmeyi otomatik ac.
+  document.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'tasit' || hash === 'ihtiyac') {
+      const btn = document.querySelector(`.page-tab[onclick*="${hash}"]`);
+      if (btn) switchTab(hash, btn);
+    }
+  });
 </script>
 </body>
 </html>

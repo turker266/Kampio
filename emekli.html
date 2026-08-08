@@ -445,12 +445,13 @@
     document.getElementById("tabPromo").style.display = tab === "promo" ? "" : "none";
   }
 
-  // Sayfa #promo hash'iyle acildiysa (ornegin ana sayfadaki "Emekli Promosyonu"
-  // linkinden geldiyse), otomatik olarak Banka Promosyonlari sekmesini ac.
+  // Sayfa #promo veya #maas hash'iyle acildiysa (ornegin ana sayfadaki
+  // "Tüm Finansal Araçlar" kartlarindan geldiyse), dogru sekmeyi otomatik ac.
   document.addEventListener("DOMContentLoaded", () => {
-    if (window.location.hash === "#promo") {
-      const promoBtn = document.querySelector('.page-tab[onclick*="promo"]');
-      if (promoBtn) switchTab("promo", promoBtn);
+    const hash = window.location.hash.replace("#", "");
+    if (hash === "promo" || hash === "maas") {
+      const btn = document.querySelector(`.page-tab[onclick*="${hash}"]`);
+      if (btn) switchTab(hash, btn);
     }
   });
 
