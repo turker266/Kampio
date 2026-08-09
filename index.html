@@ -2121,6 +2121,7 @@
   }
 
   function editCampaign(id) {
+    if (!isCurrentUserAdmin()) return;
     const c = campaigns.find(x=>x.id===id); if(!c) return;
     document.getElementById("formTitle").textContent = "Kampanyayı Düzenle";
     document.getElementById("saveBtn").textContent = "Güncelle";
@@ -2143,6 +2144,7 @@
   }
 
   async function toggleCampaign(id) {
+    if (!isCurrentUserAdmin()) return;
     const c = campaigns.find(x=>x.id===id); if(!c) return;
     try {
       await dbUpdate(id, {is_active: !c.isActive});
@@ -2153,6 +2155,7 @@
   }
 
   async function deleteCampaign(id) {
+    if (!isCurrentUserAdmin()) return;
     if(!confirm("Bu kampanyayı silmek istediğine emin misin?")) return;
     try {
       await dbDelete(id);
@@ -2797,6 +2800,7 @@
 
   document.getElementById("campaignForm").addEventListener("submit", async e => {
     e.preventDefault();
+    if (!isCurrentUserAdmin()) return;
     const data = collectForm();
     const btn = document.getElementById("saveBtn");
     btn.textContent = "Kaydediliyor…"; btn.disabled = true;
