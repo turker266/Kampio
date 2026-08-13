@@ -144,9 +144,17 @@
     #toast.error { background: var(--danger); }
 
     /* LOADING */
-    .loading-screen { position: fixed; inset: 0; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; z-index: 200; transition: opacity .4s; }
-    .loading-screen.fade { opacity: 0; pointer-events: none; }
-    .spinner { width: 40px; height: 40px; border: 3px solid var(--petrol-soft2); border-top-color: var(--petrol); border-radius: 50%; animation: spin .7s linear infinite; }
+    .loading-screen { display: none; }
+    .skeleton-card { background: white; border-radius: 14px; padding: 18px; box-shadow: var(--shadow); overflow: hidden; position: relative; }
+    .skeleton-card::before { content: ""; display: block; height: 130px; margin: -18px -18px 12px -18px; background: var(--petrol-soft2); }
+    .skeleton-line { height: 12px; border-radius: 6px; background: var(--petrol-soft2); margin-bottom: 10px; }
+    .skeleton-line.w60 { width: 60%; }
+    .skeleton-line.w90 { width: 90%; }
+    .skeleton-line.w40 { width: 40%; }
+    .skeleton-card, .skeleton-line::after { }
+    .skeleton-shimmer { position: relative; overflow: hidden; }
+    .skeleton-shimmer::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent); animation: shimmer 1.3s infinite; }
+    @keyframes shimmer { 100% { transform: translateX(100%); } }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-screen p { color: var(--muted); font-weight: 600; font-size: 14px; }
 
@@ -998,17 +1006,8 @@
   </div>
 </div>
 
-<!-- LOADING -->
-<div class="loading-screen" id="loadingScreen">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-    <span style="width:32px;height:32px;border-radius:8px;background:var(--petrol);display:grid;place-items:center">
-    <span style="color:white;font-weight:900;font-size:16px;font-family:sans-serif">K</span>
-  </span>
-    <span style="font-weight:900;font-size:20px;color:var(--petrol-dark)">Kampio</span>
-  </div>
-  <div class="spinner"></div>
-  <p>Kampanyalar yükleniyor…</p>
-</div>
+<!-- LOADING (artık tam sayfayı kapatmıyor, bkz. #campaignGrid iskeleti) -->
+<div class="loading-screen" id="loadingScreen" style="display:none"></div>
 
 <!-- TOPBAR -->
 <header class="topbar">
@@ -1663,7 +1662,11 @@
           <span class="count-badge" id="countLabel">—</span>
         </div>
       </div>
-      <div class="campaign-grid" id="campaignGrid"></div>
+      <div class="campaign-grid" id="campaignGrid">
+        <div class="skeleton-card skeleton-shimmer"><div class="skeleton-line w40"></div><div class="skeleton-line w90"></div><div class="skeleton-line w60"></div></div>
+        <div class="skeleton-card skeleton-shimmer"><div class="skeleton-line w40"></div><div class="skeleton-line w90"></div><div class="skeleton-line w60"></div></div>
+        <div class="skeleton-card skeleton-shimmer"><div class="skeleton-line w40"></div><div class="skeleton-line w90"></div><div class="skeleton-line w60"></div></div>
+      </div>
     </section>
   </main>
 </div>
@@ -2863,19 +2866,11 @@
     }
     updateAuthUI();
 
-    const ls = document.getElementById("loadingScreen");
-    const hideLoading = () => {
-      if (ls && ls.style.display !== "none") {
-        ls.classList.add("fade");
-        setTimeout(()=>ls.style.display="none", 400);
-      }
-    };
-
-    // Kampanya verisi Supabase'den cekiliyor ama sayfa artik bunun icin
-    // sinirsiz beklemiyor: en fazla 900ms, sonra sayfa iskeleti gosterilir,
-    // veri gelince arka planda sessizce guncellenir. Boylece kullanici
-    // her zaman h1zli bir ilk goruntu gorur, "donen simge" suresi kisalir.
-    const dataPromise = (async () => {
+    // Kampanya verisi Supabase'den çekiliyor. Artık tam sayfayı kapatan bir
+    // yükleme perdesi yok — statik içerik (menü, hero, footer, araçlar) anında
+    // görünür; sadece #campaignGrid içindeki iskelet kartlar, veri gelince
+    // gerçek kartlarla değişir.
+    (async () => {
       try {
         const rows = await dbFetch("select=*");
         if (rows.length === 0) {
@@ -2890,13 +2885,7 @@
         campaigns = [];
       }
       renderHome(); renderHeroPanel(); buildSlider();
-      hideLoading();
     })();
-
-    const timeoutPromise = new Promise(resolve => setTimeout(resolve, 900));
-    await Promise.race([dataPromise, timeoutPromise]);
-    renderHome(); renderHeroPanel(); buildSlider();
-    hideLoading();
   }
 
 
