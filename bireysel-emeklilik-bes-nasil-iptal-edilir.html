@@ -116,7 +116,13 @@
       .related-grid { grid-template-columns: 1fr; }
       article table { font-size: 13px; }
     }
-  </style>
+      .mid-link-card { display: flex; align-items: center; gap: 16px; background: white; border: 1px solid #dbe8e4; border-radius: 14px; padding: 14px; margin: 28px 0; transition: all .15s; }
+    .mid-link-card:hover { border-color: #0f6b5b; box-shadow: 0 8px 22px rgba(15,107,91,0.1); transform: translateY(-1px); }
+    .mid-link-card img { width: 84px; height: 84px; object-fit: cover; border-radius: 10px; flex-shrink: 0; display: block; }
+    .mid-link-card .mlc-label { font-size: 11px; font-weight: 800; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .mid-link-card .mlc-title { font-size: 15px; font-weight: 800; color: #182522; line-height: 1.35; }
+    .mid-link-card .mlc-arrow { margin-left: auto; color: #0f6b5b; font-size: 20px; flex-shrink: 0; }
+</style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
