@@ -1,305 +1,245 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog | Finansal Rehberler ve Bilgilendirici Yazılar | Kampio</title>
-  <meta name="description" content="Emekli promosyonu, maaş promosyonu, kredi kartı faizleri ve daha fazlası hakkında güncel, sade dilde yazılmış finansal rehberler.">
-  <meta name="keywords" content="Kampio blog, finans rehberi, banka promosyonu, kredi kartı rehberi, emekli promosyonu rehberi">
-  <link rel="canonical" href="https://www.kampio.com.tr/blog.html">
-  <meta name="google-site-verification" content="YehcmNnMbGqmoniSgPL9snlGpO3uc-7u62hcki0uAnY" />
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.kampio.com.tr/blog.html">
-  <meta property="og:title" content="Blog | Kampio">
-  <meta property="og:description" content="Emekli promosyonu, maaş promosyonu, kredi kartı faizleri ve daha fazlası hakkında güncel finansal rehberler.">
-  <meta property="og:image" content="https://www.kampio.com.tr/og-image.png">
-  <meta property="og:locale" content="tr_TR">
-  <meta property="og:site_name" content="Kampio">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ECWKHQM6EG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ECWKHQM6EG');
-  </script>
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
-    .topbar { background: white; border-bottom: 1px solid #dbe8e4; position: sticky; top: 0; z-index: 100; }
-    .topbar-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
-    .brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
-    .back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; }
-    .back-link:hover { background: #e7f5f1; }
-    .breadcrumb { padding: 12px 0; font-size: 13px; color: #66736f; font-weight: 600; }
-    .breadcrumb a { color: #0f6b5b; }
-    .breadcrumb span { margin: 0 6px; }
-
-    .hero { padding: 48px 0 36px; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e7f5f1; color: #084c41; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
-    .hero h1 { font-size: clamp(30px, 4.5vw, 46px); font-weight: 900; color: #084c41; letter-spacing: -1px; line-height: 1.08; margin-bottom: 12px; }
-    .hero-desc { font-size: 16px; color: #66736f; max-width: 560px; line-height: 1.6; }
-
-    .posts { padding-bottom: 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .post-card { background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 26px; box-shadow: 0 4px 16px rgba(15,107,91,0.06); transition: transform .2s, box-shadow .2s; display: flex; flex-direction: column; }
-    .post-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,107,91,0.1); }
-    .post-thumb { margin: -26px -26px 16px; width: calc(100% + 52px); height: 160px; object-fit: cover; display: block; border-radius: 16px 16px 0 0; }
-    .post-tag { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; background: #e7f5f1; color: #084c41; border-radius: 999px; font-size: 11.5px; font-weight: 800; margin-bottom: 14px; width: fit-content; }
-    .post-card h2 { font-size: 18px; font-weight: 800; color: #182522; line-height: 1.35; margin-bottom: 10px; }
-    .post-card p { font-size: 13.5px; color: #66736f; line-height: 1.6; margin-bottom: 18px; flex-grow: 1; }
-    .post-meta { font-size: 12px; color: #8a958f; font-weight: 600; margin-bottom: 12px; }
-    .post-cta { font-size: 13.5px; font-weight: 800; color: #0f6b5b; }
-
-    footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 13px; color: #66736f; }
-
-    @media (max-width: 900px) {
-      .posts { grid-template-columns: 1fr; }
-    }
-  </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8951018190934845" crossorigin="anonymous"></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Blog | Finansal Rehberler ve Bilgilendirici Yazılar",
-  "url": "https://www.kampio.com.tr/blog.html",
-  "description": "Emekli promosyonu, maaş promosyonu, kredi kartı faizleri ve daha fazlası hakkında finansal rehberler.",
-  "datePublished": "2026-06-09",
-  "dateModified": "2026-08-08",
-  "publisher": { "@type": "Organization", "name": "Kampio" }
+<meta charset="utf-8">
+<meta name="google-site-verification" content="YehcmNnMbGqmoniSgPL9snlGpO3uc-7u62hcki0uAnY" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Finansal Rehberler ve Bilgilendirici Yazılar | Kampio</title>
+<meta name="description" content="Emekli promosyonu, maaş promosyonu, kredi kartı faizleri ve daha fazlası hakkında güncel, sade dilde yazılmış finansal rehberler.">
+<meta name="keywords" content="Kampio blog, finans rehberi, banka promosyonu, kredi kartı rehberi, emekli promosyonu rehberi">
+<link rel="canonical" href="https://www.kampio.com.tr/blog.html">
+<meta property="og:title" content="Blog | Kampio">
+<meta property="og:description" content="Emekli promosyonu, maaş promosyonu, kredi kartı faizleri ve daha fazlası hakkında güncel finansal rehberler.">
+<meta property="og:image" content="https://www.kampio.com.tr/og-image.png">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Kampio">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.kampio.com.tr/blog.html">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; color: #182522; background: #f7faf9; font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.container { width: min(1000px, calc(100% - 32px)); margin: 0 auto; }
+.topbar { background: white; border-bottom: 1px solid #dbe8e4; }
+.topbar-inner { max-width: 1000px; margin: 0 auto; width: calc(100% - 32px); height: 64px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 20px; color: #084c41; }
+.brand-mark { width: 34px; height: 34px; background: #0f6b5b; border-radius: 8px; display: grid; place-items: center; color: white; font-weight: 900; font-size: 16px; }
+.back-link { font-size: 13px; font-weight: 700; color: #0f6b5b; border: 1px solid #d0ece5; border-radius: 8px; padding: 8px 14px; }
+.breadcrumb { padding: 14px 0; font-size: 13px; color: #66736f; font-weight: 600; }
+.breadcrumb a { color: #0f6b5b; }
+.breadcrumb span { margin: 0 6px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e7f5f1; color: #0f6b5b; border-radius: 999px; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+h1 { font-size: clamp(28px, 4.5vw, 42px); font-weight: 900; color: #084c41; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 12px; }
+h1 em { font-style: normal; color: #0f6b5b; }
+.hero-desc { font-size: 16px; color: #66736f; max-width: 620px; line-height: 1.6; margin-bottom: 32px; }
+.posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 48px; }
+.post-card { display: block; background: white; border: 1px solid #dbe8e4; border-radius: 16px; padding: 22px 24px; box-shadow: 0 4px 16px rgba(15,107,91,0.05); transition: transform .15s, box-shadow .15s, border-color .15s; }
+.post-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15,107,91,0.1); border-color: #0f6b5b; }
+.post-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: #66736f; font-weight: 700; margin-bottom: 10px; flex-wrap: wrap; }
+.post-category { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; background: #f0f4f3; border-radius: 999px; font-weight: 800; color: #084c41; }
+.post-title { font-size: 17px; font-weight: 800; color: #182522; line-height: 1.35; margin-bottom: 8px; }
+.post-desc { font-size: 13.5px; color: #66736f; line-height: 1.6; margin-bottom: 12px; }
+.post-read { font-size: 13px; font-weight: 800; color: #0f6b5b; }
+.new-tag { display: inline-block; padding: 2px 8px; background: #0f6b5b; color: white; border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing: 0.03em; margin-left: 6px; vertical-align: middle; }
+footer { border-top: 1px solid #dbe8e4; padding: 24px 0; background: white; text-align: center; font-size: 13px; color: #66736f; }
+footer a { color: #0f6b5b; font-weight: 700; }
+@media (max-width: 700px) {
+.posts-grid { grid-template-columns: 1fr; }
 }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ECWKHQM6EG"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-ECWKHQM6EG');
 </script>
 </head>
 <body>
-
 <header class="topbar">
-  <div class="container topbar-inner">
-    <a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
-    <a class="back-link" href="/">← Ana Sayfa</a>
-  </div>
+<div class="topbar-inner">
+<a class="brand" href="/"><span class="brand-mark">K</span>Kampio</a>
+<a class="back-link" href="/">← Ana Sayfa</a>
+</div>
 </header>
+<main class="container">
+<div class="breadcrumb"><a href="/">Kampio</a><span>›</span>Blog</div>
+<div class="hero-badge">📚 Kampio Blog</div>
+<h1>Finansal konuları <em>sade dilde</em> anlatıyoruz.</h1>
+<p class="hero-desc">Emekli promosyonundan kredi kartı faizine, maaş promosyonundan banka kampanyalarına kadar merak ettiğiniz konuları güncel verilerle, anlaşılır bir dille açıklıyoruz.</p>
 
-<main>
-  <div class="container">
-    <div class="breadcrumb">
-      <a href="/">Kampio</a><span>›</span>Blog
-    </div>
-  </div>
+<div class="posts-grid">
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge">📚 Kampio Blog</div>
-      <h1>Finansal konuları <em style="font-style:normal;color:#0f6b5b">sade dilde</em> anlatıyoruz.</h1>
-      <p class="hero-desc">Emekli promosyonundan kredi kartı faizine, maaş promosyonundan banka kampanyalarına kadar merak ettiğiniz konuları güncel verilerle, anlaşılır bir dille açıklıyoruz.</p>
-    </div>
-  </section>
+<a class="post-card" href="/issizlik-maasi-hesaplama-2026.html">
+<div class="post-meta"><span class="post-category">💼 Çalışma Hayatı</span>28 Ağustos 2026 · 6 dk okuma<span class="new-tag">YENİ</span></div>
+<div class="post-title">İşsizlik Maaşı Hesaplama 2026: Ne Kadar, Şartları Neler, Nasıl Başvurulur?</div>
+<div class="post-desc">Kimler alabilir, kaç ay ödenir, İŞKUR'a nasıl başvurulur? Şartlar, hesaplama formülü ve adım adım rehber.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-  <div class="container posts">
-    <a class="post-card" href="/kredi-karti-yillik-ucreti-iadesi-dilekce-ornegi.html">
-      <img class="post-thumb" src="/blog-kredi-karti-yillik-ucret-iadesi.jpg" alt="Kredi kartı yıllık üyelik ücreti iadesi nasıl alınır">
-      <div class="post-tag">💳 Kredi Kartı</div>
-      <div class="post-meta">18 Ağustos 2026 · 5 dk okuma</div>
-      <h2>Kredi Kartı Yıllık Üyelik Ücreti İadesi Nasıl Geri Alınır?</h2>
-      <p>Kredi kartı aidatı yasal mı, iadesi nasıl alınır? Dilekçe örneğiyle adım adım rehber.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/kira-artis-orani-hesaplama-2026.html">
+<div class="post-meta"><span class="post-category">🏠 Kira & Konut</span>28 Ağustos 2026 · 5 dk okuma<span class="new-tag">YENİ</span></div>
+<div class="post-title">Kira Artış Oranı Hesaplama 2026: Kira Artışı Neye Göre Belirlenir?</div>
+<div class="post-desc">TÜFE 12 aylık ortalaması, yasal sınır, hesaplama formülü ve ev sahibi/kiracı hakları.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/kripto-para-kazanci-vergiye-tabi-mi.html">
-      <img class="post-thumb" src="/blog-kripto-para-vergisi.jpg" alt="Kripto parayı satıp kazanç elde edersem vergi öder miyim">
-      <div class="post-tag">🪙 Vergi</div>
-      <div class="post-meta">18 Ağustos 2026 · 5 dk okuma</div>
-      <h2>Kripto Parayı Satıp Kazanç Elde Edersem Vergi Öder miyim?</h2>
-      <p>2026 istisna sınırı, beyan süreci ve yurt dışı borsa kazançları için güncel rehber.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/bagkur-emeklilik-hesaplama-2026.html">
+<div class="post-meta"><span class="post-category">👴 Emeklilik</span>28 Ağustos 2026 · 6 dk okuma<span class="new-tag">YENİ</span></div>
+<div class="post-title">2026 Bağ-Kur Emeklilik Hesaplama: Bağ-Kur'lular Ne Zaman Emekli Olur?</div>
+<div class="post-desc">Yaş, prim günü, sigortalılık süresi ve Bağ-Kur'a özgü prim borcu engeli. Ne zaman emekli olabileceğinizi öğrenin.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/dolar-mevduat-hesabinda-stopaj-var-mi.html">
-      <img class="post-thumb" src="/blog-dolar-mevduat-stopaji.jpg" alt="Dolar mevduat hesabında stopaj var mı oranı kaç">
-      <div class="post-tag">💵 Mevduat</div>
-      <div class="post-meta">18 Ağustos 2026 · 4 dk okuma</div>
-      <h2>Dolar Mevduat Hesabında Stopaj Var mı, Oranı Kaç?</h2>
-      <p>TL mevduatla karşılaştırmalı, vade süresine göre güncel stopaj tablosu.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/kredi-karti-yillik-ucreti-iadesi-dilekce-ornegi.html">
+<div class="post-meta"><span class="post-category">💳 Kredi Kartı</span>18 Ağustos 2026 · 5 dk okuma</div>
+<div class="post-title">Kredi Kartı Yıllık Üyelik Ücreti İadesi Nasıl Geri Alınır?</div>
+<div class="post-desc">Kredi kartı aidatı yasal mı, iadesi nasıl alınır? Dilekçe örneğiyle adım adım rehber.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/halka-arzda-lot-nedir-kac-tl-katilabilirim.html">
-      <img class="post-thumb" src="/blog-halka-arzda-lot-nedir.jpg" alt="Halka arzda lot ne demek kaç TL ile katılabilirim">
-      <div class="post-tag">📈 Halka Arz</div>
-      <div class="post-meta">11 Ağustos 2026 · 4 dk okuma</div>
-      <h2>Halka Arzda Lot Ne Demek? Kaç TL ile Katılabilirim?</h2>
-      <p>Minimum katılım tutarı, dağıtım şekli ve talep girme adımlarını örneklerle anlatıyoruz.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/kripto-para-kazanci-vergiye-tabi-mi.html">
+<div class="post-meta"><span class="post-category">🪙 Vergi</span>18 Ağustos 2026 · 5 dk okuma</div>
+<div class="post-title">Kripto Parayı Satıp Kazanç Elde Edersem Vergi Öder miyim?</div>
+<div class="post-desc">2026 istisna sınırı, beyan süreci ve yurt dışı borsa kazançları için güncel rehber.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/mevduatta-1-ay-mi-3-ay-mi-vade-secmeli.html">
-      <img class="post-thumb" src="/blog-mevduat-vade-secimi.jpg" alt="Mevduatta 1 ay mı 3 ay mı vade seçmeli">
-      <div class="post-tag">💰 Mevduat</div>
-      <div class="post-meta">11 Ağustos 2026 · 5 dk okuma</div>
-      <h2>Mevduatta 1 Ay mı, 3 Ay mı Vade Seçmeli?</h2>
-      <p>Erken bozdurma cezası, stopaj farkı ve likidite riskiyle birlikte karar verme rehberi.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/dolar-mevduat-hesabinda-stopaj-var-mi.html">
+<div class="post-meta"><span class="post-category">💵 Mevduat</span>18 Ağustos 2026 · 4 dk okuma</div>
+<div class="post-title">Dolar Mevduat Hesabında Stopaj Var mı, Oranı Kaç?</div>
+<div class="post-desc">TL mevduatla karşılaştırmalı, vade süresine göre güncel stopaj tablosu.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/cift-maasli-emekliler-cift-banka-promosyonu-alabilir-mi.html">
-      <img class="post-thumb" src="/blog-cift-emekli-promosyonu.jpg" alt="Çift maaşlı emekliler çift banka promosyonu alabilir mi">
-      <div class="post-tag">👥 Emeklilik</div>
-      <div class="post-meta">11 Ağustos 2026 · 4 dk okuma</div>
-      <h2>Çift Maaşlı Emekliler Çift Banka Promosyonu Alabilir mi?</h2>
-      <p>Kendi emekliliği + eşinden dul maaşı alanlar için az bilinen yöntem, örnek hesaplamayla.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/halka-arzda-lot-nedir-kac-tl-katilabilirim.html">
+<div class="post-meta"><span class="post-category">📈 Halka Arz</span>11 Ağustos 2026 · 4 dk okuma</div>
+<div class="post-title">Halka Arzda Lot Ne Demek? Kaç TL ile Katılabilirim?</div>
+<div class="post-desc">Minimum katılım tutarı, dağıtım şekli ve talep girme adımlarını örneklerle anlatıyoruz.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/findeks-kredi-notu-nedir-nasil-yukseltilir.html">
-      <img class="post-thumb" src="/blog-findeks-kredi-notu.jpg" alt="Findeks kredi notu nedir nasıl yükseltilir">
-      <div class="post-tag">📊 Kredi & Borçlanma</div>
-      <div class="post-meta">30 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Findeks Kredi Notu Nedir? Nasıl Öğrenilir, Nasıl Yükseltilir?</h2>
-      <p>Risk grupları, e-Devlet'ten öğrenilip öğrenilemeyeceği ve notu yükseltme taktikleri.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/mevduatta-1-ay-mi-3-ay-mi-vade-secmeli.html">
+<div class="post-meta"><span class="post-category">💰 Mevduat</span>11 Ağustos 2026 · 5 dk okuma</div>
+<div class="post-title">Mevduatta 1 Ay mı, 3 Ay mı Vade Seçmeli?</div>
+<div class="post-desc">Erken bozdurma cezası, stopaj farkı ve likidite riskiyle birlikte karar verme rehberi.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/kredi-karti-limiti-nasil-artirilir.html">
-      <img class="post-thumb" src="/blog-kredi-karti-limiti.jpg" alt="Kredi kartı limiti nasıl artırılır">
-      <div class="post-tag">💳 Kredi Kartı</div>
-      <div class="post-meta">30 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Kredi Kartı Limiti Nasıl Artırılır?</h2>
-      <p>BDDK'nın 2026'da getirdiği gelir esaslı yeni sistem ve limit artırma taktikleri.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/cift-maasli-emekliler-cift-banka-promosyonu-alabilir-mi.html">
+<div class="post-meta"><span class="post-category">👥 Emeklilik</span>11 Ağustos 2026 · 4 dk okuma</div>
+<div class="post-title">Çift Maaşlı Emekliler Çift Banka Promosyonu Alabilir mi?</div>
+<div class="post-desc">Kendi emekliliği + eşinden dul maaşı alanlar için az bilinen yöntem, örnek hesaplamayla.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/konut-kredisi-basvurusu-neden-reddedilir.html">
-      <img class="post-thumb" src="/blog-konut-kredisi-red.jpg" alt="Konut kredisi başvurusu neden reddedilir">
-      <div class="post-tag">🏠 Kredi & Borçlanma</div>
-      <div class="post-meta">30 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Konut Kredisi Başvurusu Neden Reddedilir?</h2>
-      <p>Düşük kredi notundan tapu sorunlarına, en yaygın 7 ret sebebi ve çözüm yolları.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/findeks-kredi-notu-nedir-nasil-yukseltilir.html">
+<div class="post-meta"><span class="post-category">📊 Kredi & Borçlanma</span>30 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Findeks Kredi Notu Nedir? Nasıl Öğrenilir, Nasıl Yükseltilir?</div>
+<div class="post-desc">Risk grupları, e-Devlet'ten öğrenilip öğrenilemeyeceği ve notu yükseltme taktikleri.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/bireysel-emeklilik-bes-nasil-iptal-edilir.html">
-      <img class="post-thumb" src="/blog-bes-nasil-iptal-edilir.jpg" alt="Bireysel emeklilik BES nasıl iptal edilir">
-      <div class="post-tag">💰 Yatırım & Tasarruf</div>
-      <div class="post-meta">27 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Bireysel Emeklilik (BES) Nasıl İptal Edilir?</h2>
-      <p>Cayma hakkı, iptal süreci ve devlet katkısı kesintileri — 2026'daki oran değişikliği dahil güncel rehber.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/kredi-karti-limiti-nasil-artirilir.html">
+<div class="post-meta"><span class="post-category">💳 Kredi Kartı</span>30 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Kredi Kartı Limiti Nasıl Artırılır?</div>
+<div class="post-desc">BDDK'nın 2026'da getirdiği gelir esaslı yeni sistem ve limit artırma taktikleri.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/ek-gosterge-nedir-kimleri-etkiliyor.html">
-      <img class="post-thumb" src="/blog-ek-gosterge.jpg" alt="Ek gösterge nedir">
-      <div class="post-tag">💼 Maaş & Promosyon</div>
-      <div class="post-meta">21 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Ek Gösterge Nedir? Kimleri Etkiliyor, Maaşa Etkisi Ne?</h2>
-      <p>3600 ek gösterge kimleri kapsıyor, maaşı ve emekliliği nasıl etkiliyor? 2026'daki genişletme tartışmasının güncel durumu.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/konut-kredisi-basvurusu-neden-reddedilir.html">
+<div class="post-meta"><span class="post-category">🏠 Kredi & Borçlanma</span>30 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Konut Kredisi Başvurusu Neden Reddedilir?</div>
+<div class="post-desc">Düşük kredi notundan tapu sorunlarına, en yaygın 7 ret sebebi ve çözüm yolları.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/emekli-promosyonu-banka-degistirme-nasil-yapilir.html">
-      <img class="post-thumb" src="/blog-emekli-banka-degistirme.jpg" alt="Emekli promosyonu için banka değiştirme">
-      <div class="post-tag">👴 Emeklilik</div>
-      <div class="post-meta">21 Temmuz 2026 · 4 dk okuma</div>
-      <h2>Emekli Promosyonu İçin Banka Nasıl Değiştirilir? Adım Adım</h2>
-      <p>e-Devlet'ten ya da yeni bankadan başvuru nasıl yapılır? Gerekli belgeler ve adım adım süreç.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/bireysel-emeklilik-bes-nasil-iptal-edilir.html">
+<div class="post-meta"><span class="post-category">💰 Yatırım & Tasarruf</span>27 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Bireysel Emeklilik (BES) Nasıl İptal Edilir?</div>
+<div class="post-desc">Cayma hakkı, iptal süreci ve devlet katkısı kesintileri — 2026'daki oran değişikliği dahil güncel rehber.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/kademeli-emeklilik-nedir-sartlari-neler.html">
-      <img class="post-thumb" src="/blog-kademeli-emeklilik.jpg" alt="Kademeli emeklilik nedir">
-      <div class="post-tag">👴 Emeklilik</div>
-      <div class="post-meta">21 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Kademeli Emeklilik Nedir? Şartları Neler, Çıkacak mı?</h2>
-      <p>Dolaşan tablolar gerçek mi, kimleri kapsıyor? Meclis'te son durum ve resmi olmayan iddiaların gerçek payı.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/ek-gosterge-nedir-kimleri-etkiliyor.html">
+<div class="post-meta"><span class="post-category">💼 Maaş & Promosyon</span>21 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Ek Gösterge Nedir? Kimleri Etkiliyor, Maaşa Etkisi Ne?</div>
+<div class="post-desc">3600 ek gösterge kimleri kapsıyor, maaşı ve emekliliği nasıl etkiliyor? 2026'daki genişletme tartışmasının güncel durumu.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/ozel-sektor-maas-promosyonu.html">
-      <img class="post-thumb" src="/blog-ozel-sektor-maas-promosyonu.jpg" alt="Özel sektör maaş promosyonu">
-      <div class="post-tag">💼 Maaş & Promosyon</div>
-      <div class="post-meta">11 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Özel Sektör Çalışanı Maaş Promosyonu Alabilir mi?</h2>
-      <p>Bankalar şirketlere yüklü promosyon ödüyor ama bu para gerçekten çalışana mı gidiyor? İşte mevzuata göre net cevap.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/emekli-promosyonu-banka-degistirme-nasil-yapilir.html">
+<div class="post-meta"><span class="post-category">👴 Emeklilik</span>21 Temmuz 2026 · 4 dk okuma</div>
+<div class="post-title">Emekli Promosyonu İçin Banka Nasıl Değiştirilir? Adım Adım</div>
+<div class="post-desc">e-Devlet'ten ya da yeni bankadan başvuru nasıl yapılır? Gerekli belgeler ve adım adım süreç.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/emekli-promosyonu-erken-banka-degistirme.html">
-      <img class="post-thumb" src="/blog-emekli-erken-banka-degistirme.jpg" alt="Emekli promosyonu erken banka değiştirme">
-      <div class="post-tag">👴 Emeklilik</div>
-      <div class="post-meta">11 Temmuz 2026 · 4 dk okuma</div>
-      <h2>Emekli Promosyonu 3 Yıl Dolmadan Banka Değiştirirsem Ne Olur?</h2>
-      <p>Taahhüt süresi dolmadan banka değiştirirseniz ne kadar cayma bedeli ödersiniz? Örnek hesaplamayla açıklıyoruz.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/kademeli-emeklilik-nedir-sartlari-neler.html">
+<div class="post-meta"><span class="post-category">👴 Emeklilik</span>21 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Kademeli Emeklilik Nedir? Şartları Neler, Çıkacak mı?</div>
+<div class="post-desc">Dolaşan tablolar gerçek mi, kimleri kapsıyor? Meclis'te son durum ve resmi olmayan iddiaların gerçek payı.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/kredi-karti-asgari-odeme-faiz.html">
-      <img class="post-thumb" src="/blog-kredi-karti-asgari-odeme.jpg" alt="Kredi kartı asgari ödeme faiz">
-      <div class="post-tag">💳 Kredi Kartı</div>
-      <div class="post-meta">11 Temmuz 2026 · 6 dk okuma</div>
-      <h2>Kredi Kartı Asgari Ödeme Yaparsam Ne Olur? Faiz Nasıl İşler?</h2>
-      <p>2026 güncel asgari ödeme oranları, akdi ve gecikme faizi hesaplama örnekleriyle tüm mekanizma.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/ozel-sektor-maas-promosyonu.html">
+<div class="post-meta"><span class="post-category">💼 Maaş & Promosyon</span>11 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Özel Sektör Çalışanı Maaş Promosyonu Alabilir mi?</div>
+<div class="post-desc">Bankalar şirketlere yüklü promosyon ödüyor ama bu para gerçekten çalışana mı gidiyor? İşte mevzuata göre net cevap.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/gram-altin-mi-ceyrek-altin-mi.html">
-      <img class="post-thumb" src="/blog-gram-altin-mi-ceyrek-altin.jpg" alt="Gram altın mı çeyrek altın mı">
-      <div class="post-tag">🥇 Altın & Yatırım</div>
-      <div class="post-meta">16 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Gram Altın mı Çeyrek Altın mı? Hangisi Yatırım İçin Daha Mantıklı</h2>
-      <p>İşçilik, saflık ve alım-satım farkını karşılaştırdık. Yatırım amacıyla hangisini almalısınız?</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/emekli-promosyonu-erken-banka-degistirme.html">
+<div class="post-meta"><span class="post-category">👴 Emeklilik</span>11 Temmuz 2026 · 4 dk okuma</div>
+<div class="post-title">Emekli Promosyonu 3 Yıl Dolmadan Banka Değiştirirsem Ne Olur?</div>
+<div class="post-desc">Taahhüt süresi dolmadan banka değiştirirseniz ne kadar cayma bedeli ödersiniz? Örnek hesaplamayla açıklıyoruz.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/mevduat-faizi-enflasyona-karsi-kazandiriyor-mu.html">
-      <img class="post-thumb" src="/blog-mevduat-faizi-enflasyon.jpg" alt="Mevduat faizi enflasyona karşı">
-      <div class="post-tag">📈 Mevduat & Enflasyon</div>
-      <div class="post-meta">16 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Mevduat Faizi Enflasyona Karşı Kazandırıyor mu? 2026 Analizi</h2>
-      <p>Güncel TÜFE ve faiz oranlarıyla reel getiri hesabı, stopaj kesintisi dahil kapsamlı rehber.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/kredi-karti-asgari-odeme-faiz.html">
+<div class="post-meta"><span class="post-category">💳 Kredi Kartı</span>11 Temmuz 2026 · 6 dk okuma</div>
+<div class="post-title">Kredi Kartı Asgari Ödeme Yaparsam Ne Olur? Faiz Nasıl İşler?</div>
+<div class="post-desc">2026 güncel asgari ödeme oranları, akdi ve gecikme faizi hesaplama örnekleriyle tüm mekanizma.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/emekli-promosyonu-ne-zaman-yatar.html">
-      <img class="post-thumb" src="/blog-emekli-promosyonu-ne-zaman-yatar.jpg" alt="Emekli promosyonu ne zaman yatar">
-      <div class="post-tag">👴 Emeklilik</div>
-      <div class="post-meta">16 Temmuz 2026 · 4 dk okuma</div>
-      <h2>Emekli Promosyonu Ne Zaman Hesaba Yatar? Gecikme Sebepleri</h2>
-      <p>Kaç iş günü içinde yatar, gecikirse ne yapmalısınız? Güncel süreç ve haklarınız.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
+<a class="post-card" href="/gram-altin-mi-ceyrek-altin-mi.html">
+<div class="post-meta"><span class="post-category">🥇 Altın & Yatırım</span>16 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Gram Altın mı Çeyrek Altın mı? Hangisi Yatırım İçin Daha Mantıklı</div>
+<div class="post-desc">İşçilik, saflık ve alım-satım farkını karşılaştırdık. Yatırım amacıyla hangisini almalısınız?</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
 
-    <a class="post-card" href="/kredi-karti-ekstresine-itiraz.html">
-      <img class="post-thumb" src="/blog-kredi-karti-ekstre-itiraz.jpg" alt="Kredi kartı ekstresine itiraz">
-      <div class="post-tag">💳 Kredi Kartı</div>
-      <div class="post-meta">16 Temmuz 2026 · 5 dk okuma</div>
-      <h2>Kredi Kartı Ekstresine İtiraz Nasıl Yapılır?</h2>
-      <p>İtiraz süresi, başvuru adımları ve Hakem Heyeti süreci — 5464 sayılı Kanun'a göre rehber.</p>
-      <div class="post-cta">Yazıyı Oku →</div>
-    </a>
-  </div>
+<a class="post-card" href="/mevduat-faizi-enflasyona-karsi-kazandiriyor-mu.html">
+<div class="post-meta"><span class="post-category">📈 Mevduat & Enflasyon</span>16 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Mevduat Faizi Enflasyona Karşı Kazandırıyor mu? 2026 Analizi</div>
+<div class="post-desc">Güncel TÜFE ve faiz oranlarıyla reel getiri hesabı, stopaj kesintisi dahil kapsamlı rehber.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
+
+<a class="post-card" href="/emekli-promosyonu-ne-zaman-yatar.html">
+<div class="post-meta"><span class="post-category">👴 Emeklilik</span>16 Temmuz 2026 · 4 dk okuma</div>
+<div class="post-title">Emekli Promosyonu Ne Zaman Hesaba Yatar? Gecikme Sebepleri</div>
+<div class="post-desc">Kaç iş günü içinde yatar, gecikirse ne yapmalısınız? Güncel süreç ve haklarınız.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
+
+<a class="post-card" href="/kredi-karti-ekstresine-itiraz.html">
+<div class="post-meta"><span class="post-category">💳 Kredi Kartı</span>16 Temmuz 2026 · 5 dk okuma</div>
+<div class="post-title">Kredi Kartı Ekstresine İtiraz Nasıl Yapılır?</div>
+<div class="post-desc">İtiraz süresi, başvuru adımları ve Hakem Heyeti süreci — 5464 sayılı Kanun'a göre rehber.</div>
+<div class="post-read">Yazıyı Oku →</div>
+</a>
+
+</div>
 </main>
-
 <footer>
-  <div class="container footer-inner">
-    <div style="display:flex;align-items:center;gap:8px;font-weight:800;color:#084c41">
-      <span style="width:26px;height:26px;background:#0f6b5b;border-radius:6px;display:grid;place-items:center;color:white;font-weight:900;font-size:12px">K</span>
-      Kampio
-    </div>
-    <div class="footer-copy">© 2026 Kampio · Tüm hakları saklıdır · <a href="/hakkimizda.html" style="color:#0f6b5b">Hakkımızda</a></div>
-  </div>
+<div class="container">K Kampio · © 2026 Kampio · Tüm hakları saklıdır · <a href="/hakkimizda.html">Hakkımızda</a></div>
 </footer>
-
 </body>
 </html>
