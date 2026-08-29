@@ -115,7 +115,8 @@
     .topbar-inner { width: min(1160px, calc(100% - 32px)); margin: 0 auto; height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 22px; color: var(--petrol-dark); background: none; border: none; letter-spacing: -0.5px; }
     .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 9px; background: var(--petrol); color: white; font-weight: 900; font-size: 18px; box-shadow: 0 8px 20px rgba(15,107,91,0.28); }
-    .nav { display: flex; align-items: center; gap: 4px; }
+    .nav { display: flex; align-items: center; gap: 4px; flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; }
+    .nav::-webkit-scrollbar { display: none; }
     .nav-link { padding: 8px 14px; border-radius: 8px; color: var(--muted); font-weight: 600; font-size: 14px; background: none; border: none; transition: color .15s, background .15s; white-space: nowrap; flex-shrink: 0; }
     .nav-link:hover { color: var(--text); background: var(--petrol-soft); }
     .nav-link.active { color: var(--petrol-dark); background: var(--petrol-soft); font-weight: 700; }
