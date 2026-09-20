@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         "Authorization": `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ from: "Kampio <onboarding@resend.dev>", to, subject, html })
+      body: JSON.stringify({ from: "Kampio <bildirim@kampio.com.tr>", to, subject, html })
     });
     const data = await r.json();
     if (!r.ok) return res.status(r.status).json(data);
