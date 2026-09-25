@@ -583,7 +583,11 @@ document.getElementById("modeBiliyorumFields").style.display = mode === "biliyor
 document.getElementById("modeTahminiFields").style.display = mode === "tahmini" ? "" : "none";
 }
 
-function submitReminder() {
+const REM_SUPABASE_URL = "https://yvykqkzkwyhodqzqehcy.supabase.co";
+const REM_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2eWtxa3prd3lob2RxenFlaGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTA4NjEsImV4cCI6MjA5Nzg2Njg2MX0.ePq1ETtQiZgB5lu79n3o8FJ9JsQTEFXSQ_D9AsqVMJs";
+
+async function submitReminder() {
+const btn = document.querySelector('#reminderFormWrap .calc-btn');
 const banka = document.getElementById("remBanka").value;
 const email = document.getElementById("remEmail").value.trim();
 const kvkkOnay = document.getElementById("remKvkk").checked;
@@ -610,15 +614,39 @@ bitisTarihi = document.getElementById("remBitisTarihi").value;
 if (!bitisTarihi) { alert("Lütfen bitiş tarihini gir."); return; }
 }
 
-const kayit = { banka, email, bitisTarihi, kaynak: "emekli-hatirlatma", olusturma: new Date().toISOString() };
+const kayit = { banka, email, bitis_tarihi: bitisTarihi, kvkk_onay: kvkkOnay };
 
-// TODO (sonraki adım): Supabase'e gönder
-console.log("Hatırlatma kaydı (henüz yerel):", kayit);
+if (btn) { btn.disabled = true; btn.textContent = "Kaydediliyor..."; }
+
+try {
+const r = await fetch(`${REM_SUPABASE_URL}/rest/v1/reminders`, {
+method: "POST",
+headers: {
+"apikey": REM_SUPABASE_KEY,
+"Authorization": `Bearer ${REM_SUPABASE_KEY}`,
+"Content-Type": "application/json",
+"Prefer": "return=minimal"
+},
+body: JSON.stringify(kayit)
+});
+
+if (!r.ok) {
+const errText = await r.text();
+console.error("Supabase kayıt hatası:", errText);
+alert("Kayıt sırasında bir sorun oluştu, lütfen tekrar dene.");
+if (btn) { btn.disabled = false; btn.textContent = "Hatırlat Bana →"; }
+return;
+}
 
 document.getElementById("reminderFormWrap").classList.add("hide");
 document.getElementById("reminderSuccessText").textContent =
 `${bitisTarihi.split("-").reverse().join(".")} tarihine 3 ay kala ${email} adresine haber vereceğiz.`;
 document.getElementById("reminderSuccess").classList.add("show");
+} catch (e) {
+console.error("Ağ hatası:", e);
+alert("Bağlantı sorunu oluştu, lütfen tekrar dene.");
+if (btn) { btn.disabled = false; btn.textContent = "Hatırlat Bana →"; }
+}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
