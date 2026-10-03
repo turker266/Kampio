@@ -115,49 +115,6 @@ footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
 .result-grid { grid-template-columns: 1fr; }
 .stat-row { gap: 8px; }
 }
-
-/* ── Hatırlatıcı Sekmesi ── */
-.reminder-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 14px; background: #fff7e6; color: #9a5b00;
-  border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 14px;
-}
-.reminder-intro { color: #66736f; font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
-.reminder-intro strong { color: #182522; }
-
-.date-mode-toggle {
-  display: flex; gap: 8px; margin-bottom: 16px; background: #f7faf9;
-  border: 1px solid #dbe8e4; border-radius: 10px; padding: 4px;
-}
-.date-mode-btn {
-  flex: 1; padding: 10px 8px; border: none; border-radius: 7px;
-  background: transparent; color: #66736f; font-size: 13px; font-weight: 700;
-  cursor: pointer; transition: all .15s;
-}
-.date-mode-btn.active { background: white; color: #084c41; box-shadow: 0 2px 8px rgba(15,107,91,0.1); }
-
-.checkbox-row {
-  display: flex; align-items: flex-start; gap: 10px; margin: 16px 0;
-  font-size: 13px; color: #66736f; line-height: 1.6;
-}
-.checkbox-row input[type="checkbox"] {
-  margin-top: 3px; width: 16px; height: 16px; accent-color: #0f6b5b; flex-shrink: 0; cursor: pointer;
-}
-.checkbox-row a { color: #0f6b5b; font-weight: 700; text-decoration: underline; }
-
-.reminder-success {
-  display: none; text-align: center; padding: 32px 20px;
-}
-.reminder-success.show { display: block; }
-.reminder-success-icon {
-  width: 56px; height: 56px; border-radius: 50%; background: #d1fae5;
-  color: #065f46; font-size: 26px; display: grid; place-items: center;
-  margin: 0 auto 16px;
-}
-.reminder-success h3 { font-size: 18px; font-weight: 900; color: #084c41; margin-bottom: 8px; }
-.reminder-success p { color: #66736f; font-size: 14px; }
-
-.reminder-form-wrap.hide { display: none; }
 </style>
 <script type="application/ld+json">
 {
@@ -167,7 +124,7 @@ footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
 "url": "https://www.kampio.com.tr/emekli.html",
 "description": "2026 emekli maaşı hesaplama ve banka emekli promosyonu karşılaştırması.",
 "datePublished": "2026-06-09",
-"dateModified": "2026-08-11",
+"dateModified": "2026-09-02",
 "publisher": { "@type": "Organization", "name": "Kampio" }
 }
 </script>
@@ -176,7 +133,7 @@ footer { border-top: 1px solid #dbe8e4; padding: 28px 0; background: white; }
 "@context": "https://schema.org",
 "@type": "FAQPage",
 "mainEntity": [
-{"@type": "Question", "name": "2026 yılında emekli promosyonu en yüksek hangi banka veriyor?", "acceptedAnswer": {"@type": "Answer", "text": "2026 yılında en yüksek emekli promosyonu Yapı Kredi Bankası tarafından 30.000 TL olarak sunulmaktadır. Garanti BBVA ve İş Bankası 25.000 TL, Akbank 15.000 TL promosyon vermektedir."}},
+{"@type": "Question", "name": "2026 yılında emekli promosyonu en yüksek hangi banka veriyor?", "acceptedAnswer": {"@type": "Answer", "text": "Ekim 2026 itibarıyla en yüksek emekli promosyonu ING Bankası tarafından 32.000 TL'ye varan tutarla sunulmaktadır. Yapı Kredi 30.000 TL, Garanti BBVA ve İş Bankası 25.000 TL, QNB Finansbank 20.000 TL, Akbank 15.000 TL promosyon vermektedir."}},
 {"@type": "Question", "name": "Emekli maaşı taşımak için taahhüt süresi ne kadar?", "acceptedAnswer": {"@type": "Answer", "text": "Türkiye'deki bankaların büyük çoğunluğu emekli promosyonu için 3 yıl taahhüt şartı koşmaktadır. Taahhüt süresi dolmadan maaş başka bankaya taşınırsa promosyonun bir kısmı iade edilebilir."}},
 {"@type": "Question", "name": "SSK emeklisi için kaç prim günü gerekiyor?", "acceptedAnswer": {"@type": "Answer", "text": "2008 sonrası sigortalı olanlar için 7.200 prim günü ve 65 yaş şartı aranmaktadır. 1999 öncesi sigortalılar ise 5.000 prim günüyle çok daha erken emekli olabilmektedir."}}
 ]
@@ -213,7 +170,7 @@ gtag('config', 'G-ECWKHQM6EG');
 <div class="stat-chip"><strong>20.000 TL</strong><span>En Düşük Emekli Maaşı</span></div>
 <div class="stat-chip"><strong>7.200 Gün</strong><span>2008+ Sigorta Prim Günü</span></div>
 <div class="stat-chip"><strong>65 Yaş</strong><span>2008+ Sigorta Emeklilik Yaşı</span></div>
-<div class="stat-chip"><strong>30.000 TL</strong><span>En Yüksek Banka Promosyonu</span></div>
+<div class="stat-chip"><strong>32.000 TL</strong><span>En Yüksek Banka Promosyonu</span></div>
 </div>
 </section>
 <section class="container" style="padding-bottom:20px">
@@ -221,9 +178,7 @@ gtag('config', 'G-ECWKHQM6EG');
 <button class="page-tab active" onclick="switchTab('yas', this)">⏰ Ne Zaman Emekli Olurum?</button>
 <button class="page-tab" onclick="switchTab('maas', this)">💰 Emekli Maaşı Tahmini</button>
 <button class="page-tab" onclick="switchTab('promo', this)">🏦 Banka Promosyonları</button>
-<button class="page-tab" onclick="switchTab('hatirlatma', this)">🔔 Promosyon Hatırlatıcı</button>
 </div>
-
 <!-- TAB 1: Emeklilik Yaşı -->
 <div id="tabYas">
 <div class="calc-card">
@@ -285,7 +240,6 @@ gtag('config', 'G-ECWKHQM6EG');
 </div>
 </div>
 </div>
-
 <!-- Emeklilik Şartları Tablosu -->
 <div class="info-section">
 <h2>2026 Emeklilik Şartları Tablosu</h2>
@@ -303,7 +257,6 @@ gtag('config', 'G-ECWKHQM6EG');
 <p style="margin-top:10px">3.600 prim günü ile kısmi (yaştan) emeklilik mümkündür. Tam emeklilik için şartlar daha yüksektir.</p>
 </div>
 </div>
-
 <!-- TAB 2: Emekli Maaşı -->
 <div id="tabMaas" style="display:none">
 <div class="calc-card">
@@ -351,14 +304,13 @@ gtag('config', 'G-ECWKHQM6EG');
 </div>
 </div>
 </div>
-
 <!-- TAB 3: Banka Promosyonları -->
 <div id="tabPromo" style="display:none">
 <div class="section-head">
 <h2>🏦 Emekli Maaşı Banka Promosyonları 2026</h2>
 <p>SGK emekli maaşını hangi bankaya taşırsanız ne kadar promosyon alırsınız?</p>
 </div>
-<div class="updated-badge"><span class="updated-dot"></span>Ağustos 2026 — Güncellendi · Kaynak: Banka resmi siteleri</div>
+<div class="updated-badge"><span class="updated-dot"></span>Ekim 2026 — Güncellendi · Kaynak: Banka resmi siteleri</div>
 <div class="promo-table-wrap">
 <table class="promo-table">
 <thead>
@@ -366,11 +318,25 @@ gtag('config', 'G-ECWKHQM6EG');
 </thead>
 <tbody>
 <tr>
+<td><div class="bank-cell"><div class="bank-dot" style="background:#FF6200">ING</div><div><b>ING</b><div style="font-size:12px;color:#66736f">Turuncu Hesap</div></div></div></td>
+<td><div class="promo-amount">32.000 TL</div></td>
+<td>3 yıl</td>
+<td>Otomatik fatura talimatı ve harcama hedefleriyle 32.000 TL'ye varan koşullu toplam</td>
+<td><span class="promo-badge top">🏆 En Yüksek</span></td>
+</tr>
+<tr>
 <td><div class="bank-cell"><div class="bank-dot" style="background:#003087">YK</div><div><b>Yapı Kredi</b><div style="font-size:12px;color:#66736f">World Card</div></div></div></td>
 <td><div class="promo-amount">30.000 TL</div></td>
 <td>3 yıl</td>
 <td>Yıllık ücretsiz kart, ücretsiz ATM</td>
-<td><span class="promo-badge top">🏆 En Yüksek</span></td>
+<td><span class="promo-badge top">✓ Yüksek</span></td>
+</tr>
+<tr>
+<td><div class="bank-cell"><div class="bank-dot" style="background:#7c3aed">VKT</div><div><b>Vakıf Katılım</b><div style="font-size:12px;color:#66736f">Katılım Bankacılığı</div></div></div></td>
+<td><div class="promo-amount">25.000 TL</div></td>
+<td>3 yıl</td>
+<td>Maaş dilimine göre kademeli (50.000 TL+ maaşta 25.000 TL)</td>
+<td><span class="promo-badge top">✓ Yüksek</span></td>
 </tr>
 <tr>
 <td><div class="bank-cell"><div class="bank-dot" style="background:#00A650">GB</div><div><b>Garanti BBVA</b><div style="font-size:12px;color:#66736f">Bonus Kart</div></div></div></td>
@@ -380,13 +346,6 @@ gtag('config', 'G-ECWKHQM6EG');
 <td><span class="promo-badge top">✓ Yüksek</span></td>
 </tr>
 <tr>
-<td><div class="bank-cell"><div class="bank-dot" style="background:#e3001b">AK</div><div><b>Akbank</b><div style="font-size:12px;color:#66736f">Axess Kart</div></div></div></td>
-<td><div class="promo-amount">15.000 TL</div></td>
-<td>3 yıl</td>
-<td>Chip-para, ücretsiz ATM</td>
-<td><span class="promo-badge good">✓ İyi</span></td>
-</tr>
-<tr>
 <td><div class="bank-cell"><div class="bank-dot" style="background:#005EB8">İŞ</div><div><b>İş Bankası</b><div style="font-size:12px;color:#66736f">Maximum Kart</div></div></div></td>
 <td><div class="promo-amount">25.000 TL</div></td>
 <td>3 yıl</td>
@@ -394,17 +353,17 @@ gtag('config', 'G-ECWKHQM6EG');
 <td><span class="promo-badge good">✓ İyi</span></td>
 </tr>
 <tr>
-<td><div class="bank-cell"><div class="bank-dot" style="background:#E31E24">ZR</div><div><b>Ziraat Bankası</b><div style="font-size:12px;color:#66736f">Bankkart</div></div></div></td>
-<td><div class="promo-amount">12.000 TL</div></td>
+<td><div class="bank-cell"><div class="bank-dot" style="background:#8B0000">QN</div><div><b>QNB Finansbank</b><div style="font-size:12px;color:#66736f">CardFinans</div></div></div></td>
+<td><div class="promo-amount">20.000 TL</div></td>
 <td>3 yıl</td>
-<td>Ücretsiz ATM, şube avantajı</td>
+<td>Maaş dilimine göre kademeli (8.500-20.000 TL), koşulsuz nakit</td>
 <td><span class="promo-badge good">✓ İyi</span></td>
 </tr>
 <tr>
-<td><div class="bank-cell"><div class="bank-dot" style="background:#F7941D">VK</div><div><b>VakıfBank</b><div style="font-size:12px;color:#66736f">World Kart</div></div></div></td>
-<td><div class="promo-amount">12.000 TL</div></td>
+<td><div class="bank-cell"><div class="bank-dot" style="background:#e3001b">AK</div><div><b>Akbank</b><div style="font-size:12px;color:#66736f">Axess Kart</div></div></div></td>
+<td><div class="promo-amount">15.000 TL</div></td>
 <td>3 yıl</td>
-<td>Troy Emekli Kredi Kartı ile toplam 30.000 TL'ye varan ek kazanım</td>
+<td>Maaş dilimine göre kademeli (6.250-15.000 TL nakit) + chip-para ile 30.000 TL'ye varan · Başvuru: 16 Eylül-16 Ekim 2026</td>
 <td><span class="promo-badge good">✓ İyi</span></td>
 </tr>
 <tr>
@@ -415,114 +374,25 @@ gtag('config', 'G-ECWKHQM6EG');
 <td><span class="promo-badge good">✓ İyi</span></td>
 </tr>
 <tr>
-<td><div class="bank-cell"><div class="bank-dot" style="background:#FF6200">ING</div><div><b>ING</b><div style="font-size:12px;color:#66736f">Turuncu Hesap</div></div></div></td>
-<td><div class="promo-amount">15.000 TL</div></td>
+<td><div class="bank-cell"><div class="bank-dot" style="background:#F7941D">VK</div><div><b>VakıfBank</b><div style="font-size:12px;color:#66736f">World Kart</div></div></div></td>
+<td><div class="promo-amount">12.000 TL</div></td>
 <td>3 yıl</td>
-<td>Otomatik fatura talimatı ve harcama hedefleriyle toplam 32.000 TL'ye varan</td>
+<td>Troy Emekli Kredi Kartı ile toplam 30.000 TL'ye varan ek kazanım</td>
 <td><span class="promo-badge good">✓ İyi</span></td>
 </tr>
 <tr>
-<td><div class="bank-cell"><div class="bank-dot" style="background:#8B0000">QN</div><div><b>QNB Finansbank</b><div style="font-size:12px;color:#66736f">CardFinans</div></div></div></td>
-<td><div class="promo-amount">8.000 TL</div></td>
+<td><div class="bank-cell"><div class="bank-dot" style="background:#E31E24">ZR</div><div><b>Ziraat Bankası</b><div style="font-size:12px;color:#66736f">Bankkart</div></div></div></td>
+<td><div class="promo-amount">12.000 TL</div></td>
 <td>3 yıl</td>
-<td>Puan avantajı</td>
-<td><span class="promo-badge"></span></td>
+<td>Ücretsiz ATM, şube avantajı</td>
+<td><span class="promo-badge good">✓ İyi</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 <p style="font-size:11px;color:#66736f;margin:18px 0 0;padding:8px 12px;background:#fff7e6;border-radius:8px;border-left:3px solid #f59e0b;width:100%;box-sizing:border-box">⚠️ Promosyon tutarları maaş miktarına ve taahhüt süresine göre değişir. Kesin teklif için bankayla iletişime geçin. Promosyon almak için genellikle 3 yıl taahhüt zorunludur.</p>
 </div>
-
-<!-- TAB 4: Promosyon Hatırlatıcı (YENİ) -->
-<div id="tabHatirlatma" style="display:none">
-<div class="calc-card">
-<div class="calc-header">
-<h2>🔔 Promosyon Bitiş Tarihi Hatırlatıcı</h2>
-<p>Sözleşmen bitmeden haber verelim, en yüksek teklifi kaçırma.</p>
-</div>
-<div class="calc-body">
-
-<div class="reminder-badge">📬 Ücretsiz · Spam yok · İstediğin an çık</div>
-
-<p class="reminder-intro">
-Emekli promosyonu taahhütleri genelde <strong>3 yıl</strong> sürer ve bu süre dolduğunda
-bankalar seni aramaz. Bitiş tarihine <strong>3 ay, 1 ay ve 1 hafta</strong> kala sana
-e-posta ile haber veririz — o an güncel en yüksek teklifi Kampio'da karşılaştırıp
-karar verirsin.
-</p>
-
-<div class="reminder-form-wrap" id="reminderFormWrap">
-
-<div class="form-row">
-<div class="form-field">
-<label>Maaşını Aldığın Banka</label>
-<select class="form-select" id="remBanka">
-<option value="yapikredi">Yapı Kredi</option>
-<option value="garanti">Garanti BBVA</option>
-<option value="akbank">Akbank</option>
-<option value="isbank">İş Bankası</option>
-<option value="ziraat">Ziraat Bankası</option>
-<option value="vakifbank">VakıfBank</option>
-<option value="halkbank">Halkbank</option>
-<option value="ing">ING</option>
-<option value="qnb">QNB Finansbank</option>
-<option value="diger">Diğer</option>
-</select>
-</div>
-<div class="form-field">
-<label>E-posta Adresin</label>
-<input class="form-input" id="remEmail" type="email" placeholder="ornek@eposta.com">
-</div>
-</div>
-
-<div class="form-field" style="margin-bottom:16px">
-<label>Sözleşme / Taahhüt Bilgisi</label>
-<div class="date-mode-toggle">
-<button type="button" class="date-mode-btn active" id="modeBtnBiliyorum" onclick="setDateMode('biliyorum')">Bitiş tarihini biliyorum</button>
-<button type="button" class="date-mode-btn" id="modeBtnTahmini" onclick="setDateMode('tahmini')">Bilmiyorum, tahmin et</button>
-</div>
-</div>
-
-<div class="form-row" id="modeBiliyorumFields">
-<div class="form-field">
-<label>Taahhüt Bitiş Tarihi</label>
-<input class="form-input" id="remBitisTarihi" type="date">
-</div>
-</div>
-
-<div class="form-row" id="modeTahminiFields" style="display:none">
-<div class="form-field">
-<label>Maaşını Bu Bankaya Ne Zaman Taşıdın?</label>
-<input class="form-input" id="remBaslangicTarihi" type="date">
-<div style="font-size:12px;color:#66736f;margin-top:6px">Standart 3 yıllık taahhüt süresine göre bitiş tarihini biz hesaplarız.</div>
-</div>
-</div>
-
-<label class="checkbox-row">
-<input type="checkbox" id="remKvkk">
-<span>
-<a href="/kvkk-aydinlatma-metni.html" target="_blank">Aydınlatma metnini</a> okudum, kişisel verimin
-sadece bu hatırlatma amacıyla işlenmesini kabul ediyorum. İstediğim zaman e-postadaki
-bağlantıdan aboneliğimi iptal edebilirim.
-</span>
-</label>
-
-<button class="calc-btn" onclick="submitReminder()">Hatırlat Bana →</button>
-</div>
-
-<div class="reminder-success" id="reminderSuccess">
-<div class="reminder-success-icon">✓</div>
-<h3>Kaydedildi!</h3>
-<p id="reminderSuccessText">Bitiş tarihin yaklaşınca sana e-posta ile haber vereceğiz.</p>
-</div>
-
-</div>
-</div>
-</div>
-
 </section>
-
 <!-- Info Section -->
 <section class="container">
 <div class="info-section">
@@ -539,7 +409,6 @@ bağlantıdan aboneliğimi iptal edebilirim.
 <p>Evet, askerlik sürenizi SGK'ya borçlanarak prim gününüze ekleyebilirsiniz. Bu hem prim gün sayınızı artırır hem de emeklilik tarihini öne çekebilir. Başvuru için en yakın SGK şubesine gitmeniz gerekir.</p>
 </div>
 </section>
-
 <section class="container" style="padding-bottom:60px">
 <h2 style="font-size:20px;font-weight:900;color:#084c41;margin-bottom:6px">Diğer Finansal Araçlar</h2>
 <p style="color:#66736f;font-size:14px;margin-bottom:16px">Kampio ile tüm finansal hesaplamalarınızı yapın.</p>
@@ -573,94 +442,17 @@ btn.classList.add("active");
 document.getElementById("tabYas").style.display = tab === "yas" ? "" : "none";
 document.getElementById("tabMaas").style.display = tab === "maas" ? "" : "none";
 document.getElementById("tabPromo").style.display = tab === "promo" ? "" : "none";
-document.getElementById("tabHatirlatma").style.display = tab === "hatirlatma" ? "" : "none";
 }
-
-function setDateMode(mode) {
-document.getElementById("modeBtnBiliyorum").classList.toggle("active", mode === "biliyorum");
-document.getElementById("modeBtnTahmini").classList.toggle("active", mode === "tahmini");
-document.getElementById("modeBiliyorumFields").style.display = mode === "biliyorum" ? "" : "none";
-document.getElementById("modeTahminiFields").style.display = mode === "tahmini" ? "" : "none";
-}
-
-const REM_SUPABASE_URL = "https://yvykqkzkwyhodqzqehcy.supabase.co";
-const REM_SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2eWtxa3prd3lob2RxenFlaGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTA4NjEsImV4cCI6MjA5Nzg2Njg2MX0.ePq1ETtQiZgB5lu79n3o8FJ9JsQTEFXSQ_D9AsqVMJs";
-
-async function submitReminder() {
-const btn = document.querySelector('#reminderFormWrap .calc-btn');
-const banka = document.getElementById("remBanka").value;
-const email = document.getElementById("remEmail").value.trim();
-const kvkkOnay = document.getElementById("remKvkk").checked;
-const modeTahmini = document.getElementById("modeBtnTahmini").classList.contains("active");
-
-if (!email || !email.includes("@")) {
-alert("Lütfen geçerli bir e-posta adresi gir.");
-return;
-}
-if (!kvkkOnay) {
-alert("Devam etmek için aydınlatma metnini onaylaman gerekiyor.");
-return;
-}
-
-let bitisTarihi;
-if (modeTahmini) {
-const baslangic = document.getElementById("remBaslangicTarihi").value;
-if (!baslangic) { alert("Lütfen maaş taşıma tarihini gir."); return; }
-const d = new Date(baslangic);
-d.setFullYear(d.getFullYear() + 3);
-bitisTarihi = d.toISOString().split("T")[0];
-} else {
-bitisTarihi = document.getElementById("remBitisTarihi").value;
-if (!bitisTarihi) { alert("Lütfen bitiş tarihini gir."); return; }
-}
-
-const kayit = { banka, email, bitis_tarihi: bitisTarihi, kvkk_onay: kvkkOnay };
-
-if (btn) { btn.disabled = true; btn.textContent = "Kaydediliyor..."; }
-
-try {
-const r = await fetch(`${REM_SUPABASE_URL}/rest/v1/reminders`, {
-method: "POST",
-headers: {
-"apikey": REM_SUPABASE_KEY,
-"Authorization": `Bearer ${REM_SUPABASE_KEY}`,
-"Content-Type": "application/json",
-"Prefer": "return=minimal"
-},
-body: JSON.stringify(kayit)
-});
-
-if (!r.ok) {
-const errText = await r.text();
-console.error("Supabase kayıt hatası:", errText);
-alert("Kayıt sırasında bir sorun oluştu, lütfen tekrar dene.");
-if (btn) { btn.disabled = false; btn.textContent = "Hatırlat Bana →"; }
-return;
-}
-
-document.getElementById("reminderFormWrap").classList.add("hide");
-document.getElementById("reminderSuccessText").textContent =
-`${bitisTarihi.split("-").reverse().join(".")} tarihine 3 ay kala ${email} adresine haber vereceğiz.`;
-document.getElementById("reminderSuccess").classList.add("show");
-} catch (e) {
-console.error("Ağ hatası:", e);
-alert("Bağlantı sorunu oluştu, lütfen tekrar dene.");
-if (btn) { btn.disabled = false; btn.textContent = "Hatırlat Bana →"; }
-}
-}
-
 document.addEventListener("DOMContentLoaded", () => {
 const hash = window.location.hash.replace("#", "");
-if (hash === "promo" || hash === "maas" || hash === "hatirlatma") {
+if (hash === "promo" || hash === "maas") {
 const btn = document.querySelector(`.page-tab[onclick*="${hash}"]`);
 if (btn) switchTab(hash, btn);
 }
 });
-
 function formatTL(n) {
 return Math.round(n).toLocaleString("tr-TR") + " TL";
 }
-
 function calculateEmeklilik() {
 const dogumYil = parseInt(document.getElementById("dogumYil").value);
 const cinsiyet = document.getElementById("cinsiyet").value;
@@ -668,7 +460,6 @@ const sigortaBaslangic = parseInt(document.getElementById("sigortaBaslangic").va
 const sigortaTur = document.getElementById("sigortaTur").value;
 const mevcutGun = parseInt(document.getElementById("primGun").value) || 0;
 const aylikGun = parseInt(document.getElementById("aylikGun").value);
-
 let gerekliYas, gerekliGun;
 if (sigortaBaslangic < 1999) {
 gerekliYas = cinsiyet === "erkek" ? 55 : 50;
@@ -680,7 +471,6 @@ gerekliGun = 6300;
 gerekliYas = 65;
 gerekliGun = 7200;
 }
-
 const bugun = 2026;
 const simdikiYas = bugun - dogumYil;
 const eksikGun = Math.max(0, gerekliGun - mevcutGun);
@@ -689,11 +479,9 @@ const primDolmaYil = bugun + Math.ceil(eksikAy / 12);
 const yasEmekliYil = dogumYil + gerekliYas;
 const emekliYil = Math.max(primDolmaYil, yasEmekliYil);
 const kalanYil = emekliYil - bugun;
-
 document.getElementById("emekliYil").textContent = emekliYil + " yılı";
 document.getElementById("emekliDetay").textContent =
 `${emekliYil - dogumYil} yaşında · ${kalanYil > 0 ? kalanYil + " yıl kaldı" : "Emekli olabilirsiniz!"}`;
-
 document.getElementById("yasResultGrid").innerHTML = `
 <div class="result-item"><div class="result-item-label">Şu Anki Yaş</div><div class="result-item-value">${simdikiYas}</div></div>
 <div class="result-item"><div class="result-item-label">Gereken Yaş</div><div class="result-item-value">${gerekliYas}</div></div>
@@ -701,35 +489,27 @@ document.getElementById("yasResultGrid").innerHTML = `
 <div class="result-item"><div class="result-item-label">Mevcut Prim Günü</div><div class="result-item-value">${mevcutGun.toLocaleString("tr-TR")}</div></div>
 <div class="result-item"><div class="result-item-label">Eksik Prim Günü</div><div class="result-item-value">${eksikGun.toLocaleString("tr-TR")}</div></div>
 <div class="result-item"><div class="result-item-label">Kalan Süre</div><div class="result-item-value">${kalanYil > 0 ? kalanYil + " yıl" : "Hazır!"}</div></div>`;
-
 document.getElementById("yasResult").classList.add("show");
 document.getElementById("yasResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
-
 function calculateMaas() {
 const gun = parseInt(document.getElementById("maasGun").value) || 7200;
 const brut = parseFloat(document.getElementById("maasBrut").value) || 50000;
 const donemi = document.getElementById("maasDonemi").value;
-
 const yil = gun / 360;
 let abo = yil * 0.02;
 if (donemi === "karisik") abo = yil * 0.025;
 abo = Math.min(abo, 0.90);
-
 const guncellenmisKazanc = brut * 0.6;
 let tahminiMaas = guncellenmisKazanc * abo;
-
 tahminiMaas = Math.max(tahminiMaas, 20000);
-
 document.getElementById("tahminiMaas").textContent = formatTL(tahminiMaas);
 document.getElementById("maasDetay").textContent =
 `ABO: %${(abo*100).toFixed(1)} · ${(gun/360).toFixed(1)} yıl çalışma`;
-
 document.getElementById("maasResultGrid").innerHTML = `
 <div class="result-item"><div class="result-item-label">Prim Günü</div><div class="result-item-value">${gun.toLocaleString("tr-TR")}</div></div>
 <div class="result-item"><div class="result-item-label">Aylık Bağlama Oranı</div><div class="result-item-value">%${(abo*100).toFixed(1)}</div></div>
 <div class="result-item"><div class="result-item-label">Taban Maaş</div><div class="result-item-value">20.000 TL</div></div>`;
-
 document.getElementById("maasResult").classList.add("show");
 document.getElementById("maasResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
