@@ -11,8 +11,11 @@ const SUPABASE_URL = "https://yvykqkzkwyhodqzqehcy.supabase.co";
 // Genel (anon) anahtar zaten istemci kodunda açıktır; istersen Vercel'de SUPABASE_ANON_KEY olarak da tanımlayabilirsin.
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2eWtxa3prd3lob2RxenFlaGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTA4NjEsImV4cCI6MjA5Nzg2Njg2MX0.ePq1ETtQiZgB5lu79n3o8FJ9JsQTEFXSQ_D9AsqVMJs";
 
-const ALLOWED_ORIGINS = ["https://www.kampio.com.tr", "https://kampio.com.tr"];
+const ALLOWED_ORIGINS = ["https://www.kampio.com.tr", "https://kampio.com.tr", "https://kampio.vercel.app"];
 const MAX_ACCOUNT_AGE_MS = 15 * 60 * 1000;
+
+// Vercel > Project > Logs ekranında "welcome-email" diye aratarak her denemenin sonucunu görebilirsin.
+function log(msg) { console.log("[welcome-email] " + msg); }
 
 function esc(s) {
   return String(s == null ? "" : s)
@@ -73,25 +76,36 @@ module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   if (req.method === "OPTIONS") return res.status(204).end();
+
+  // Sağlık kontrolü: tarayıcıdan /api/send-welcome-email?check=1 açılırsa yalnızca anahtarların tanımlı olup olmadığını (evet/hayır) gösterir.
+  if (req.method === "GET" && req.query && req.query.check) {
+    return res.status(200).json({
+      endpoint: "calisiyor",
+      RESEND_API_KEY: !!process.env.RESEND_API_KEY,
+      SUPABASE_SERVICE_KEY: !!process.env.SUPABASE_SERVICE_KEY
+    });
+  }
+
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
-  if (origin && !ALLOWED_ORIGINS.includes(origin)) return res.status(403).json({ error: "İzin verilmeyen kaynak" });
+  if (origin && !ALLOWED_ORIGINS.includes(origin)) { log("reddedildi: izin verilmeyen kaynak " + origin); return res.status(403).json({ error: "İzin verilmeyen kaynak" }); }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  if (!RESEND_API_KEY) return res.status(500).json({ error: "Sunucu yapılandırma hatası" });
+  if (!RESEND_API_KEY) { log("HATA: RESEND_API_KEY tanımlı değil"); return res.status(500).json({ error: "Sunucu yapılandırma hatası" }); }
 
   // 1) Kimlik doğrulama: Supabase oturum anahtarını doğrula
   const auth = req.headers.authorization || "";
   const token = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
-  if (!token) return res.status(401).json({ error: "Oturum gerekli" });
+  if (!token) { log("reddedildi: Authorization başlığı yok"); return res.status(401).json({ error: "Oturum gerekli" }); }
 
   let user;
   try {
     const ur = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
       headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${token}` }
     });
-    if (!ur.ok) return res.status(401).json({ error: "Geçersiz oturum" });
+    if (!ur.ok) { log("reddedildi: Supabase oturumu doğrulamadı (HTTP " + ur.status + ")"); return res.status(401).json({ error: "Geçersiz oturum" }); }
     user = await ur.json();
   } catch (e) {
+    log("HATA: Supabase kullanıcı sorgusu başarısız: " + e);
     return res.status(502).json({ error: "Kimlik doğrulanamadı" });
   }
 
@@ -101,6 +115,7 @@ module.exports = async (req, res) => {
   // 2) Sadece yeni açılmış hesaplara gönder
   const created = Date.parse(user.created_at || "");
   if (!created || Date.now() - created > MAX_ACCOUNT_AGE_MS) {
+    log("atlandı: hesap yeni değil (" + email + ")");
     return res.status(200).json({ skipped: "hesap yeni değil" });
   }
 
@@ -117,7 +132,7 @@ module.exports = async (req, res) => {
       );
       if (lr.ok) {
         const rows = await lr.json();
-        if (Array.isArray(rows) && rows.length > 0) return res.status(200).json({ skipped: "zaten gönderildi" });
+        if (Array.isArray(rows) && rows.length > 0) { log("atlandı: email_logs'ta zaten kayıt var (" + email + ")"); return res.status(200).json({ skipped: "zaten gönderildi" }); }
       }
     }
   } catch (e) { /* log kontrolü başarısızsa 15 dk pencere yine korur */ }
@@ -144,8 +159,13 @@ module.exports = async (req, res) => {
         html: buildHtml(activeCount, top)
       })
     });
-    if (!r.ok) return res.status(502).json({ error: "E-posta gönderilemedi" });
+    if (!r.ok) {
+      let detail = ""; try { detail = await r.text(); } catch (e) {}
+      log("HATA: Resend reddetti (HTTP " + r.status + "): " + detail.slice(0, 300));
+      return res.status(502).json({ error: "E-posta gönderilemedi" });
+    }
   } catch (e) {
+    log("HATA: Resend isteği başarısız: " + e);
     return res.status(502).json({ error: "E-posta gönderilemedi" });
   }
 
@@ -158,5 +178,6 @@ module.exports = async (req, res) => {
     });
   } catch (e) {}
 
+  log("gönderildi: " + email);
   return res.status(200).json({ ok: true });
 };
