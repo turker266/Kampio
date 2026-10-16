@@ -2375,12 +2375,16 @@
 
 
   /* ── Hoş geldin e-postası (sunucu doğrular; alıcı sadece kullanıcının kendi adresi) ── */
-  async function sendWelcomeEmail(accessToken) {
+  async function sendWelcomeEmail(accessToken, userId) {
+    const key = "kampio_welcome_" + (userId || "");
+    try { if (userId && localStorage.getItem(key)) return; } catch(e) {}
     try {
-      await fetch("/api/send-welcome-email", {
+      const r = await fetch("/api/send-welcome-email", {
         method: "POST",
         headers: { "Authorization": "Bearer " + accessToken }
       });
+      if (r.ok) { try { if (userId) localStorage.setItem(key, "1"); } catch(e) {} }
+      else console.warn("Hoş geldin e-postası gönderilemedi, HTTP " + r.status);
     } catch(e) { console.error("Email error:", e); }
   }
 
@@ -2692,6 +2696,10 @@
     try {
       const session = await signIn(email, pass);
       setSession(session);
+      try {
+        const u = session.user;
+        if (u && u.created_at && Date.now() - Date.parse(u.created_at) < 14 * 60 * 1000) sendWelcomeEmail(session.access_token, u.id);
+      } catch(e) {}
       showToast("Hoş geldin! 👋", "success");
       showView(isCurrentUserAdmin() ? "admin" : "landing");
     } catch(err) {
@@ -2730,8 +2738,9 @@
       // Hoş geldin e-postası: sunucu oturum anahtarını doğrular (oturum açılmaz/kaydedilmez)
       (async () => {
         try {
-          const tok = signUpData.access_token || (await signIn(email, pass)).access_token;
-          if (tok) sendWelcomeEmail(tok);
+          const sess = signUpData.access_token ? signUpData : await signIn(email, pass);
+          const uid = (sess.user && sess.user.id) || (signUpData.user && signUpData.user.id) || signUpData.id;
+          if (sess.access_token) sendWelcomeEmail(sess.access_token, uid);
         } catch(e) { /* e-posta onayı açıksa burada oturum alınamaz; kayıt akışı etkilenmez */ }
       })();
       setTimeout(() => switchAuthTab("login"), 1800);
