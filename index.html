@@ -2383,9 +2383,11 @@
         method: "POST",
         headers: { "Authorization": "Bearer " + accessToken }
       });
+      let body = {}; try { body = await r.json(); } catch(e) {}
       if (r.ok) { try { if (userId) localStorage.setItem(key, "1"); } catch(e) {} }
       else console.warn("Hoş geldin e-postası gönderilemedi, HTTP " + r.status);
-    } catch(e) { console.error("Email error:", e); }
+      if (/[?&]debugmail=1/.test(location.search)) showToast("[test] mail isteği: HTTP " + r.status + " " + JSON.stringify(body), r.ok ? "success" : "error");
+    } catch(e) { console.error("Email error:", e); if (/[?&]debugmail=1/.test(location.search)) showToast("[test] mail isteği hatası: " + e, "error"); }
   }
 
 
@@ -2698,7 +2700,8 @@
       setSession(session);
       try {
         const u = session.user;
-        if (u && u.created_at && Date.now() - Date.parse(u.created_at) < 14 * 60 * 1000) sendWelcomeEmail(session.access_token, u.id);
+        // Her girişte sunucuya sor; hoş geldin maili sadece yeni doğrulanmış hesaba gider, diğerleri atlanır.
+        if (u) sendWelcomeEmail(session.access_token, u.id);
       } catch(e) {}
       showToast("Hoş geldin! 👋", "success");
       showView(isCurrentUserAdmin() ? "admin" : "landing");
@@ -2741,7 +2744,11 @@
           const sess = signUpData.access_token ? signUpData : await signIn(email, pass);
           const uid = (sess.user && sess.user.id) || (signUpData.user && signUpData.user.id) || signUpData.id;
           if (sess.access_token) sendWelcomeEmail(sess.access_token, uid);
-        } catch(e) { /* e-posta onayı açıksa burada oturum alınamaz; kayıt akışı etkilenmez */ }
+          else if (/[?&]debugmail=1/.test(location.search)) showToast("[test] kayıttan sonra oturum anahtarı yok", "error");
+        } catch(e) {
+          /* e-posta onayı açıksa burada oturum alınamaz; kayıt akışı etkilenmez */
+          if (/[?&]debugmail=1/.test(location.search)) showToast("[test] oturum alınamadı: " + (e && e.message || e), "error");
+        }
       })();
       setTimeout(() => switchAuthTab("login"), 1800);
     } catch(err) {
