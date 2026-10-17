@@ -3,7 +3,7 @@
 // GÜVENLİK: Bu endpoint artık serbest "to / subject / html" kabul etmez.
 //  - Çağıran, Supabase oturum anahtarı (access_token) ile kimliğini kanıtlamak zorundadır.
 //  - E-posta SADECE o kullanıcının kendi adresine, sunucudaki sabit şablonla gider.
-//  - Hesap 15 dakikadan eskiyse veya daha önce hoş geldin maili gittiyse gönderilmez.
+//  - Hesap 60 dakikadan eskiyse veya daha önce hoş geldin maili gittiyse gönderilmez.
 //  - CORS yalnızca kampio.com.tr alan adlarına açıktır.
 // API anahtarları Vercel Environment Variables'tan okunur (RESEND_API_KEY, SUPABASE_SERVICE_KEY).
 
@@ -12,7 +12,7 @@ const SUPABASE_URL = "https://yvykqkzkwyhodqzqehcy.supabase.co";
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl2eWtxa3prd3lob2RxenFlaGN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTA4NjEsImV4cCI6MjA5Nzg2Njg2MX0.ePq1ETtQiZgB5lu79n3o8FJ9JsQTEFXSQ_D9AsqVMJs";
 
 const ALLOWED_ORIGINS = ["https://www.kampio.com.tr", "https://kampio.com.tr", "https://kampio.vercel.app"];
-const MAX_ACCOUNT_AGE_MS = 15 * 60 * 1000;
+const MAX_ACCOUNT_AGE_MS = 60 * 60 * 1000;
 
 // Vercel > Project > Logs ekranında "welcome-email" diye aratarak her denemenin sonucunu görebilirsin.
 function log(msg) { console.log("[welcome-email] " + msg); }
@@ -113,7 +113,8 @@ module.exports = async (req, res) => {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: "Geçersiz e-posta" });
 
   // 2) Sadece yeni açılmış hesaplara gönder
-  const created = Date.parse(user.created_at || "");
+  // E-posta doğrulaması açıksa sayaç doğrulama anından başlar (kullanıcı linke geç tıklayabilir).
+  const created = Date.parse(user.email_confirmed_at || user.confirmed_at || user.created_at || "");
   if (!created || Date.now() - created > MAX_ACCOUNT_AGE_MS) {
     log("atlandı: hesap yeni değil (" + email + ")");
     return res.status(200).json({ skipped: "hesap yeni değil" });
