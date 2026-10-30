@@ -69,7 +69,14 @@
     @media (max-width: 900px) {
       .posts { grid-template-columns: 1fr; }
     }
-  </style>
+  
+.cat-bar { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 18px; }
+.cat-chip { border: 1px solid #d0ece5; background: white; color: #0f6b5b; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
+.cat-chip.active, .cat-chip:hover { background: #0f6b5b; color: white; border-color: #0f6b5b; }
+.cat-tools { background: #e7f5f1; border-radius: 12px; padding: 12px 16px; margin-bottom: 18px; font-size: 13.5px; color: #084c41; font-weight: 600; }
+.cat-tools a { color: #0f6b5b; font-weight: 800; text-decoration: underline; margin-right: 14px; display: inline-block; }
+.post-card[hidden] { display: none; }
+</style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8951018190934845" crossorigin="anonymous"></script>
 <script type="application/ld+json">
 {
@@ -108,8 +115,23 @@
     </div>
   </section>
 
+  <div class="container">
+    <p style="font-size:13px;color:#66736f;font-weight:600;margin-bottom:14px">Editör: Kampio Ekibi</p>
+    <div class="cat-bar" id="catBar">
+      <button class="cat-chip active" data-filter="all">Tümü</button>
+      <button class="cat-chip" data-filter="emeklilik">Emeklilik ve Maaş</button>
+      <button class="cat-chip" data-filter="kredi-karti">Kredi Kartı</button>
+      <button class="cat-chip" data-filter="mevduat-yatirim">Mevduat ve Yatırım</button>
+      <button class="cat-chip" data-filter="kredi-borc">Kredi ve Borç</button>
+      <button class="cat-chip" data-filter="hukuk-vergi">Hukuk, Vergi ve Haklar</button>
+    </div>
+    <div class="cat-tools" id="catTools"><span>Hesaplayıcılar:</span>
+      <a href="/emekli.html">Emekli promosyonu</a><a href="/mevduat.html">Mevduat faizi</a><a href="/sifir-faiz.html">Faizsiz nakit avans</a><a href="/kredi.html">Kredi hesaplama</a><a href="/maas.html">Maaş ve tazminat</a><a href="/altin.html">Altın ve döviz</a><a href="/halka-arz.html">Halka arz takvimi</a>
+    </div>
+  </div>
+
   <div class="container posts">
-    <a class="post-card" href="/kredi-karti-borc-transferi-nasil-yapilir-borcu-baska-karta-tasima.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-borc-transferi-nasil-yapilir-borcu-baska-karta-tasima.html">
       <img width="1200" height="630" class="post-thumb" src="/blog-kredi-karti-borc-transferi-2026.jpg" alt="Kredi kartı borç transferi nasıl yapılır borç başka karta taşınır mı">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">25 Ekim 2026 · 7 dk okuma</div>
@@ -118,7 +140,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/ek-hesap-kmh-nedir-faizi-ne-kadar-nasil-kapatilir.html">
+    <a class="post-card" data-cat="kredi-borc" href="/ek-hesap-kmh-nedir-faizi-ne-kadar-nasil-kapatilir.html">
       <img width="1200" height="630" class="post-thumb" src="/blog-ek-hesap-kmh-2026.jpg" alt="Ek hesap KMH nedir faizi ne kadar nasıl kapatılır">
       <div class="post-tag">🏦 Bankacılık</div>
       <div class="post-meta">25 Ekim 2026 · 6 dk okuma</div>
@@ -127,7 +149,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/gunluk-faiz-getirili-vadesiz-hesap-nedir-mevduattan-farki.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/gunluk-faiz-getirili-vadesiz-hesap-nedir-mevduattan-farki.html">
       <img width="1200" height="630" class="post-thumb" src="/blog-gunluk-faiz-getirili-hesap-2026.jpg" alt="Günlük faiz getirili vadesiz hesap nedir vadeli mevduattan farkı">
       <div class="post-tag">💰 Mevduat</div>
       <div class="post-meta">25 Ekim 2026 · 6 dk okuma</div>
@@ -136,7 +158,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/bes-devlet-katkisi-en-fazla-ne-kadar-ne-zaman-yatar.html">
+    <a class="post-card" data-cat="emeklilik" href="/bes-devlet-katkisi-en-fazla-ne-kadar-ne-zaman-yatar.html">
       <img width="1200" height="630" class="post-thumb" src="/blog-bes-devlet-katkisi.jpg" alt="BES devlet katkısı en fazla ne kadar ne zaman yatar">
       <div class="post-tag">🏦 Emeklilik</div>
       <div class="post-meta">17 Ekim 2026 · 5 dk okuma</div>
@@ -145,7 +167,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-kapatmak-findeks-notunu-dusurur-mu.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-kapatmak-findeks-notunu-dusurur-mu.html">
       <img width="1200" height="630" class="post-thumb" src="/blog-kart-kapatma-findeks.jpg" alt="Kredi kartı kapatmak Findeks notunu düşürür mü">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">17 Ekim 2026 · 5 dk okuma</div>
@@ -154,7 +176,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-puani-nasil-paraya-cevrilir-bonus-worldpuan.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-puani-nasil-paraya-cevrilir-bonus-worldpuan.html">
       <img width="1200" height="630" class="post-thumb" src="/blog-kredi-karti-puani.jpg" alt="Kredi kartı puanı nasıl paraya çevrilir Bonus Worldpuan kaç TL eder">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">17 Ekim 2026 · 5 dk okuma</div>
@@ -163,7 +185,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/emekli-olurken-kidem-ihbar-tazminati-sartlari-hesaplama.html">
+    <a class="post-card" data-cat="emeklilik" href="/emekli-olurken-kidem-ihbar-tazminati-sartlari-hesaplama.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-kidem-ihbar-tazminati-2026.jpg" alt="Emekli olurken kıdem ve ihbar tazminatı alınır mı">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">10 Ekim 2026 · 6 dk okuma</div>
@@ -172,7 +194,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/dogum-izni-suresince-maas-sgk-bildirimi.html">
+    <a class="post-card" data-cat="emeklilik" href="/dogum-izni-suresince-maas-sgk-bildirimi.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-dogum-izni-maas-sgk-2026.jpg" alt="Doğum izni süresince maaş nasıl ödenir SGK bildirimi">
       <div class="post-tag">👶 Çalışan Hakları</div>
       <div class="post-meta">10 Ekim 2026 · 5 dk okuma</div>
@@ -181,7 +203,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/nakit-avans-faizi-ne-kadar-kredi-kartindan-nakit-cekme-maliyeti.html">
+    <a class="post-card" data-cat="kredi-karti" href="/nakit-avans-faizi-ne-kadar-kredi-kartindan-nakit-cekme-maliyeti.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-nakit-avans-faizi-2026.jpg" alt="Nakit avans faizi ne kadar kredi kartından nakit çekme maliyeti">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">10 Ekim 2026 · 5 dk okuma</div>
@@ -190,7 +212,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/maas-haczi-orani-kesinti-siniri-2026.html">
+    <a class="post-card" data-cat="hukuk-vergi" href="/maas-haczi-orani-kesinti-siniri-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-maas-haczi-orani-2026.jpg" alt="Maaş haczi oranı kesinti sınırı 2026">
       <div class="post-tag">⚖️ Hukuk & Haklarınız</div>
       <div class="post-meta">30 Eylül 2026 · 8 dk okuma</div>
@@ -199,7 +221,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-taksit-erken-kapama-tek-cekim-avantaji-2026.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-taksit-erken-kapama-tek-cekim-avantaji-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-taksit-erken-kapama-2026.jpg" alt="Kredi kartı taksit erken kapama tek çekim avantajı">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">30 Eylül 2026 · 7 dk okuma</div>
@@ -208,7 +230,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/hesap-isletim-ucreti-yasal-mi-iade-nasil-alinir-2026.html">
+    <a class="post-card" data-cat="hukuk-vergi" href="/hesap-isletim-ucreti-yasal-mi-iade-nasil-alinir-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-hesap-isletim-ucreti-2026.jpg" alt="Hesap işletim ücreti yasal mı iade nasıl alınır">
       <div class="post-tag">⚖️ Hukuk & Haklarınız</div>
       <div class="post-meta">30 Eylül 2026 · 8 dk okuma</div>
@@ -217,7 +239,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/dask-zorunlu-deprem-sigortasi-nasil-yapilir.html">
+    <a class="post-card" data-cat="hukuk-vergi" href="/dask-zorunlu-deprem-sigortasi-nasil-yapilir.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-dask-zorunlu-deprem-sigortasi.jpg" alt="Zorunlu deprem sigortası DASK nasıl yapılır">
       <div class="post-tag">🏠 Sigorta</div>
       <div class="post-meta">4 Eylül 2026 · 4 dk okuma</div>
@@ -226,7 +248,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/konut-kredisini-erken-odemek-mantikli-mi.html">
+    <a class="post-card" data-cat="kredi-borc" href="/konut-kredisini-erken-odemek-mantikli-mi.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-konut-kredisi-erken-odeme.jpg" alt="Konut kredisini erken ödemek mantıklı mı">
       <div class="post-tag">🏠 Kredi</div>
       <div class="post-meta">4 Eylül 2026 · 4 dk okuma</div>
@@ -235,7 +257,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kyk-borcu-yapilandirma-2026.html">
+    <a class="post-card" data-cat="kredi-borc" href="/kyk-borcu-yapilandirma-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-kyk-borcu-yapilandirma.jpg" alt="KYK borcu yapılandırma 2026">
       <div class="post-tag">🎓 Borç</div>
       <div class="post-meta">4 Eylül 2026 · 4 dk okuma</div>
@@ -244,7 +266,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/evlilik-kredisi-basvuru-sartlari-2026.html">
+    <a class="post-card" data-cat="kredi-borc" href="/evlilik-kredisi-basvuru-sartlari-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-evlilik-kredisi-2026.jpg" alt="Evlilik kredisi başvuru şartları 2026">
       <div class="post-tag">💍 Kredi</div>
       <div class="post-meta">3 Eylül 2026 · 4 dk okuma</div>
@@ -253,7 +275,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/mtv-1-ve-2-taksit-odeme-tarihleri-2026.html">
+    <a class="post-card" data-cat="hukuk-vergi" href="/mtv-1-ve-2-taksit-odeme-tarihleri-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-mtv-taksit-odeme-tarihleri.jpg" alt="MTV taksit ödeme tarihleri 2026">
       <div class="post-tag">🚗 Vergi</div>
       <div class="post-meta">3 Eylül 2026 · 4 dk okuma</div>
@@ -262,7 +284,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/ssk-4a-emeklilik-hesaplama-2026.html">
+    <a class="post-card" data-cat="emeklilik" href="/ssk-4a-emeklilik-hesaplama-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-ssk-4a-emeklilik-hesaplama.jpg" alt="SSK 4A emeklilik hesaplama 2026">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">3 Eylül 2026 · 4 dk okuma</div>
@@ -271,7 +293,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/issizlik-maasi-hesaplama-2026.html">
+    <a class="post-card" data-cat="emeklilik" href="/issizlik-maasi-hesaplama-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-issizlik-maasi-hesaplama.jpg" alt="İşsizlik maaşı hesaplama 2026 ne kadar şartları neler">
       <div class="post-tag">💼 Çalışma Hayatı</div>
       <div class="post-meta">28 Ağustos 2026 · 6 dk okuma</div>
@@ -280,7 +302,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kira-artis-orani-hesaplama-2026.html">
+    <a class="post-card" data-cat="hukuk-vergi" href="/kira-artis-orani-hesaplama-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-kira-artis-orani-hesaplama.jpg" alt="Kira artış oranı hesaplama 2026 neye göre belirlenir">
       <div class="post-tag">🏠 Kira & Konut</div>
       <div class="post-meta">28 Ağustos 2026 · 5 dk okuma</div>
@@ -289,7 +311,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/bagkur-emeklilik-hesaplama-2026.html">
+    <a class="post-card" data-cat="emeklilik" href="/bagkur-emeklilik-hesaplama-2026.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-bagkur-emeklilik-hesaplama.jpg" alt="Bağ-Kur emeklilik hesaplama 2026 ne zaman emekli olur">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">28 Ağustos 2026 · 6 dk okuma</div>
@@ -298,7 +320,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-yillik-ucreti-iadesi-dilekce-ornegi.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-yillik-ucreti-iadesi-dilekce-ornegi.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-kredi-karti-yillik-ucret-iadesi.jpg" alt="Kredi kartı yıllık üyelik ücreti iadesi nasıl alınır">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">18 Ağustos 2026 · 5 dk okuma</div>
@@ -307,7 +329,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kripto-para-kazanci-vergiye-tabi-mi.html">
+    <a class="post-card" data-cat="hukuk-vergi" href="/kripto-para-kazanci-vergiye-tabi-mi.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-kripto-para-vergisi.jpg" alt="Kripto parayı satıp kazanç elde edersem vergi öder miyim">
       <div class="post-tag">🪙 Vergi</div>
       <div class="post-meta">18 Ağustos 2026 · 5 dk okuma</div>
@@ -316,7 +338,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/dolar-mevduat-hesabinda-stopaj-var-mi.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/dolar-mevduat-hesabinda-stopaj-var-mi.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-dolar-mevduat-stopaji.jpg" alt="Dolar mevduat hesabında stopaj var mı oranı kaç">
       <div class="post-tag">💵 Mevduat</div>
       <div class="post-meta">18 Ağustos 2026 · 4 dk okuma</div>
@@ -325,7 +347,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/halka-arzda-lot-nedir-kac-tl-katilabilirim.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/halka-arzda-lot-nedir-kac-tl-katilabilirim.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-halka-arzda-lot-nedir.jpg" alt="Halka arzda lot ne demek kaç TL ile katılabilirim">
       <div class="post-tag">📈 Halka Arz</div>
       <div class="post-meta">11 Ağustos 2026 · 4 dk okuma</div>
@@ -334,7 +356,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/mevduatta-1-ay-mi-3-ay-mi-vade-secmeli.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/mevduatta-1-ay-mi-3-ay-mi-vade-secmeli.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-mevduat-vade-secimi.jpg" alt="Mevduatta 1 ay mı 3 ay mı vade seçmeli">
       <div class="post-tag">💰 Mevduat</div>
       <div class="post-meta">11 Ağustos 2026 · 5 dk okuma</div>
@@ -343,7 +365,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/cift-maasli-emekliler-cift-banka-promosyonu-alabilir-mi.html">
+    <a class="post-card" data-cat="emeklilik" href="/cift-maasli-emekliler-cift-banka-promosyonu-alabilir-mi.html">
       <img loading="lazy" width="1200" height="630" class="post-thumb" src="/blog-cift-emekli-promosyonu.jpg" alt="Çift maaşlı emekliler çift banka promosyonu alabilir mi">
       <div class="post-tag">👥 Emeklilik</div>
       <div class="post-meta">11 Ağustos 2026 · 4 dk okuma</div>
@@ -352,7 +374,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/findeks-kredi-notu-nedir-nasil-yukseltilir.html">
+    <a class="post-card" data-cat="kredi-borc" href="/findeks-kredi-notu-nedir-nasil-yukseltilir.html">
       <img loading="lazy" width="1280" height="854" class="post-thumb" src="/blog-findeks-kredi-notu.jpg" alt="Findeks kredi notu nedir nasıl yükseltilir">
       <div class="post-tag">📊 Kredi & Borçlanma</div>
       <div class="post-meta">30 Temmuz 2026 · 5 dk okuma</div>
@@ -361,7 +383,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-limiti-nasil-artirilir.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-limiti-nasil-artirilir.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-kredi-karti-limiti.jpg" alt="Kredi kartı limiti nasıl artırılır">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">30 Temmuz 2026 · 5 dk okuma</div>
@@ -370,7 +392,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/konut-kredisi-basvurusu-neden-reddedilir.html">
+    <a class="post-card" data-cat="kredi-borc" href="/konut-kredisi-basvurusu-neden-reddedilir.html">
       <img loading="lazy" width="1280" height="854" class="post-thumb" src="/blog-konut-kredisi-red.jpg" alt="Konut kredisi başvurusu neden reddedilir">
       <div class="post-tag">🏠 Kredi & Borçlanma</div>
       <div class="post-meta">30 Temmuz 2026 · 5 dk okuma</div>
@@ -379,7 +401,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/bireysel-emeklilik-bes-nasil-iptal-edilir.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/bireysel-emeklilik-bes-nasil-iptal-edilir.html">
       <img loading="lazy" width="720" height="1280" class="post-thumb" src="/blog-bes-nasil-iptal-edilir.jpg" alt="Bireysel emeklilik BES nasıl iptal edilir">
       <div class="post-tag">💰 Yatırım & Tasarruf</div>
       <div class="post-meta">27 Temmuz 2026 · 5 dk okuma</div>
@@ -388,7 +410,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/ek-gosterge-nedir-kimleri-etkiliyor.html">
+    <a class="post-card" data-cat="emeklilik" href="/ek-gosterge-nedir-kimleri-etkiliyor.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-ek-gosterge.jpg" alt="Ek gösterge nedir">
       <div class="post-tag">💼 Maaş & Promosyon</div>
       <div class="post-meta">21 Temmuz 2026 · 5 dk okuma</div>
@@ -397,7 +419,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/emekli-promosyonu-banka-degistirme-nasil-yapilir.html">
+    <a class="post-card" data-cat="emeklilik" href="/emekli-promosyonu-banka-degistirme-nasil-yapilir.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-emekli-banka-degistirme.jpg" alt="Emekli promosyonu için banka değiştirme">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">21 Temmuz 2026 · 4 dk okuma</div>
@@ -406,7 +428,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kademeli-emeklilik-nedir-sartlari-neler.html">
+    <a class="post-card" data-cat="emeklilik" href="/kademeli-emeklilik-nedir-sartlari-neler.html">
       <img loading="lazy" width="768" height="439" class="post-thumb" src="/blog-kademeli-emeklilik.jpg" alt="Kademeli emeklilik nedir">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">21 Temmuz 2026 · 5 dk okuma</div>
@@ -415,7 +437,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/gram-altin-mi-ceyrek-altin-mi.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/gram-altin-mi-ceyrek-altin-mi.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-gram-altin-mi-ceyrek-altin.jpg" alt="Gram altın mı çeyrek altın mı">
       <div class="post-tag">🥇 Altın & Yatırım</div>
       <div class="post-meta">16 Temmuz 2026 · 5 dk okuma</div>
@@ -424,7 +446,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/mevduat-faizi-enflasyona-karsi-kazandiriyor-mu.html">
+    <a class="post-card" data-cat="mevduat-yatirim" href="/mevduat-faizi-enflasyona-karsi-kazandiriyor-mu.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-mevduat-faizi-enflasyon.jpg" alt="Mevduat faizi enflasyona karşı">
       <div class="post-tag">📈 Mevduat & Enflasyon</div>
       <div class="post-meta">16 Temmuz 2026 · 5 dk okuma</div>
@@ -433,7 +455,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/emekli-promosyonu-ne-zaman-yatar.html">
+    <a class="post-card" data-cat="emeklilik" href="/emekli-promosyonu-ne-zaman-yatar.html">
       <img loading="lazy" width="640" height="423" class="post-thumb" src="/blog-emekli-promosyonu-ne-zaman-yatar.jpg" alt="Emekli promosyonu ne zaman yatar">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">16 Temmuz 2026 · 4 dk okuma</div>
@@ -442,7 +464,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-ekstresine-itiraz.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-ekstresine-itiraz.html">
       <img loading="lazy" width="854" height="1280" class="post-thumb" src="/blog-kredi-karti-ekstre-itiraz.jpg" alt="Kredi kartı ekstresine itiraz">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">16 Temmuz 2026 · 5 dk okuma</div>
@@ -451,7 +473,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/ozel-sektor-maas-promosyonu.html">
+    <a class="post-card" data-cat="emeklilik" href="/ozel-sektor-maas-promosyonu.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-ozel-sektor-maas-promosyonu.jpg" alt="Özel sektör maaş promosyonu">
       <div class="post-tag">💼 Maaş & Promosyon</div>
       <div class="post-meta">11 Temmuz 2026 · 5 dk okuma</div>
@@ -460,7 +482,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/emekli-promosyonu-erken-banka-degistirme.html">
+    <a class="post-card" data-cat="emeklilik" href="/emekli-promosyonu-erken-banka-degistirme.html">
       <img loading="lazy" width="1280" height="853" class="post-thumb" src="/blog-emekli-erken-banka-degistirme.jpg" alt="Emekli promosyonu erken banka değiştirme">
       <div class="post-tag">👴 Emeklilik</div>
       <div class="post-meta">11 Temmuz 2026 · 4 dk okuma</div>
@@ -469,7 +491,7 @@
       <div class="post-cta">Yazıyı Oku →</div>
     </a>
 
-    <a class="post-card" href="/kredi-karti-asgari-odeme-faiz.html">
+    <a class="post-card" data-cat="kredi-karti" href="/kredi-karti-asgari-odeme-faiz.html">
       <img loading="lazy" width="640" height="360" class="post-thumb" src="/blog-kredi-karti-asgari-odeme.jpg" alt="Kredi kartı asgari ödeme faiz">
       <div class="post-tag">💳 Kredi Kartı</div>
       <div class="post-meta">11 Temmuz 2026 · 6 dk okuma</div>
@@ -490,5 +512,26 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var tools={
+    "emeklilik":[["Emekli promosyonu","/emekli.html"],["Net maaş ve tazminat","/maas.html"]],
+    "kredi-karti":[["Faizsiz nakit avans","/sifir-faiz.html"],["Kampanyalar","/"]],
+    "mevduat-yatirim":[["Mevduat faizi","/mevduat.html"],["Altın ve döviz","/altin.html"],["Halka arz takvimi","/halka-arz.html"]],
+    "kredi-borc":[["Kredi hesaplama","/kredi.html"],["Faizsiz nakit avans","/sifir-faiz.html"]],
+    "hukuk-vergi":[["Net maaş ve tazminat","/maas.html"],["Faiz hesaplama","/faiz-hesaplama.html"]]
+  };
+  var all=document.getElementById('catTools').innerHTML;
+  document.getElementById('catBar').addEventListener('click',function(e){
+    var btn=e.target.closest('.cat-chip'); if(!btn) return;
+    var f=btn.getAttribute('data-filter');
+    document.querySelectorAll('.cat-chip').forEach(function(c){c.classList.toggle('active',c===btn);});
+    document.querySelectorAll('.post-card').forEach(function(c){c.hidden=(f!=='all'&&c.getAttribute('data-cat')!==f);});
+    var box=document.getElementById('catTools');
+    if(f==='all'||!tools[f]){box.innerHTML=all;return;}
+    box.innerHTML='<span>İlgili araçlar:</span> '+tools[f].map(function(x){return '<a href="'+x[1]+'">'+x[0]+'</a>';}).join('');
+  });
+})();
+</script>
 </body>
 </html>
