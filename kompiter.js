@@ -65,7 +65,7 @@
 
   /* ───────── Stil ───────── */
   var css = [
-    ".kp-root{position:fixed;right:16px;bottom:16px;z-index:900;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.45;color:#182522}",
+    ".kp-root{position:fixed;right:16px;bottom:16px;z-index:1100;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.45;color:#182522}",
     ".kp-root *{box-sizing:border-box}",
     ".kp-launcher{display:block;width:68px;height:78px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 8px 14px rgba(8,76,65,.28));-webkit-tap-highlight-color:transparent}",
     ".kp-launcher:focus-visible{outline:3px solid #f59e0b;outline-offset:3px;border-radius:16px}",
@@ -83,7 +83,7 @@
     ".kp-hello{position:absolute;right:72px;bottom:34px;background:#fff;border:1px solid #dbe8e4;border-radius:14px 14px 4px 14px;padding:10px 30px 10px 14px;box-shadow:0 10px 28px rgba(15,107,91,.18);font-weight:700;color:#084c41;width:max-content;max-width:210px;font-size:13px;opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .25s,transform .25s}",
     ".kp-hello.kp-show{opacity:1;transform:none;pointer-events:auto;cursor:pointer}",
     ".kp-hello button{position:absolute;top:2px;right:4px;border:0;background:none;color:#8a958f;font-size:16px;cursor:pointer;padding:4px 6px;line-height:1}",
-    ".kp-panel{position:absolute;right:0;bottom:84px;width:372px;max-width:calc(100vw - 24px);height:min(560px,calc(100vh - 116px));background:#fff;border:1px solid #dbe8e4;border-radius:18px;box-shadow:0 24px 60px rgba(8,76,65,.25);display:none;flex-direction:column;overflow:hidden}",
+    ".kp-panel{position:absolute;right:0;bottom:84px;width:372px;max-width:calc(100vw - 24px);height:min(560px,calc(100vh - 176px));min-height:300px;background:#fff;border:1px solid #dbe8e4;border-radius:18px;box-shadow:0 24px 60px rgba(8,76,65,.25);display:none;flex-direction:column;overflow:hidden}",
     ".kp-open .kp-panel{display:flex;animation:kpPop .22s ease-out}",
     "@keyframes kpPop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}",
     ".kp-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(135deg,#0f6b5b,#084c41);color:#fff}",
@@ -119,7 +119,7 @@
     ".kp-camp em{font-style:normal;font-size:12px;color:#66736f;font-weight:600}",
     ".kp-camps{margin:2px 0 10px 36px}",
     ".kp-foot{padding:8px 14px 10px;font-size:11px;color:#8a958f;background:#fff;border-top:1px solid #e5ece9;line-height:1.4}",
-    "@media (max-width:520px){.kp-root{right:10px;bottom:10px}.kp-panel{position:fixed;right:8px;left:8px;bottom:86px;width:auto;max-width:none;height:min(540px,calc(100vh - 110px))}.kp-hello{right:66px}}",
+    "@media (max-width:520px){.kp-root{right:10px;bottom:10px}.kp-panel{position:fixed;right:8px;left:8px;bottom:86px;width:auto;max-width:none;height:min(540px,calc(100vh - 170px));min-height:300px}.kp-hello{right:66px}}",
     "@media (prefers-reduced-motion:reduce){.kp-float,.kp-eyes,.kp-ant,.kp-wave .kp-hand,.kp-open .kp-panel{animation:none!important}.kp-body{scroll-behavior:auto}}"
   ].join("\n");
 
@@ -394,8 +394,10 @@
     var list = liveCampaigns();
     if (!list || !list.length) {
       return botSay({
-        text: "Güncel kampanya listesine bu sayfadan ulaşamadım. Ana sayfadaki kampanya bölümünden bakabilirsiniz.",
-        opts: [{ l: "Tüm kampanyalar", fn: "campAll" }]
+        text: isHome
+          ? "Şu an listelenecek aktif kampanya göremiyorum. Kampanyalar bölümüne bakabilirsiniz."
+          : "Güncel kampanyaları ana sayfadaki kampanya bölümünde listeliyoruz. Oraya götüreyim mi?",
+        opts: [{ l: "Kampanyalara git", fn: "campAll" }]
       });
     }
     var sel, intro;
