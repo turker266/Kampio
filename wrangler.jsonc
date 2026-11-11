@@ -1,0 +1,21 @@
+{
+  // Kampio — Cloudflare Workers (statik dosyalar + /api fonksiyonları + günlük zamanlanmış görev)
+  "name": "kampio",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    // Sitedeki bütün adresler .html ile bitiyor (canonical, sitemap). Varsayılan ayar bunları
+    // .html'siz adrese yönlendirir ve SEO'yu bozar. "none" adresleri olduğu gibi sunar.
+    "html_handling": "none",
+    "not_found_handling": "404-page",
+    // Worker yalnızca /api isteklerinde ve ana sayfada ("/") çalışır; diğer sayfalar ve görseller ücretsiz/sınırsız statik olarak sunulur.
+    "run_worker_first": ["/api/*", "/"]
+  },
+  "triggers": {
+    // Her gün 08:00 UTC (Türkiye saatiyle 11:00): emekli promosyonu hatırlatma e-postaları
+    "crons": ["0 8 * * *"]
+  },
+  "observability": { "enabled": true }
+}

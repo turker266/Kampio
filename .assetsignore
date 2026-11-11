@@ -1,0 +1,12 @@
+# Bunlar siteye statik dosya olarak YAYINLANMAZ
+wrangler.jsonc
+.assetsignore
+worker/
+api/
+node_modules/
+package.json
+package-lock.json
+vercel.json
+README.md
+.git/
+.gitignore
