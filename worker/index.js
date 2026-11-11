@@ -15,6 +15,13 @@ const ALLOWED_ORIGINS = ["https://www.kampio.com.tr", "https://kampio.com.tr"];
 const PREVIEW_ORIGIN = /^https:\/\/kampio\.[a-z0-9-]+\.workers\.dev$/; // deneme adresi
 const MAX_ACCOUNT_AGE_MS = 60 * 60 * 1000;
 
+
+// Supabase yeni "sb_secret_" anahtarları JWT değildir: yalnızca apikey olarak gider.
+// Eski JWT (eyJ...) service_role anahtarı ise her iki başlıkla da çalışır.
+function sbKeyHeaders(key) {
+  return key && key.startsWith("sb_") ? { apikey: key } : { apikey: key, Authorization: `Bearer ${key}` };
+}
+
 function json(data, status = 200, headers = {}) {
   return new Response(JSON.stringify(data), {
     status,
@@ -257,7 +264,7 @@ async function welcomeEmail(request, env) {
   // 3) Aynı adrese ikinci kez gönderme
   const SERVICE_KEY = env.SUPABASE_SERVICE_KEY;
   const logHeaders = SERVICE_KEY
-    ? { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` }
+    ? sbKeyHeaders(SERVICE_KEY)
     : { apikey: ANON, Authorization: `Bearer ${token}` };
   try {
     if (SERVICE_KEY) {
@@ -327,7 +334,7 @@ async function runReminders(env) {
 
   try {
     const r = await fetch(`${SUPABASE_URL}/rest/v1/reminders?aktif=eq.true&select=*`, {
-      headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` },
+      headers: sbKeyHeaders(SERVICE_KEY),
     });
     const reminders = await r.json();
     if (!Array.isArray(reminders)) throw new Error("reminders okunamadı: " + JSON.stringify(reminders).slice(0, 200));
@@ -378,8 +385,7 @@ async function runReminders(env) {
       await fetch(`${SUPABASE_URL}/rest/v1/reminders?id=eq.${item.id}`, {
         method: "PATCH",
         headers: {
-          apikey: SERVICE_KEY,
-          Authorization: `Bearer ${SERVICE_KEY}`,
+          ...sbKeyHeaders(SERVICE_KEY),
           "Content-Type": "application/json",
           Prefer: "return=minimal",
         },
