@@ -143,7 +143,9 @@
         { l: "🎁 Kampanyalar", go: "camp" },
         { l: "💰 Mevduat ve yatırım", go: "mev" },
         { l: "🏠 Krediler ve borç", go: "kred" },
-        { l: "🧾 Vergi ve maaş", go: "vergi" }
+        { l: "🧾 Vergi ve maaş", go: "vergi" },
+        { l: "⚖️ Haklarınız ve sorunlar", go: "hak" },
+        { l: "👴 Emeklilik ve BES", go: "emeklilik" }
       ]
     },
     camp: {
@@ -170,7 +172,23 @@
         { l: "Mevduat getirisi hesapla", go: "mevHesap" },
         { l: "Para piyasası fonu mu, mevduat mı?", go: "ppf" },
         { l: "1 ay mı, 3 ay mı vade?", go: "vade" },
-        { l: "Günlük faiz getirili hesap", go: "gunluk" }
+        { l: "Günlük faiz getirili hesap", go: "gunluk" },
+        { l: "📈 Halka arz takvimi", go: "halka" },
+        { l: "🥇 Altın ve döviz", go: "altin" }
+      ]
+    },
+    halka: {
+      text: "Halka arz sayfamızda son halka arzların fiyat, talep toplama tarihi ve lot bilgileri, talep toplayan halka arz varsa güncel durumu yer alıyor. Nasıl katılacağınızı ve lot mantığını ayrı bir yazıda anlattık.",
+      opts: [
+        { l: "Halka arz takvimi", href: "/halka-arz.html", link: 1 },
+        { l: "Lot nedir, kaç TL ile katılırım?", href: "/halka-arzda-lot-nedir-kac-tl-katilabilirim.html", link: 1 }
+      ]
+    },
+    altin: {
+      text: "Canlı altın fiyatlarını ve döviz hesaplayıcıyı altın sayfamızda bulabilirsiniz. Gram altın mı çeyrek altın mı sorusunu ise ayrı bir yazıda karşılaştırdık.",
+      opts: [
+        { l: "Canlı altın ve döviz", href: "/altin.html", link: 1 },
+        { l: "Gram mı, çeyrek mi?", href: "/gram-altin-mi-ceyrek-altin-mi.html", link: 1 }
       ]
     },
     mevOran: {
@@ -215,11 +233,13 @@
       ]
     },
     kkBorc: {
-      text: "Kart borcunu taşımanın yolları (borç transferi, nakit avans, ihtiyaç kredisi) farklı maliyetler taşır. Ayrıca asgari ödeme ve son ödeme tarihi yazılarımız var.",
+      text: "Kart borcunu taşımanın yolları (borç transferi, nakit avans, ihtiyaç kredisi) farklı maliyetler taşır. Asgari ödeme, son ödeme tarihi ve borcun ödenmemesi halinde süreçle ilgili yazılarımız da var.",
       opts: [
         { l: "Borç transferi nasıl yapılır?", href: "/kredi-karti-borc-transferi-nasil-yapilir-borcu-baska-karta-tasima.html", link: 1 },
         { l: "Asgari ödeme yaparsam ne olur?", href: "/kredi-karti-asgari-odeme-faiz.html", link: 1 },
-        { l: "Taksitleri erken kapatmak", href: "/kredi-karti-taksit-erken-kapama-tek-cekim-avantaji-2026.html", link: 1 }
+        { l: "Taksitleri erken kapatmak", href: "/kredi-karti-taksit-erken-kapama-tek-cekim-avantaji-2026.html", link: 1 },
+        { l: "Borç ödenmezse ne olur?", href: "/kredi-karti-borcu-odenmezse-ne-olur-icra-sureci.html", link: 1 },
+        { l: "Son ödeme gününü kaçırırsam?", href: "/kredi-karti-son-odeme-tarihi-nasil-degistirilir-1-gun-gecerse-ne-olur.html", link: 1 }
       ]
     },
     findeks: {
@@ -255,6 +275,61 @@
     hacz: {
       text: "Maaş haczinde kesinti sınırı ve oran yazımızda.",
       opts: [{ l: "Maaş haczi yazısı", href: "/maas-haczi-orani-kesinti-siniri-2026.html", link: 1 }]
+    },
+    hak: {
+      text: "Bankacılık ve borçla ilgili haklarınız konusunda şunlara bakabilirsiniz:",
+      opts: [
+        { l: "Kefil olursam ne olur?", go: "kefil" },
+        { l: "Yanlış IBAN'a para gönderdim", go: "iban" },
+        { l: "Maaş haczi", go: "hacz" },
+        { l: "Hesap işletim ücreti iadesi", go: "hesapUcret" },
+        { l: "Kart yıllık ücreti iadesi", go: "kartUcret" },
+        { l: "Ekstreye itiraz", go: "ekstre" }
+      ]
+    },
+    kefil: {
+      text: "Kefil olduğunuz kişi borcunu ödemezse banka size de başvurabilir. Adi ve müteselsil kefil farkı, rücu hakkı ve kefil olmadan önce sormanız gerekenler yazımızda.",
+      opts: [{ l: "Kefillik yazısı", href: "/kefil-oldugun-kisi-krediyi-odemezse-ne-olur.html", link: 1 }]
+    },
+    iban: {
+      text: "Yanlış IBAN'a para gönderdiyseniz vakit kaybetmeden bankanızla iletişime geçin. Süreç ve haklarınız yazımızda.",
+      opts: [{ l: "Yanlış IBAN yazısı", href: "/yanlis-ibana-para-gonderdim-geri-alinir-mi.html", link: 1 }]
+    },
+    hesapUcret: {
+      text: "Hesap işletim ücretinin yasal durumu ve iade başvurusu yazımızda.",
+      opts: [{ l: "Hesap işletim ücreti yazısı", href: "/hesap-isletim-ucreti-yasal-mi-iade-nasil-alinir-2026.html", link: 1 }]
+    },
+    kartUcret: {
+      text: "Kredi kartı yıllık ücretinin iadesi için başvuru süreci ve dilekçe örneği yazımızda.",
+      opts: [{ l: "Yıllık ücret iadesi yazısı", href: "/kredi-karti-yillik-ucreti-iadesi-dilekce-ornegi.html", link: 1 }]
+    },
+    ekstre: {
+      text: "Ekstrede tanımadığınız ya da hatalı bir işlem varsa itiraz yolu yazımızda.",
+      opts: [{ l: "Ekstreye itiraz yazısı", href: "/kredi-karti-ekstresine-itiraz.html", link: 1 }]
+    },
+    emeklilik: {
+      text: "Emeklilik tarafında neye bakmak istersiniz?",
+      opts: [
+        { l: "Emekli promosyonu", go: "emekli" },
+        { l: "Ne zaman emekli olurum?", go: "emHesap" },
+        { l: "BES devlet katkısı", go: "bes" }
+      ]
+    },
+    emHesap: {
+      text: "Emeklilik şartları sigortalılık türüne göre değişir. Size uygun hesaplama yazısını seçin:",
+      opts: [
+        { l: "SSK (4A)", href: "/ssk-4a-emeklilik-hesaplama-2026.html", link: 1 },
+        { l: "Bağ-Kur", href: "/bagkur-emeklilik-hesaplama-2026.html", link: 1 },
+        { l: "Kademeli emeklilik", href: "/kademeli-emeklilik-nedir-sartlari-neler.html", link: 1 },
+        { l: "Ek gösterge", href: "/ek-gosterge-nedir-kimleri-etkiliyor.html", link: 1 }
+      ]
+    },
+    bes: {
+      text: "BES devlet katkısı oranı ve yıllık üst sınırı her yıl yeniden belirlenir. Güncel rakamlar ve yatış zamanı yazımızda, vazgeçmeyi düşünüyorsanız iptal sürecini ayrıca anlattık.",
+      opts: [
+        { l: "BES devlet katkısı", href: "/bes-devlet-katkisi-en-fazla-ne-kadar-ne-zaman-yatar.html", link: 1 },
+        { l: "BES nasıl iptal edilir?", href: "/bireysel-emeklilik-bes-nasil-iptal-edilir.html", link: 1 }
+      ]
     }
   };
   NODES.emlak = null; // dinamik
