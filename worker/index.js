@@ -2,10 +2,12 @@
 // - /api/gold, /api/bist100          : piyasa verisi (Vercel'deki fonksiyonların aynısı)
 // - /api/send-welcome-email          : kayıt sonrası hoş geldin e-postası
 // - /api/check-reminders             : emekli promosyonu hatırlatmaları (HTTP: yalnızca CRON_SECRET ile; ayrıca günlük cron)
+// - /api/telegram-digest             : Telegram kanalı kampanya özeti (HTTP: CRON_SECRET ile; varsayılan önizleme, ?send=1 ile gönderir; ayrıca günlük cron)
 // Diğer bütün istekleri (sayfalar, görseller) Cloudflare statik dosya servisi karşılar; bu kod çalışmaz.
 //
 // Gizli anahtarlar Cloudflare panelinde Variables and Secrets bölümünde tanımlanır:
 //   RESEND_API_KEY, SUPABASE_SERVICE_KEY, CRON_SECRET (ve isteğe bağlı SUPABASE_ANON_KEY)
+//   Telegram için (isteğe bağlı): TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (ör. @kampiokampanya). İkisi de yoksa Telegram gönderisi kapalıdır.
 
 const SUPABASE_URL = "https://yvykqkzkwyhodqzqehcy.supabase.co";
 // Genel (anon) anahtar zaten istemci kodunda açıktır.
@@ -401,6 +403,121 @@ async function runReminders(env) {
   }
 }
 
+
+/* ───────────────────────── Telegram kanalı: kampanya özeti ───────────────────────── */
+// Ne zaman ne gönderilir (Türkiye saatine göre, cron her gün 11:00'de çalışır):
+//   Pazartesi : "Bu hafta bitecek kampanyalar" (bugünden başlayarak 7 gün içinde bitenler)
+//   Perşembe  : "Ödül değeri en yüksek aktif kampanyalar"
+//   Her gün   : "Son gün yarın" (yalnızca yarın biten kampanya varsa)
+// Gönderilecek bir şey yoksa kanala hiçbir şey yazılmaz.
+const TG_SITE = "https://www.kampio.com.tr/";
+const TG_MAX_ITEMS = 6;
+
+function trToday() {
+  // Türkiye'deki bugünün tarihi (YYYY-MM-DD) ve haftanın günü (0=Pazar)
+  const iso = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Istanbul" });
+  const wd = new Date().toLocaleDateString("en-US", { timeZone: "Europe/Istanbul", weekday: "short" });
+  return { iso, dow: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(wd) };
+}
+function dayDiff(fromIso, toIso) {
+  const a = Date.UTC(+fromIso.slice(0, 4), +fromIso.slice(5, 7) - 1, +fromIso.slice(8, 10));
+  const b = Date.UTC(+toIso.slice(0, 4), +toIso.slice(5, 7) - 1, +toIso.slice(8, 10));
+  return Math.round((b - a) / 86400000);
+}
+function trDate(iso) {
+  return new Date(iso + "T12:00:00Z").toLocaleDateString("tr-TR", { day: "numeric", month: "long", timeZone: "UTC" });
+}
+function tgLink(kampanya) {
+  return `${TG_SITE}?utm_source=telegram&utm_medium=kanal&utm_campaign=${kampanya}`;
+}
+function tgLine(c, today) {
+  const kalan = dayDiff(today, c.end_date);
+  const sure = kalan <= 0 ? "bugün son gün" : kalan === 1 ? "yarın son gün" : `${kalan} gün kaldı`;
+  const odul = c.reward_label ? ` · <b>${esc(c.reward_label)}</b>` : "";
+  return `• <b>${esc(c.bank)}</b> — ${esc(c.title)}${odul}\n   ⏰ ${trDate(c.end_date)} (${sure})`;
+}
+const TG_FOOT = "\n\nKoşullar ve katılım şartları için bankanın duyurusuna bakın; kampanyalar değişebilir.";
+
+function buildDigests(campaigns, today, dow) {
+  const out = [];
+  const live = campaigns
+    .filter((c) => c && c.is_active !== false && c.end_date && dayDiff(today, c.end_date) >= 0)
+    .sort((a, b) => a.end_date.localeCompare(b.end_date));
+
+  // Son gün yarın (her gün)
+  const yarin = live.filter((c) => dayDiff(today, c.end_date) === 1);
+  if (yarin.length) {
+    out.push({
+      tur: "sonGun",
+      text:
+        `⏰ <b>Son gün yarın!</b>\n\n` + yarin.slice(0, TG_MAX_ITEMS).map((c) => tgLine(c, today)).join("\n") +
+        `\n\n👉 <a href="${tgLink("son-gun")}">Tüm kampanyalar: Kampio</a>` + TG_FOOT,
+    });
+  }
+  // Pazartesi: bu hafta bitenler
+  if (dow === 1) {
+    const hafta = live.filter((c) => dayDiff(today, c.end_date) <= 6);
+    if (hafta.length) {
+      out.push({
+        tur: "haftalik",
+        text:
+          `📣 <b>Bu hafta bitecek kampanyalar</b>\n\n` + hafta.slice(0, TG_MAX_ITEMS).map((c) => tgLine(c, today)).join("\n") +
+          `\n\n👉 <a href="${tgLink("haftalik")}">Tüm kampanyaları karşılaştır</a>` + TG_FOOT,
+      });
+    }
+  }
+  // Perşembe: ödülü en yüksek aktif kampanyalar
+  if (dow === 4) {
+    const top = live.filter((c) => Number(c.reward_value) > 0)
+      .sort((a, b) => Number(b.reward_value) - Number(a.reward_value)).slice(0, 5);
+    if (top.length) {
+      out.push({
+        tur: "enYuksek",
+        text:
+          `🏆 <b>Ödül değeri en yüksek aktif kampanyalar</b>\n\n` + top.map((c) => tgLine(c, today)).join("\n") +
+          `\n\n👉 <a href="${tgLink("en-yuksek")}">Filtreleyip karşılaştırın</a>` + TG_FOOT,
+      });
+    }
+  }
+  return out;
+}
+
+async function runTelegram(env, { send = true, tur = null, dow = null, today = null } = {}) {
+  const SERVICE_KEY = env.SUPABASE_SERVICE_KEY;
+  if (!SERVICE_KEY) return { status: 500, body: { error: "SUPABASE_SERVICE_KEY tanımlı değil" } };
+  const t = trToday();
+  const bugun = today || t.iso;
+  const gun = dow == null ? t.dow : dow;
+
+  const r = await fetch(
+    `${SUPABASE_URL}/rest/v1/campaigns?is_active=eq.true&end_date=gte.${bugun}&select=id,title,bank,reward_label,reward_value,end_date,is_active&order=end_date.asc&limit=200`,
+    { headers: sbKeyHeaders(SERVICE_KEY) }
+  );
+  const rows = await r.json();
+  if (!Array.isArray(rows)) return { status: 500, body: { error: "campaigns okunamadı", detail: JSON.stringify(rows).slice(0, 200) } };
+
+  let digests = buildDigests(rows, bugun, gun);
+  if (tur) digests = buildDigests(rows, bugun, tur === "haftalik" ? 1 : tur === "enYuksek" ? 4 : gun).filter((d) => d.tur === tur);
+
+  const token = env.TELEGRAM_BOT_TOKEN, chat = env.TELEGRAM_CHAT_ID;
+  const hazir = !!(token && chat);
+  const sonuc = [];
+  for (const d of digests) {
+    if (!send || !hazir) { sonuc.push({ tur: d.tur, gonderildi: false, onizleme: d.text }); continue; }
+    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chat, text: d.text, parse_mode: "HTML", disable_web_page_preview: false }),
+    });
+    const j = await res.json().catch(() => ({}));
+    sonuc.push({ tur: d.tur, gonderildi: !!j.ok, hata: j.ok ? undefined : (j.description || "bilinmeyen hata") });
+  }
+  return {
+    status: 200,
+    body: { ok: true, tarih: bugun, aktifKampanya: rows.length, telegramHazir: hazir, gonderimIstendi: send, mesajlar: sonuc },
+  };
+}
+
 /* ───────────────────────── Giriş noktası ───────────────────────── */
 export default {
   async fetch(request, env, ctx) {
@@ -426,6 +543,19 @@ export default {
       return json(out.body, out.status);
     }
 
+    if (path === "/api/telegram-digest") {
+      const secret = env.CRON_SECRET;
+      if (!secret || request.headers.get("Authorization") !== `Bearer ${secret}`) {
+        return json({ error: "Yetkisiz erişim" }, 401);
+      }
+      // Varsayılan: yalnızca önizleme. Gerçekten göndermek için ?send=1; belirli tür için &tur=haftalik|enYuksek|sonGun
+      const out = await runTelegram(env, {
+        send: url.searchParams.get("send") === "1",
+        tur: url.searchParams.get("tur"),
+      });
+      return json(out.body, out.status);
+    }
+
     return json({ error: "Bulunamadı" }, 404);
   },
 
@@ -433,5 +563,12 @@ export default {
   async scheduled(event, env, ctx) {
     const out = await runReminders(env);
     console.log("[check-reminders] " + out.status + " " + JSON.stringify(out.body));
+    // Telegram özeti: hata olsa bile hatırlatma e-postalarını etkilemesin
+    try {
+      const tg = await runTelegram(env, { send: true });
+      console.log("[telegram] " + tg.status + " " + JSON.stringify({ ...tg.body, mesajlar: (tg.body.mesajlar || []).map((m) => ({ tur: m.tur, gonderildi: m.gonderildi, hata: m.hata })) }));
+    } catch (e) {
+      console.log("[telegram] hata " + String(e));
+    }
   },
 };
