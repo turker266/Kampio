@@ -1,3 +1,4 @@
+
 // Kampio — Cloudflare Worker
 // - /api/gold, /api/bist100          : piyasa verisi (Vercel'deki fonksiyonların aynısı)
 // - /api/send-welcome-email          : kayıt sonrası hoş geldin e-postası
