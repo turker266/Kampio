@@ -1969,6 +1969,8 @@
     const t = new Date(); t.setHours(0,0,0,0);
     return Math.ceil((new Date(d+"T00:00:00") - t) / 86400000);
   }
+  // Yayında olan kampanya: aktif ve süresi geçmemiş (süresi dolanlar listelerde ve sayaçlarda görünmez)
+  function isLive(c) { return c.isActive && daysLeft(c.endDate) >= 0; }
   function formatDate(v) { return new Intl.DateTimeFormat("tr-TR",{day:"numeric",month:"long",year:"numeric"}).format(new Date(v+"T00:00:00")); }
   function shortDate(v) { return new Intl.DateTimeFormat("tr-TR",{day:"numeric",month:"long"}).format(new Date(v+"T00:00:00")); }
 
@@ -1993,7 +1995,7 @@
     const b = document.getElementById("bankFilter").value;
     const cat = document.getElementById("categoryFilter").value;
     return campaigns
-      .filter(c => c.isActive)
+      .filter(isLive)
       .filter(c => !b || c.bank===b)
       .filter(c => !cat || c.category===cat)
       .filter(c => !endingOnly || daysLeft(c.endDate)<=10)
@@ -2046,7 +2048,7 @@
   }
 
   function renderGainPanel() {
-    const active = campaigns.filter(c=>c.isActive);
+    const active = campaigns.filter(isLive);
     const total = active.reduce((s,c)=>s+c.rewardValue,0);
     document.getElementById("totalReward").textContent = `${total.toLocaleString("tr-TR")} TL+`;
     const top3 = [...active].sort((a,b)=>b.rewardValue-a.rewardValue).slice(0,3);
@@ -2056,7 +2058,7 @@
   }
 
   function renderHeroPanel() {
-    const active = campaigns.filter(c=>c.isActive);
+    const active = campaigns.filter(isLive);
     const total = active.reduce((s,c)=>s+c.rewardValue,0);
     const el = document.getElementById("heroTotalReward");
     if (el) el.textContent = `${total.toLocaleString("tr-TR")} TL+`;
@@ -2338,7 +2340,7 @@
   const SLIDE_DURATION = 4500;
 
   function buildSliderIn(trackId, dotsId, progressId, prevId, nextId, wrapperId) {
-    const active = campaigns.filter(c => c.isActive);
+    const active = campaigns.filter(isLive);
     if (active.length === 0) return;
 
     sliderItems = [...active]
@@ -2514,9 +2516,9 @@
   /* ── Hero Phone Mockup & Counters ── */
   function updatePhoneMockup() {
     // Total reward from campaigns
-    const total = campaigns.reduce((s, c) => s + (c.isActive ? c.rewardValue : 0), 0);
+    const total = campaigns.reduce((s, c) => s + (isLive(c) ? c.rewardValue : 0), 0);
     // Hero'daki "Aktif Kampanya" sayacı sabit 15 yerine gerçek aktif kampanya sayısını göstersin
-    const activeCount = campaigns.filter(c => c.isActive).length;
+    const activeCount = campaigns.filter(isLive).length;
     const firstCount = document.querySelector('.hero-count');
     if (firstCount && activeCount > 0) {
       firstCount.dataset.target = String(activeCount);
@@ -2526,7 +2528,7 @@
     if (phonTotal) phonTotal.textContent = total.toLocaleString('tr-TR') + ' TL+';
 
     // Update phone campaigns with real data
-    const top4 = [...campaigns].filter(c => c.isActive).sort((a,b) => b.rewardValue - a.rewardValue).slice(0, 4);
+    const top4 = [...campaigns].filter(isLive).sort((a,b) => b.rewardValue - a.rewardValue).slice(0, 4);
     const phonCamp = document.getElementById('phonCampaigns');
     if (phonCamp && top4.length) {
       const colors = [
