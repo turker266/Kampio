@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="tr">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <!-- ═══ Performans: yazı tipini erken ve paralel yükle ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,7 +11,6 @@
 
   <!-- ═══ SEO & Meta ═══ -->
   <meta name="description" content="Kampio — Türkiye'nin finansal karşılaştırma platformu. Kredi kartı kampanya ve promosyonlar, emekli promosyonu, mevduat faiz oranları, altın fiyatı, net maaş hesaplama, %0 faizli kredi. 2026 güncel.">
-  <meta name="keywords" content="kredi kartı kampanya, banka kampanya, bonus kampanya, chip para, cashback, kredi kartı avantaj, Garanti kampanya, Akbank kampanya">
   <meta name="author" content="Kampio">
   <meta name="keywords" content="kredi kartı kampanya 2026, emekli promosyonu 2026, mevduat faiz oranları, gram altın fiyatı, net maaş hesaplama, %0 faizli kredi, konut kredisi hesaplama, halka arz takvimi, Akbank promosyon, Garanti promosyon, Yapı Kredi promosyon">
   <meta name="robots" content="index, follow">
@@ -77,9 +78,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
 
-  <meta charset="utf-8">
   <meta name="google-site-verification" content="YehcmNnMbGqmoniSgPL9snlGpO3uc-7u62hcki0uAnY" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Kampio | Banka Kampanyaları, Mevduat Faizi, Emekli Promosyonu</title>
   <style>
     /* Yazı tipi artık <head> içinde preconnect+link ile erken yükleniyor */
@@ -990,6 +989,34 @@
   "datePublished": "2026-06-09",
   "dateModified": "2026-10-30",
   "publisher": { "@type": "Organization", "name": "Kampio" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://www.kampio.com.tr/#organization",
+  "name": "Kampio",
+  "url": "https://www.kampio.com.tr/",
+  "logo": "https://www.kampio.com.tr/android-chrome-192x192.png",
+  "description": "Kampio, kredi kartı kampanyaları, mevduat faizleri, emekli promosyonları ve hesaplama araçlarını tek yerde karşılaştıran bağımsız bir finans platformudur.",
+  "sameAs": [
+    "https://x.com/Kampiocom",
+    "https://t.me/kampiocom",
+    "https://www.instagram.com/kampiocom"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.kampio.com.tr/#website",
+  "name": "Kampio",
+  "alternateName": ["Kampio.com.tr", "Kampio Finans"],
+  "url": "https://www.kampio.com.tr/",
+  "inLanguage": "tr-TR",
+  "publisher": { "@id": "https://www.kampio.com.tr/#organization" }
 }
 </script>
 </head>
@@ -2489,6 +2516,13 @@
   function updatePhoneMockup() {
     // Total reward from campaigns
     const total = campaigns.reduce((s, c) => s + (c.isActive ? c.rewardValue : 0), 0);
+    // Hero'daki "Aktif Kampanya" sayacı sabit 15 yerine gerçek aktif kampanya sayısını göstersin
+    const activeCount = campaigns.filter(c => c.isActive).length;
+    const firstCount = document.querySelector('.hero-count');
+    if (firstCount && activeCount > 0) {
+      firstCount.dataset.target = String(activeCount);
+      firstCount.textContent = String(activeCount);
+    }
     const phonTotal = document.getElementById('phonTotal');
     if (phonTotal) phonTotal.textContent = total.toLocaleString('tr-TR') + ' TL+';
 
