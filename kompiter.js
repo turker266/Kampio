@@ -235,6 +235,7 @@
     kkBorc: {
       text: "Kart borcunu taşımanın yolları (borç transferi, nakit avans, ihtiyaç kredisi) farklı maliyetler taşır. Asgari ödeme, son ödeme tarihi ve borcun ödenmemesi halinde süreçle ilgili yazılarımız da var.",
       opts: [
+        { l: "Asgari ödeme ve faiz hesapla", href: "/kredi-karti-asgari-odeme-hesaplama.html", link: 1 },
         { l: "Borç transferi nasıl yapılır?", href: "/kredi-karti-borc-transferi-nasil-yapilir-borcu-baska-karta-tasima.html", link: 1 },
         { l: "Asgari ödeme yaparsam ne olur?", href: "/kredi-karti-asgari-odeme-faiz.html", link: 1 },
         { l: "Taksitleri erken kapatmak", href: "/kredi-karti-taksit-erken-kapama-tek-cekim-avantaji-2026.html", link: 1 },
@@ -316,8 +317,9 @@
       ]
     },
     emHesap: {
-      text: "Emeklilik şartları sigortalılık türüne göre değişir. Size uygun hesaplama yazısını seçin:",
+      text: "Emeklilik şartları sigortalılık türüne göre değişir. SSK (4A) için tahmini tarihinizi hesaplayabilir, size uygun yazıyı da seçebilirsiniz:",
       opts: [
+        { l: "Emeklilik tarihimi hesapla (SSK)", href: "/emekli.html", link: 1 },
         { l: "SSK (4A)", href: "/ssk-4a-emeklilik-hesaplama-2026.html", link: 1 },
         { l: "Bağ-Kur", href: "/bagkur-emeklilik-hesaplama-2026.html", link: 1 },
         { l: "Kademeli emeklilik", href: "/kademeli-emeklilik-nedir-sartlari-neler.html", link: 1 },
