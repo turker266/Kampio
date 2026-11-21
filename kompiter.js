@@ -319,7 +319,8 @@
     emHesap: {
       text: "Emeklilik şartları sigortalılık türüne göre değişir. SSK (4A) için tahmini tarihinizi hesaplayabilir, size uygun yazıyı da seçebilirsiniz:",
       opts: [
-        { l: "Emeklilik tarihimi hesapla (SSK)", href: "/emekli.html", link: 1 },
+        { l: "Emeklilik tarihimi hesapla (SSK)", href: "/emeklilik-hesaplama.html", link: 1 },
+        { l: "Emekli maaşım ne kadar olur?", href: "/emekli-maasi-hesaplama.html", link: 1 },
         { l: "SSK (4A)", href: "/ssk-4a-emeklilik-hesaplama-2026.html", link: 1 },
         { l: "Bağ-Kur", href: "/bagkur-emeklilik-hesaplama-2026.html", link: 1 },
         { l: "Kademeli emeklilik", href: "/kademeli-emeklilik-nedir-sartlari-neler.html", link: 1 },

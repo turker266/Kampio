@@ -1050,10 +1050,16 @@
           <a href="/altin.html">🥇 Altın & Döviz</a>
           <a href="/faiz-hesaplama.html">📈 Bileşik Faiz & Enflasyon</a>
           <a href="/kredi-karti-asgari-odeme-hesaplama.html">💳 Kredi Kartı Asgari Ödeme</a>
-          <a href="/emekli.html">👴 Emeklilik Hesaplama</a>
         </div>
       </div>
-      <a class="nav-link" href="/emekli.html#promo" style="text-decoration:none">👴 Emekli Promosyonu</a>
+      <div class="nav-dropdown">
+        <button class="nav-link nav-dropdown-btn" type="button">👴 Emeklilik ▾</button>
+        <div class="nav-dropdown-menu">
+          <a href="/emekli.html">🏦 Emekli Promosyonu</a>
+          <a href="/emeklilik-hesaplama.html">⏰ Ne Zaman Emekli Olurum?</a>
+          <a href="/emekli-maasi-hesaplama.html">💰 Emekli Maaşı Hesaplama</a>
+        </div>
+      </div>
       <div class="nav-dropdown">
         <button class="nav-link nav-dropdown-btn" type="button">🏦 Bankalar ▾</button>
         <div class="nav-dropdown-menu">
@@ -1100,11 +1106,12 @@
   <a class="mobile-nav-link" href="/mevduat.html" style="text-decoration:none;display:flex;align-items:center">💰 Mevduat Faizi</a>
   <a class="mobile-nav-link" href="/maas.html" style="text-decoration:none;display:flex;align-items:center">💼 Maaş Hesaplama</a>
   <a class="mobile-nav-link" href="/kredi.html" style="text-decoration:none;display:flex;align-items:center">🏠 Kredi Hesaplama</a>
-  <a class="mobile-nav-link" href="/emekli.html#promo" style="text-decoration:none;display:flex;align-items:center">👴 Emekli Promosyonu</a>
   <a class="mobile-nav-link" href="/altin.html" style="text-decoration:none;display:flex;align-items:center">🥇 Altın & Döviz</a>
   <a class="mobile-nav-link" href="/faiz-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">📈 Bileşik Faiz & Enflasyon</a>
   <a class="mobile-nav-link" href="/kredi-karti-asgari-odeme-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">💳 Kredi Kartı Asgari Ödeme</a>
-  <a class="mobile-nav-link" href="/emekli.html" style="text-decoration:none;display:flex;align-items:center">👴 Emeklilik Hesaplama</a>
+  <a class="mobile-nav-link" href="/emeklilik-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">⏰ Ne Zaman Emekli Olurum?</a>
+  <a class="mobile-nav-link" href="/emekli-maasi-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">💰 Emekli Maaşı Hesaplama</a>
+  <a class="mobile-nav-link" href="/emekli.html" style="text-decoration:none;display:flex;align-items:center">🏦 Emekli Promosyonu</a>
   <div style="padding:6px 16px;font-size:11px;font-weight:800;color:#66736f;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px">🏦 Bankalar</div>
   <a class="mobile-nav-link" href="/akbank.html" style="text-decoration:none;display:flex;align-items:center">Akbank</a>
   <a class="mobile-nav-link" href="/garanti.html" style="text-decoration:none;display:flex;align-items:center">Garanti BBVA</a>
@@ -1289,19 +1296,19 @@
           <div class="tool-card-desc">İhtiyaç kredisi taksit hesaplama</div>
           <span class="tool-card-arrow">→</span>
         </a>
-        <a class="tool-card-new purple" href="/emekli.html">
+        <a class="tool-card-new purple" href="/emeklilik-hesaplama.html">
           <span class="tool-card-icon">👴</span>
           <div class="tool-card-name">Ne Zaman Emekli Olurum?</div>
           <div class="tool-card-desc">Emeklilik yaşı ve şartları</div>
           <span class="tool-card-arrow">→</span>
         </a>
-        <a class="tool-card-new purple" href="/emekli.html#maas">
+        <a class="tool-card-new purple" href="/emekli-maasi-hesaplama.html">
           <span class="tool-card-icon">🧓</span>
           <div class="tool-card-name">Emekli Maaşı Hesaplama</div>
           <div class="tool-card-desc">Tahmini emekli aylığınızı görün</div>
           <span class="tool-card-arrow">→</span>
         </a>
-        <a class="tool-card-new purple" href="/emekli.html#promo">
+        <a class="tool-card-new purple" href="/emekli.html">
           <span class="tool-card-icon">🏦</span>
           <div class="tool-card-name">Emekli Promosyonu</div>
           <div class="tool-card-desc">Hangi banka en yüksek promosyonu veriyor</div>
@@ -1452,7 +1459,7 @@
         <div class="feature-card"><div class="feature-icon">☁️</div><h3>Gerçek Zamanlı</h3><p>Kampanyalar bulut veritabanında saklanır; güncellendiği anda sitede yayına girer.</p></div>
         <div class="feature-card" style="cursor:pointer" onclick="window.location='/mevduat.html'"><div class="feature-icon">💰</div><h3>Mevduat Faiz Hesaplama</h3><p>12+ bankanın güncel faiz oranlarını karşılaştır. 1 milyon TL için hangi banka ne kadar veriyor?</p></div>
         <div class="feature-card" style="cursor:pointer" onclick="window.location='/maas.html'"><div class="feature-icon">💼</div><h3>Net Maaş Hesaplama</h3><p>Brütten nete, netten brüte maaş hesapla. Kıdem ve ihbar tazminatı da dahil. 2026 güncel parametreler.</p></div>
-        <div class="feature-card" style="cursor:pointer" onclick="window.location='/emekli.html'"><div class="feature-icon">👴</div><h3>Emeklilik Hesaplama</h3><p>Ne zaman emekli olurum? Emekli maaşı tahmini ve banka promosyon karşılaştırması. 2026 güncel şartlar.</p></div>
+        <div class="feature-card" style="cursor:pointer" onclick="window.location='/emeklilik-hesaplama.html'"><div class="feature-icon">👴</div><h3>Emeklilik Hesaplama</h3><p>Ne zaman emekli olurum? Emekli maaşı tahmini ve banka promosyon karşılaştırması. 2026 güncel şartlar.</p></div>
         <div class="feature-card" style="cursor:pointer" onclick="window.location='/kredi.html'"><div class="feature-icon">🏠</div><h3>Kredi Hesaplama</h3><p>Konut, taşıt ve ihtiyaç kredisi taksitlerini hesapla. Tüm bankaların güncel faiz oranlarını karşılaştır.</p></div>
       </div>
     </div>
@@ -1570,7 +1577,7 @@
       </div>
       <nav aria-label="Hesaplama araçları" style="max-width:1000px;margin:36px auto 0;padding-top:28px;border-top:1px solid #dbe8e4;text-align:center">
         <div style="font-size:13px;font-weight:800;color:#66736f;letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px">Ücretsiz hesaplama araçları</div>
-        <div style="display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;font-size:14.5px"><a href="/mevduat.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Mevduat Faizi Karşılaştırma</a><a href="/kredi.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Kredi Hesaplama (Konut, Taşıt, İhtiyaç)</a><a href="/maas.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Net Maaş ve Kıdem Tazminatı Hesaplama</a><a href="/emekli.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Emekli Promosyonu ve Emekli Maaşı</a><a href="/sifir-faiz.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">%0 Faizli Kredi Veren Bankalar</a><a href="/halka-arz.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Halka Arz Takvimi</a><a href="/altin.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Gram Altın ve Döviz</a><a href="/faiz-hesaplama.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Bileşik Faiz ve Enflasyon Hesaplama</a></div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;font-size:14.5px"><a href="/mevduat.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Mevduat Faizi Karşılaştırma</a><a href="/kredi.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Kredi Hesaplama (Konut, Taşıt, İhtiyaç)</a><a href="/maas.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Net Maaş ve Kıdem Tazminatı Hesaplama</a><a href="/emekli.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Emekli Promosyonu</a><a href="/emeklilik-hesaplama.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Ne Zaman Emekli Olurum?</a><a href="/emekli-maasi-hesaplama.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Emekli Maaşı Hesaplama</a><a href="/sifir-faiz.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">%0 Faizli Kredi Veren Bankalar</a><a href="/halka-arz.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Halka Arz Takvimi</a><a href="/altin.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Gram Altın ve Döviz</a><a href="/faiz-hesaplama.html" style="color:#0f6b5b;font-weight:700;text-decoration:none">Bileşik Faiz ve Enflasyon Hesaplama</a></div>
       </nav>
     </div>
   </section>
