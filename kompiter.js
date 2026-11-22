@@ -271,7 +271,12 @@
     },
     maas: {
       text: "Brüt maaşınızdan net maaşı ve kesintileri hesaplayabilirsiniz.",
-      opts: [{ l: "Maaş hesaplama", href: "/maas.html", link: 1 }]
+      opts: [
+        { l: "Net maaş hesapla", href: "/maas.html", link: 1 },
+        { l: "Kıdem tazminatı hesapla", href: "/kidem-tazminati-hesaplama.html", link: 1 },
+        { l: "İhbar tazminatı hesapla", href: "/ihbar-tazminati-hesaplama.html", link: 1 },
+        { l: "Yıllık izin ücreti hesapla", href: "/yillik-izin-ucreti-hesaplama.html", link: 1 }
+      ]
     },
     kira: {
       text: "Kira artış oranının neye göre belirlendiğini ve hesaplamasını yazımızda anlattık.",
