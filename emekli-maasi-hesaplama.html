@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emekli Maaşı Hesaplama 2026 | Tahmini Emekli Aylığı | Kampio</title>
-<meta name="description" content="Emekli maaşım ne kadar olur? Prim gün sayınız ve ortalama maaşınızla 2008 sonrası sigortalılar için tahmini emekli aylığını hesaplayın.">
+<meta name="description" content="Emekli maaşım ne kadar olur? Prim gün sayınız ve ortalama kazancınızla 2008 sonrası sigortalılar için tahmini emekli aylığını hesaplayın.">
 <meta name="keywords" content="emekli maaşı hesaplama, emekli aylığı hesaplama, emekli maaşım ne kadar olur, aylık bağlama oranı, en düşük emekli maaşı 2026">
 <link rel="canonical" href="https://www.kampio.com.tr/emekli-maasi-hesaplama.html">
 <meta property="og:title" content="Emekli Maaşı Hesaplama 2026 | Kampio">
@@ -136,7 +136,7 @@ a.page-tab{display:flex;align-items:center;justify-content:center;text-align:cen
  "@type": "WebPage",
  "name": "Emekli Maaşı Hesaplama 2026",
  "url": "https://www.kampio.com.tr/emekli-maasi-hesaplama.html",
- "description": "Emekli maaşım ne kadar olur? Prim gün sayınız ve ortalama maaşınızla 2008 sonrası sigortalılar için tahmini emekli aylığını hesaplayın.",
+ "description": "Emekli maaşım ne kadar olur? Prim gün sayınız ve ortalama kazancınızla 2008 sonrası sigortalılar için tahmini emekli aylığını hesaplayın.",
  "datePublished": "2026-06-09",
  "dateModified": "2026-11-22",
  "publisher": {
@@ -155,7 +155,7 @@ a.page-tab{display:flex;align-items:center;justify-content:center;text-align:cen
    "name": "Emekli maaşım nasıl hesaplanır?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "2008 sonrası dönem için: Ortalama Aylık Kazanç × Aylık Bağlama Oranı formülü kullanılır. ABO, her 360 günlük çalışma için artış gösterir. 7.200 gün prim ödeyenler için ABO yaklaşık %40 civarındadır."
+    "text": "2008 sonrası dönem için: Ortalama Aylık Kazanç × Aylık Bağlama Oranı formülü kullanılır. Aylık bağlama oranı her 360 prim günü için %2 artar ve en fazla %90 olabilir. 7.200 gün prim ödeyenin oranı %40, 9.000 günde %50 olur. Ortalama kazanç, her yılın prime esas kazancının güncelleme katsayılarıyla bugüne taşınıp toplam prim gününe bölünmesiyle bulunur. Hesaplanan aylık en düşük aylık olan 23.552 TL'nin (Temmuz–Aralık 2026) altında kalırsa fark tamamlanır."
    }
   },
   {
@@ -195,9 +195,9 @@ gtag('config', 'G-ECWKHQM6EG');
 <section class="container hero">
 <div class="hero-badge">💰 2026 Güncel Veriler</div>
 <h1>Emekli Maaşı Hesaplama <em>2026</em>: Maaşım Ne Kadar Olur?</h1>
-<p class="hero-desc">Prim gün sayınızı ve ortalama aylık brüt maaşınızı girin, tahmini emekli aylığınızı görün.</p>
+<p class="hero-desc">Prim gün sayınızı ve ortalama aylık kazancınızı girin, tahmini emekli aylığınızı görün.</p>
 <div class="stat-row">
-<div class="stat-chip"><strong>20.000 TL</strong><span>En düşük emekli maaşı</span></div>
+<div class="stat-chip"><strong>23.552 TL</strong><span>En düşük emekli aylığı (Temmuz–Aralık 2026)</span></div>
 <div class="stat-chip"><strong>7.200 Gün</strong><span>2008+ giriş prim günü</span></div>
 </div>
 </section>
@@ -212,17 +212,17 @@ gtag('config', 'G-ECWKHQM6EG');
 <div class="calc-card">
 <div class="calc-header">
 <h2>💰 Emekli Maaşı Tahmini</h2>
-<p>2008 sonrası sigortalılar için ortalama maaş tahmini. Kesin hesaplama için SGK'ya başvurun.</p>
+<p>İlk kez 1 Ekim 2008 ve sonrasında sigortalı olanlar için tahmini aylık. Kesin hesaplama için SGK'ya başvurun.</p>
 </div>
 <div class="calc-body">
 <div class="form-row">
 <div class="form-field">
 <label>Toplam Prim Günü</label>
-<input class="form-input" id="maasGun" type="number" value="7200" min="3600" placeholder="7200">
+<input class="form-input" id="maasGun" type="number" value="7200" min="1" placeholder="7200">
 </div>
 <div class="form-field">
-<label>Ortalama Aylık Brüt Maaş (TL)</label>
-<input class="form-input" id="maasBrut" type="number" value="50000" min="33030" placeholder="50000">
+<label>Ortalama Aylık Kazanç (TL, bugünkü değerle)</label>
+<input class="form-input" id="maasBrut" type="number" value="50000" min="1" placeholder="50000">
 </div>
 </div>
 <div class="form-row">
@@ -231,13 +231,6 @@ gtag('config', 'G-ECWKHQM6EG');
 <select class="form-select" id="maasSigortaTur">
 <option value="4a">4A — SSK (İşçi)</option>
 <option value="4b">4B — Bağ-Kur (Esnaf)</option>
-</select>
-</div>
-<div class="form-field">
-<label>Sigorta Dönemi</label>
-<select class="form-select" id="maasDonemi">
-<option value="2008sonrasi">2008 sonrası (tamamı)</option>
-<option value="karisik">1999-2008 arası giriş</option>
 </select>
 </div>
 </div>
@@ -249,7 +242,7 @@ gtag('config', 'G-ECWKHQM6EG');
 <div class="result-main-sub" id="maasDetay">—</div>
 </div>
 <div class="result-grid" id="maasResultGrid"></div>
-<div class="result-note">⚠️ Bu hesaplama 2008 sonrası dönem için basitleştirilmiş formülle yapılmıştır. Gerçek maaşınız prim ödeme dönemlerinize, kazançlarınıza ve güncelleme katsayılarına göre değişir. Kesin hesaplama için e-Devlet → SGK → Emekli Maaşı Sorgulama bölümünü kullanın.</div>
+<div class="result-note" id="maasNot">⚠️ Tahmini hesaptır. Gerçek aylık, yıllara göre güncellenen kazançlarınıza, aylığın başladığı döneme ve ek ödemelere göre değişir.</div>
 </div>
 </div>
 </div>
@@ -259,7 +252,7 @@ gtag('config', 'G-ECWKHQM6EG');
 <div class="info-section">
 <h2>Sık Sorulan Sorular</h2>
 <h3>Emekli maaşım nasıl hesaplanır?</h3>
-<p>2008 sonrası dönem için: <strong>Ortalama Aylık Kazanç × Aylık Bağlama Oranı</strong> formülü kullanılır. ABO, her 360 günlük çalışma için artış gösterir. 7.200 gün prim ödeyenler için ABO yaklaşık %40 civarındadır.</p>
+<p>2008 sonrası dönem için: <strong>Ortalama Aylık Kazanç × Aylık Bağlama Oranı</strong> formülü kullanılır. Aylık bağlama oranı her 360 prim günü için %2 artar ve en fazla %90 olabilir. 7.200 gün prim ödeyenin oranı %40, 9.000 günde %50 olur. Ortalama kazanç, her yılın prime esas kazancının güncelleme katsayılarıyla bugüne taşınıp toplam prim gününe bölünmesiyle bulunur. Hesaplanan aylık en düşük aylık olan 23.552 TL'nin (Temmuz–Aralık 2026) altında kalırsa fark tamamlanır.</p>
 <h3>Emekli maaşı ne zaman yatar?</h3>
 <p>SSK (4A) emeklileri için her ayın <strong>17-26'sı</strong>, Bağ-Kur (4B) emeklileri için <strong>25-28'i</strong>, Emekli Sandığı (4C) emeklileri için ise <strong>ay başı ile 5'i</strong> arasında ödeme yapılmaktadır.</p>
 </div>
@@ -292,25 +285,39 @@ function formatTL(n) {
 return Math.round(n).toLocaleString("tr-TR") + " TL";
 }
 function calculateMaas() {
-const gun = parseInt(document.getElementById("maasGun").value) || 7200;
-const brut = parseFloat(document.getElementById("maasBrut").value) || 50000;
-const donemi = document.getElementById("maasDonemi").value;
-const yil = gun / 360;
-let abo = yil * 0.02;
-if (donemi === "karisik") abo = yil * 0.025;
-abo = Math.min(abo, 0.90);
-const guncellenmisKazanc = brut * 0.6;
-let tahminiMaas = guncellenmisKazanc * abo;
-tahminiMaas = Math.max(tahminiMaas, 20000);
-document.getElementById("tahminiMaas").textContent = formatTL(tahminiMaas);
-document.getElementById("maasDetay").textContent =
-`ABO: %${(abo*100).toFixed(1)} · ${(gun/360).toFixed(1)} yıl çalışma`;
-document.getElementById("maasResultGrid").innerHTML = `
-<div class="result-item"><div class="result-item-label">Prim Günü</div><div class="result-item-value">${gun.toLocaleString("tr-TR")}</div></div>
-<div class="result-item"><div class="result-item-label">Aylık Bağlama Oranı</div><div class="result-item-value">%${(abo*100).toFixed(1)}</div></div>
-<div class="result-item"><div class="result-item-label">Taban Maaş</div><div class="result-item-value">20.000 TL</div></div>`;
-document.getElementById("maasResult").classList.add("show");
-document.getElementById("maasResult").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  // 5510 sayılı Kanun (2008 sonrası): aylık = ortalama aylık kazanç x aylık bağlama oranı (her 360 gün için %2, en çok %90)
+  const ALT = 33030, UST = 297270, TABAN = 23552; // 2026 prime esas kazanç alt/üst sınırı; en düşük aylık (Temmuz-Aralık 2026)
+  const tur = document.getElementById("maasSigortaTur").value;
+  const gun = parseInt(document.getElementById("maasGun").value) || 0;
+  const kazancGirilen = parseFloat(document.getElementById("maasBrut").value) || 0;
+  const minGun = tur === "4b" ? 9000 : 7200;
+  const sonuc = document.getElementById("maasResult");
+  const virgul = (x) => x.toFixed(1).replace(".", ",");
+  if (gun <= 0 || kazancGirilen <= 0) {
+    document.getElementById("tahminiMaas").textContent = "—";
+    document.getElementById("maasDetay").textContent = "Prim günü ve ortalama kazancı girin.";
+    document.getElementById("maasResultGrid").innerHTML = "";
+    sonuc.classList.add("show");
+    return;
+  }
+  const kazanc = Math.min(Math.max(kazancGirilen, ALT), UST);
+  const abo = Math.min(gun / 360 * 2, 90);
+  const kok = kazanc * abo / 100;
+  const maas = Math.max(kok, TABAN);
+  const tabana = kok < TABAN;
+  document.getElementById("tahminiMaas").textContent = formatTL(maas);
+  document.getElementById("maasDetay").textContent =
+    "Aylık bağlama oranı %" + virgul(abo) + " · Kök aylık " + formatTL(kok) + (tabana ? " (en düşük aylığa tamamlanır)" : "");
+  document.getElementById("maasResultGrid").innerHTML =
+    '<div class="result-item"><div class="result-item-label">Prim Günü</div><div class="result-item-value">' + gun.toLocaleString("tr-TR") + '</div></div>' +
+    '<div class="result-item"><div class="result-item-label">Aylık Bağlama Oranı</div><div class="result-item-value">%' + virgul(abo) + '</div></div>' +
+    '<div class="result-item"><div class="result-item-label">Kök Aylık</div><div class="result-item-value">' + formatTL(kok) + '</div></div>' +
+    '<div class="result-item"><div class="result-item-label">En Düşük Aylık (Tem–Ara 2026)</div><div class="result-item-value">23.552 TL</div></div>';
+  let not = "⚠️ Tahmini hesaptır. Girdiğiniz kazanç, bugünkü değerle ortalama aylık kazanç olarak alınır (2026 sınırları: " + ALT.toLocaleString("tr-TR") + " – " + UST.toLocaleString("tr-TR") + " TL). Ek ödeme, bayram ikramiyesi ve aylığın başladığı döneme göre yapılan artışlar dahil değildir.";
+  if (gun < minGun) not = "⚠️ Yaşlılık aylığı için genel kural olarak en az " + minGun.toLocaleString("tr-TR") + " gün prim gerekir. Bu gün sayısıyla aylık bağlanmayabilir, durumunuzu SGK'dan kontrol edin. " + not;
+  document.getElementById("maasNot").textContent = not;
+  sonuc.classList.add("show");
+  sonuc.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 </script>
 <script src="/kompiter.js" defer></script>
