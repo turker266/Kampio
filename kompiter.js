@@ -223,7 +223,11 @@
     },
     krHesap: {
       text: "Tutar ve vadeye göre aylık taksit ve toplam geri ödemeyi hesaplayabilirsiniz.",
-      opts: [{ l: "Kredi hesaplama", href: "/kredi.html", link: 1 }]
+      opts: [
+        { l: "Konut kredisi hesapla", href: "/kredi.html", link: 1 },
+        { l: "Taşıt kredisi hesapla", href: "/tasit-kredisi-hesaplama.html", link: 1 },
+        { l: "İhtiyaç kredisi hesapla", href: "/ihtiyac-kredisi-hesaplama.html", link: 1 }
+      ]
     },
     konut: {
       text: "Taksitten ayrı olarak <b>tapu harcı</b> (alıcı %2), tapu döner sermaye bedeli, bankanın <b>tahsis ücreti</b> (en fazla binde 5), <b>ekspertiz</b> ve zorunlu <b>DASK</b> çıkar. 3 milyon TL'lik evde, 1,5 milyon TL kredi için masraf yaklaşık 90 bin TL (DASK ve sigorta hariç).",
