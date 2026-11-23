@@ -226,7 +226,8 @@
       opts: [
         { l: "Konut kredisi hesapla", href: "/kredi.html", link: 1 },
         { l: "Taşıt kredisi hesapla", href: "/tasit-kredisi-hesaplama.html", link: 1 },
-        { l: "İhtiyaç kredisi hesapla", href: "/ihtiyac-kredisi-hesaplama.html", link: 1 }
+        { l: "İhtiyaç kredisi hesapla", href: "/ihtiyac-kredisi-hesaplama.html", link: 1 },
+        { l: "Ne kadar kredi çekebilirim?", href: "/ne-kadar-kredi-cekebilirim.html", link: 1 }
       ]
     },
     konut: {
@@ -240,6 +241,9 @@
       text: "Kart borcunu taşımanın yolları (borç transferi, nakit avans, ihtiyaç kredisi) farklı maliyetler taşır. Asgari ödeme, son ödeme tarihi ve borcun ödenmemesi halinde süreçle ilgili yazılarımız da var.",
       opts: [
         { l: "Asgari ödeme ve faiz hesapla", href: "/kredi-karti-asgari-odeme-hesaplama.html", link: 1 },
+        { l: "Gecikme faizi hesapla", href: "/kredi-karti-gecikme-faizi-hesaplama.html", link: 1 },
+        { l: "Taksitli nakit avans hesapla", href: "/kredi-karti-taksitli-nakit-avans-hesaplama.html", link: 1 },
+        { l: "Borcu yapılandırırsam ne olur?", href: "/kredi-yapilandirma-hesaplama.html", link: 1 },
         { l: "Borç transferi nasıl yapılır?", href: "/kredi-karti-borc-transferi-nasil-yapilir-borcu-baska-karta-tasima.html", link: 1 },
         { l: "Asgari ödeme yaparsam ne olur?", href: "/kredi-karti-asgari-odeme-faiz.html", link: 1 },
         { l: "Taksitleri erken kapatmak", href: "/kredi-karti-taksit-erken-kapama-tek-cekim-avantaji-2026.html", link: 1 },

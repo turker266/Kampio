@@ -732,6 +732,11 @@
       width: 100%; text-align: left; cursor: pointer; font-family: inherit;
     }
     .nav-dropdown-menu button:hover { background: #e7f5f1; color: #084c41; }
+    .nav-dropdown-menu.mega { min-width: 480px; padding: 12px; }
+    .nav-dropdown:hover .nav-dropdown-menu.mega,
+    .nav-dropdown.open .nav-dropdown-menu.mega { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; }
+    .nav-dd-col { display: flex; flex-direction: column; gap: 2px; }
+    .nav-dd-label { padding: 4px 14px 6px; font-size: 11px; font-weight: 800; color: #66736f; text-transform: uppercase; letter-spacing: .06em; }
 
     /* ── Hero Wrapper ── */
     .hero-wrapper {
@@ -1043,18 +1048,28 @@
       <button class="nav-link" type="button" data-nav="app">💳 Kredi Kartı</button>
       <div class="nav-dropdown">
         <button class="nav-link nav-dropdown-btn" type="button">🧮 Hesaplayıcılar ▾</button>
-        <div class="nav-dropdown-menu">
-          <a href="/mevduat.html">💰 Mevduat Faizi</a>
-          <a href="/maas.html">💼 Net Maaş Hesaplama</a>
-          <a href="/kidem-tazminati-hesaplama.html">⚖️ Kıdem Tazminatı</a>
-          <a href="/ihbar-tazminati-hesaplama.html">📢 İhbar Tazminatı</a>
-          <a href="/yillik-izin-ucreti-hesaplama.html">🏖️ Yıllık İzin Ücreti</a>
-          <a href="/kredi.html">🏠 Konut Kredisi</a>
-          <a href="/tasit-kredisi-hesaplama.html">🚗 Taşıt Kredisi</a>
-          <a href="/ihtiyac-kredisi-hesaplama.html">💳 İhtiyaç Kredisi</a>
-          <a href="/altin.html">🥇 Altın & Döviz</a>
-          <a href="/faiz-hesaplama.html">📈 Bileşik Faiz & Enflasyon</a>
-          <a href="/kredi-karti-asgari-odeme-hesaplama.html">💳 Kredi Kartı Asgari Ödeme</a>
+        <div class="nav-dropdown-menu mega">
+          <div class="nav-dd-col">
+            <div class="nav-dd-label">Krediler &amp; Kredi Kartı</div>
+            <a href="/kredi.html">🏠 Konut Kredisi</a>
+            <a href="/tasit-kredisi-hesaplama.html">🚗 Taşıt Kredisi</a>
+            <a href="/ihtiyac-kredisi-hesaplama.html">💳 İhtiyaç Kredisi</a>
+            <a href="/ne-kadar-kredi-cekebilirim.html">🧮 Ne Kadar Kredi Çekebilirim?</a>
+            <a href="/kredi-yapilandirma-hesaplama.html">🤝 Kredi Yapılandırma</a>
+            <a href="/kredi-karti-asgari-odeme-hesaplama.html">💳 Kart Asgari Ödeme</a>
+            <a href="/kredi-karti-gecikme-faizi-hesaplama.html">⏰ Kart Gecikme Faizi</a>
+            <a href="/kredi-karti-taksitli-nakit-avans-hesaplama.html">💸 Taksitli Nakit Avans</a>
+          </div>
+          <div class="nav-dd-col">
+            <div class="nav-dd-label">Maaş &amp; Birikim</div>
+            <a href="/maas.html">💼 Net Maaş Hesaplama</a>
+            <a href="/kidem-tazminati-hesaplama.html">⚖️ Kıdem Tazminatı</a>
+            <a href="/ihbar-tazminati-hesaplama.html">📢 İhbar Tazminatı</a>
+            <a href="/yillik-izin-ucreti-hesaplama.html">🏖️ Yıllık İzin Ücreti</a>
+            <a href="/mevduat.html">💰 Mevduat Faizi</a>
+            <a href="/altin.html">🥇 Altın &amp; Döviz</a>
+            <a href="/faiz-hesaplama.html">📈 Bileşik Faiz &amp; Enflasyon</a>
+          </div>
         </div>
       </div>
       <div class="nav-dropdown">
@@ -1119,6 +1134,10 @@
   <a class="mobile-nav-link" href="/altin.html" style="text-decoration:none;display:flex;align-items:center">🥇 Altın & Döviz</a>
   <a class="mobile-nav-link" href="/faiz-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">📈 Bileşik Faiz & Enflasyon</a>
   <a class="mobile-nav-link" href="/kredi-karti-asgari-odeme-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">💳 Kredi Kartı Asgari Ödeme</a>
+  <a class="mobile-nav-link" href="/kredi-karti-gecikme-faizi-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">⏰ Kredi Kartı Gecikme Faizi</a>
+  <a class="mobile-nav-link" href="/kredi-karti-taksitli-nakit-avans-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">💸 Taksitli Nakit Avans</a>
+  <a class="mobile-nav-link" href="/ne-kadar-kredi-cekebilirim.html" style="text-decoration:none;display:flex;align-items:center">🧮 Ne Kadar Kredi Çekebilirim?</a>
+  <a class="mobile-nav-link" href="/kredi-yapilandirma-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">🤝 Kredi Yapılandırma</a>
   <a class="mobile-nav-link" href="/emeklilik-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">⏰ Ne Zaman Emekli Olurum?</a>
   <a class="mobile-nav-link" href="/emekli-maasi-hesaplama.html" style="text-decoration:none;display:flex;align-items:center">💰 Emekli Maaşı Hesaplama</a>
   <a class="mobile-nav-link" href="/emekli.html" style="text-decoration:none;display:flex;align-items:center">🏦 Emekli Promosyonu</a>
@@ -1346,6 +1365,18 @@
           <span class="tool-card-icon">💳</span>
           <div class="tool-card-name">Asgari Ödeme & Faiz</div>
           <div class="tool-card-desc">Kredi kartı borcunuzun maliyetini görün</div>
+          <span class="tool-card-arrow">→</span>
+        </a>
+        <a class="tool-card-new blue" href="/ne-kadar-kredi-cekebilirim.html">
+          <span class="tool-card-icon">🧮</span>
+          <div class="tool-card-name">Ne Kadar Kredi Çekebilirim?</div>
+          <div class="tool-card-desc">Gelirinize göre kredi tutarını görün</div>
+          <span class="tool-card-arrow">→</span>
+        </a>
+        <a class="tool-card-new red" href="/kredi-karti-gecikme-faizi-hesaplama.html">
+          <span class="tool-card-icon">⏰</span>
+          <div class="tool-card-name">Gecikme Faizi</div>
+          <div class="tool-card-desc">Geciken asgari ödemenin maliyeti</div>
           <span class="tool-card-arrow">→</span>
         </a>
         <a class="tool-card-new emerald" href="/sifir-faiz.html">
