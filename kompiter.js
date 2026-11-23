@@ -196,8 +196,12 @@
       opts: [{ l: "Mevduat oranlarını gör", href: "/mevduat.html", link: 1 }]
     },
     mevHesap: {
-      text: "Tutarı, vadeyi ve faiz oranını girerek stopaj sonrası net getiriyi hesaplayabilirsiniz.",
-      opts: [{ l: "Faiz hesaplama aracı", href: "/faiz-hesaplama.html", link: 1 }]
+      text: "Tutarı, süreyi ve faiz oranını girerek birikiminizin büyümesini, enflasyondan arındırılmış gerçek getiriyi ise reel getiri sayfasında görebilirsiniz.",
+      opts: [
+        { l: "Bileşik faiz hesapla", href: "/faiz-hesaplama.html", link: 1 },
+        { l: "Reel getiri hesapla", href: "/reel-getiri-hesaplama.html", link: 1 },
+        { l: "Enflasyon hesapla", href: "/enflasyon-hesaplama.html", link: 1 }
+      ]
     },
     ppf: {
       text: "Kısaca: <b>vadeli mevduatın getirisi baştan bellidir</b> ve mevduat sigortası kapsamındadır. <b>Para piyasası fonunun getirisi garanti değildir</b> ama paranız vadeye bağlı kalmaz. Bireylerde fon stopajı %17,5, mevduatta vadeye göre %10-17,5. Rakamlı karşılaştırma yazımızda.",
