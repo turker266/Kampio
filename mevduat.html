@@ -179,8 +179,8 @@
     "@type": "FAQPage",
     "mainEntity": [
       {"@type": "Question", "name": "2026 yılında en yüksek mevduat faizini hangi banka veriyor?", "acceptedAnswer": {"@type": "Answer", "text": "Kasım 2026 itibarıyla en yüksek TL mevduat faizi yaklaşık %44 seviyesindedir; ING, Alternatif Bank ve Türk Ticaret Bankası bu oranı sunan bankalar arasındadır (bazı kaynaklarda Türk Ticaret Bankası için %44,5 görünüyor). ON Dijital, QNB Finansbank ve TEB de yüksek faiz oranları arasındadır."}},
-      {"@type": "Question", "name": "1 milyon TL mevduattan aylık ne kadar faiz kazanılır?", "acceptedAnswer": {"@type": "Answer", "text": "1 milyon TL'yi %41 yıllık faizle 1 aylık vadeli mevduata yatırdığınızda yaklaşık 33.000-34.000 TL brüt faiz geliri elde edersiniz. Stopaj vergisi düşüldükten sonra net kazanım yaklaşık 30.000 TL olur."}},
-      {"@type": "Question", "name": "Mevduat faizinden vergi kesilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Evet, Türkiye'de mevduat faiz gelirinden stopaj vergisi kesilmektedir. Stopaj oranı vade süresine göre %5 ile %15 arasında değişmektedir."}}
+      {"@type": "Question", "name": "1 milyon TL mevduattan aylık ne kadar faiz kazanılır?", "acceptedAnswer": {"@type": "Answer", "text": "1 milyon TL'yi %41 yıllık faizle 1 aylık vadeli mevduata yatırdığınızda yaklaşık 33.000-34.000 TL brüt faiz geliri elde edersiniz. Stopaj vergisi (6 aya kadar TL mevduatta %17,5) düşüldükten sonra net kazanım yaklaşık 27.500-28.000 TL olur."}},
+      {"@type": "Question", "name": "Mevduat faizinden vergi kesilir mi?", "acceptedAnswer": {"@type": "Answer", "text": "Evet, Türkiye'de mevduat faiz gelirinden stopaj vergisi kesilmektedir. TL mevduatta stopaj oranı vadeye göre değişir: 6 aya kadar %17,5, 6 ay ile 1 yıl arası %15, 1 yıldan uzun vadede %10. Döviz mevduatında oran farklıdır ve oranlar Cumhurbaşkanı kararıyla değişebilir."}}
     ]
   }
   </script>
@@ -258,7 +258,7 @@
         <div class="result-box" id="resultBox">
           <div class="result-title" id="resultTitle">1.000.000 TL için 1 Aylık Faiz Hesabı</div>
           <div class="result-grid" id="resultGrid"></div>
-          <p class="result-note">* Gösterilen oranlar Haziran 2026 piyasa ortalamasına göre yaklaşık değerlerdir. Stopaj oranı vade süresine göre %5-%15 arasında değişmektedir. Kesin faiz oranı için bankanızla iletişime geçin.</p>
+          <p class="result-note">* Gösterilen oranlar yaklaşık piyasa ortalamalarıdır. TL mevduatta stopaj 6 aya kadar %17,5, 6 ay ile 1 yıl arası %15, 1 yıldan uzun vadede %10'dur (12 aylık vade 1 yıl dilimindedir, %15 alınır). Döviz mevduatında stopaj farklıdır, bu yüzden net tutar gösterilmez. Kesin faiz ve stopaj için bankanıza danışın.</p>
         </div>
       </div>
     </div>
@@ -304,7 +304,7 @@
       <p>Vadeli mevduat faizi şu formülle hesaplanır: <strong>Faiz Geliri = Anapara × Faiz Oranı × (Gün Sayısı / 365)</strong>. Örneğin 1.000.000 TL'yi %50 yıllık faizle 1 ay (30 gün) yatırırsanız: 1.000.000 × 0,50 × (30/365) = yaklaşık 41.096 TL brüt faiz geliri elde edersiniz.</p>
 
       <h3>Mevduat faizinden vergi kesilir mi?</h3>
-      <p>Evet, Türkiye'de mevduat faiz gelirinden %15 stopaj vergisi kesilmektedir. Hesaplayıcımızda gösterilen rakamlar brüt (vergi öncesi) tutarlardır. Net kazancınız için %15 düşmeniz gerekmektedir.</p>
+      <p>Evet, Türkiye'de mevduat faiz gelirinden stopaj (gelir vergisi kesintisi) yapılır. TL mevduatta oran vadeye göre değişir: 6 aya kadar vadelerde %17,5, 6 ay ile 1 yıl arasında %15, 1 yıldan uzun vadede %10. Hesaplayıcımızdaki "Brüt" rakam vergi öncesi tutardır, TL için gösterilen net rakam ise seçtiğiniz vadenin stopaj oranına göre hesaplanır. Oranlar Cumhurbaşkanı kararıyla değiştirilebilir, hesabın açıldığı veya yenilendiği tarihteki oran uygulanır. Döviz mevduatında stopaj oranı farklıdır; güncel oranı bankanızdan teyit edin.</p>
 
       <h3>En yüksek faizi hangi bankalar veriyor?</h3>
       <p>2026 yılında en yüksek TL mevduat faizi genellikle katılım bankaları ve orta ölçekli özel bankalar tarafından sunulmaktadır. Faiz oranları Merkez Bankası politika faizine göre şekillenmekte ve sık sık değişmektedir.</p>
@@ -448,22 +448,25 @@
     const minRate = avgRate - 3;
 
     const gross = calcMonthly(amount, avgRate, vade);
-    const net = gross * 0.90; // Stopaj oranı vadeye göre %5-%15 arası, ortalama %10 alındı
-    const withTax = gross - net;
+    // TL mevduat stopajı: 6 aya kadar %17,5, 6 ay-1 yıl %15, 1 yıldan uzun %10 (12 aylık vade 1 yıl dilimine girer, %15). Döviz stopajı farklı olduğu için net gösterilmez.
+    const stopajOran = type === "tl" ? (vade >= 12 ? 0.15 : 0.175) : null;
+    const net = stopajOran !== null ? gross * (1 - stopajOran) : null;
+    const stopajTxt = stopajOran !== null ? String(stopajOran * 100).replace(".", ",") : "";
 
     const currency = type === "tl" ? "TL" : type === "usd" ? "USD" : "EUR";
+    const fmtCur = (n) => n.toLocaleString("tr-TR", { maximumFractionDigits: 0 }) + " " + currency;
 
     document.getElementById("resultTitle").textContent =
       `${amount.toLocaleString("tr-TR")} ${currency} için ${vade} Aylık Faiz Hesabı (Ortalama Banka Oranına Göre)`;
 
     document.getElementById("resultGrid").innerHTML = `
       <div class="result-item">
-        <strong>${formatTL(gross)}</strong>
+        <strong>${fmtCur(gross)}</strong>
         <span>Brüt Faiz Geliri</span>
       </div>
       <div class="result-item">
-        <strong>${formatTL(net)}</strong>
-        <span>Net Faiz Geliri (yaklaşık %10 stopaj sonrası)</span>
+        <strong>${net !== null ? fmtCur(net) : "Bankaya göre değişir"}</strong>
+        <span>${net !== null ? "Net Faiz Geliri (%" + stopajTxt + " stopaj sonrası)" : "Döviz mevduatında stopaj farklıdır"}</span>
       </div>
       <div class="result-item">
         <strong>%${avgRate}</strong>
