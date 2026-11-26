@@ -10,3 +10,5 @@ vercel.json
 README.md
 .git/
 .gitignore
+
+.github/
